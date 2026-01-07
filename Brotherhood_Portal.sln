@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brotherhood_Portal.API", "Brotherhood_Portal.API\Brotherhood_Portal.API.csproj", "{60854D11-E5B4-4CDC-94EC-84ADD9BCD3E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brotherhood_Portal.Infrastructure", "Brotherhood_Portal.Infrastructure\Brotherhood_Portal.Infrastructure.csproj", "{48F5835C-F043-42C5-A103-6CCF046E62B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brotherhood_Portal.Application", "Brotherhood_Portal.Application\Brotherhood_Portal.Application.csproj", "{7A91F3EA-CEFF-439F-802F-2493F885EE84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brotherhood_Portal.Domain", "Brotherhood_Portal.Domain\Brotherhood_Portal.Domain.csproj", "{D7BD4394-6B46-49E7-87E1-F44372434A29}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{EB78F331-0F8A-4BAB-A7AD-F97B53D206FA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{DF4AB550-FE60-4883-8A12-1813C68D5D5D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{BF1BD714-92E0-4CA1-B120-341FB8B70B40}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{60854D11-E5B4-4CDC-94EC-84ADD9BCD3E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60854D11-E5B4-4CDC-94EC-84ADD9BCD3E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60854D11-E5B4-4CDC-94EC-84ADD9BCD3E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60854D11-E5B4-4CDC-94EC-84ADD9BCD3E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48F5835C-F043-42C5-A103-6CCF046E62B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48F5835C-F043-42C5-A103-6CCF046E62B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48F5835C-F043-42C5-A103-6CCF046E62B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48F5835C-F043-42C5-A103-6CCF046E62B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A91F3EA-CEFF-439F-802F-2493F885EE84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A91F3EA-CEFF-439F-802F-2493F885EE84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A91F3EA-CEFF-439F-802F-2493F885EE84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A91F3EA-CEFF-439F-802F-2493F885EE84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7BD4394-6B46-49E7-87E1-F44372434A29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7BD4394-6B46-49E7-87E1-F44372434A29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7BD4394-6B46-49E7-87E1-F44372434A29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7BD4394-6B46-49E7-87E1-F44372434A29}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{60854D11-E5B4-4CDC-94EC-84ADD9BCD3E9} = {DF4AB550-FE60-4883-8A12-1813C68D5D5D}
+		{48F5835C-F043-42C5-A103-6CCF046E62B9} = {EB78F331-0F8A-4BAB-A7AD-F97B53D206FA}
+		{7A91F3EA-CEFF-439F-802F-2493F885EE84} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{D7BD4394-6B46-49E7-87E1-F44372434A29} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {22C92C2F-8A7C-4A37-AEB0-1E666109E95B}
+	EndGlobalSection
+EndGlobal

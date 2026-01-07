@@ -1,0 +1,11 @@
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Domain\bin\Debug\net9.0\Brotherhood_Portal.Domain.deps.json
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Domain\bin\Debug\net9.0\Brotherhood_Portal.Domain.dll
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Domain\bin\Debug\net9.0\Brotherhood_Portal.Domain.pdb
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Domain\obj\Debug\net9.0\Brotherhood_Portal.Domain.GeneratedMSBuildEditorConfig.editorconfig
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Domain\obj\Debug\net9.0\Brotherhood_Portal.Domain.AssemblyInfoInputs.cache
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Domain\obj\Debug\net9.0\Brotherhood_Portal.Domain.AssemblyInfo.cs
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Domain\obj\Debug\net9.0\Brotherhood_Portal.Domain.csproj.CoreCompileInputs.cache
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Domain\obj\Debug\net9.0\Brotherhood_Portal.Domain.dll
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Domain\obj\Debug\net9.0\refint\Brotherhood_Portal.Domain.dll
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Domain\obj\Debug\net9.0\Brotherhood_Portal.Domain.pdb
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Domain\obj\Debug\net9.0\ref\Brotherhood_Portal.Domain.dll

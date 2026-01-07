@@ -1,0 +1,15 @@
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Application\bin\Debug\net9.0\Brotherhood_Portal.Application.deps.json
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Application\bin\Debug\net9.0\Brotherhood_Portal.Application.dll
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Application\bin\Debug\net9.0\Brotherhood_Portal.Application.pdb
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Application\obj\Debug\net9.0\Brotherhood_Portal.Application.GeneratedMSBuildEditorConfig.editorconfig
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Application\obj\Debug\net9.0\Brotherhood_Portal.Application.AssemblyInfoInputs.cache
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Application\obj\Debug\net9.0\Brotherhood_Portal.Application.AssemblyInfo.cs
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Application\obj\Debug\net9.0\Brotherhood_Portal.Application.csproj.CoreCompileInputs.cache
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Application\obj\Debug\net9.0\Brotherhood_Portal.Application.dll
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Application\obj\Debug\net9.0\refint\Brotherhood_Portal.Application.dll
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Application\obj\Debug\net9.0\Brotherhood_Portal.Application.pdb
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Application\obj\Debug\net9.0\ref\Brotherhood_Portal.Application.dll
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Application\bin\Debug\net9.0\Brotherhood_Portal.Domain.dll
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Application\bin\Debug\net9.0\Brotherhood_Portal.Domain.pdb
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Application\obj\Debug\net9.0\Brotherhood_Portal.Application.csproj.AssemblyReference.cache
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Application\obj\Debug\net9.0\Brotherh.C239F98A.Up2Date

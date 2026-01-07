@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.8" />
+	<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.11">
+		<PrivateAssets>all</PrivateAssets>
+		<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	</PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Brotherhood_Portal.Application\Brotherhood_Portal.Application.csproj" />
+    <ProjectReference Include="..\Brotherhood_Portal.Domain\Brotherhood_Portal.Domain.csproj" />
+    <ProjectReference Include="..\Brotherhood_Portal.Infrastructure\Brotherhood_Portal.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
