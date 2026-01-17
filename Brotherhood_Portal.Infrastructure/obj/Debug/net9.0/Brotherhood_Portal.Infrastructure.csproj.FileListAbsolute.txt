@@ -17,3 +17,4 @@ E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Port
 E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Infrastructure\obj\Debug\net9.0\Brotherh.0254F38D.Up2Date
 E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Infrastructure\bin\Debug\net9.0\Brotherhood_Portal.Infrastructure.runtimeconfig.json
 E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Infrastructure\obj\Debug\net9.0\Brotherhood_Portal.Infrastructure.genruntimeconfig.cache
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Infrastructure\obj\Debug\net9.0\Brotherhood_Portal.Infrastructure.sourcelink.json

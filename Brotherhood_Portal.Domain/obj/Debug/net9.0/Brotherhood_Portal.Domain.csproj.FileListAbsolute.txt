@@ -9,3 +9,5 @@ E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Port
 E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Domain\obj\Debug\net9.0\refint\Brotherhood_Portal.Domain.dll
 E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Domain\obj\Debug\net9.0\Brotherhood_Portal.Domain.pdb
 E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Domain\obj\Debug\net9.0\ref\Brotherhood_Portal.Domain.dll
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Domain\obj\Debug\net9.0\Brotherhood_Portal.Domain.sourcelink.json
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Domain\obj\Debug\net9.0\Brotherhood_Portal.Domain.csproj.AssemblyReference.cache

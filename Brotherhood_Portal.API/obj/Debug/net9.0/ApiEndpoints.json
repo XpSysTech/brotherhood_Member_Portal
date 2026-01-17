@@ -1,8 +1,152 @@
 [
   {
-    "ContainingType": "Brotherhood_Portal.API.Controllers.MembersController",
-    "Method": "GetMembers",
-    "RelativePath": "api/Members",
+    "ContainingType": "Brotherhood_Portal.API.Controllers.AccountController",
+    "Method": "Login",
+    "RelativePath": "api/Account/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginDTO",
+        "Type": "Brotherhood_Portal.Domain.DTOs.LoginDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Brotherhood_Portal.Domain.DTOs.UserDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Brotherhood_Portal.API.Controllers.AccountController",
+    "Method": "Register",
+    "RelativePath": "api/Account/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "registerDTO",
+        "Type": "Brotherhood_Portal.Domain.DTOs.RegisterDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Brotherhood_Portal.Domain.DTOs.UserDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Brotherhood_Portal.API.Controllers.AdminController",
+    "Method": "AddRoleToUser",
+    "RelativePath": "api/Admin/add-role/{userId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "role",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Brotherhood_Portal.API.Controllers.AdminController",
+    "Method": "EditRoles",
+    "RelativePath": "api/Admin/edit-roles/{userId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "roles",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IList\u00601[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Brotherhood_Portal.API.Controllers.AdminController",
+    "Method": "GetPhotosForModeration",
+    "RelativePath": "api/Admin/photos-to-moderate",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Brotherhood_Portal.API.Controllers.AdminController",
+    "Method": "TestAdminEndpoint",
+    "RelativePath": "api/Admin/test-admin-role",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Brotherhood_Portal.API.Controllers.AdminController",
+    "Method": "GetUsersWithRoles",
+    "RelativePath": "api/Admin/users-with-roles",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -11,19 +155,23 @@
   },
   {
     "ContainingType": "Brotherhood_Portal.API.Controllers.MembersController",
-    "Method": "CreateMember",
+    "Method": "GetMembers",
     "RelativePath": "api/Members",
-    "HttpMethod": "POST",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [
+    "Parameters": [],
+    "ReturnTypes": [
       {
-        "Name": "user",
-        "Type": "Brotherhood_Portal.Domain.Entities.AppUser",
-        "IsRequired": true
+        "Type": "System.Collections.Generic.IReadOnlyList\u00601[[Brotherhood_Portal.Domain.Entities.Member, Brotherhood_Portal.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
       }
-    ],
-    "ReturnTypes": []
+    ]
   },
   {
     "ContainingType": "Brotherhood_Portal.API.Controllers.MembersController",
@@ -39,13 +187,23 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "Brotherhood_Portal.Domain.Entities.Member",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "Brotherhood_Portal.API.Controllers.MembersController",
-    "Method": "DeleteMember",
-    "RelativePath": "api/Members/{id}",
-    "HttpMethod": "DELETE",
+    "Method": "GetPhotosForMember",
+    "RelativePath": "api/Members/{id}/photos",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -55,27 +213,16 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Brotherhood_Portal.API.Controllers.MembersController",
-    "Method": "UpdateMember",
-    "RelativePath": "api/Members/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
+    "ReturnTypes": [
       {
-        "Name": "id",
-        "Type": "System.String",
-        "IsRequired": true
-      },
-      {
-        "Name": "user",
-        "Type": "Brotherhood_Portal.Domain.Entities.AppUser",
-        "IsRequired": true
+        "Type": "System.Collections.Generic.IReadOnlyList\u00601[[Brotherhood_Portal.Domain.Entities.Photo, Brotherhood_Portal.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
       }
-    ],
-    "ReturnTypes": []
+    ]
   }
 ]

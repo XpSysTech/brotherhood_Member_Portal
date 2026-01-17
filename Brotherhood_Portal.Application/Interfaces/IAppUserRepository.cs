@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Brotherhood_Portal.Domain.Entities;
+﻿using Brotherhood_Portal.Domain.Entities;
 
 namespace Brotherhood_Portal.Application.Interfaces
 {

@@ -13,3 +13,4 @@ E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Port
 E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Application\bin\Debug\net9.0\Brotherhood_Portal.Domain.pdb
 E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Application\obj\Debug\net9.0\Brotherhood_Portal.Application.csproj.AssemblyReference.cache
 E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Application\obj\Debug\net9.0\Brotherh.C239F98A.Up2Date
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.Application\obj\Debug\net9.0\Brotherhood_Portal.Application.sourcelink.json

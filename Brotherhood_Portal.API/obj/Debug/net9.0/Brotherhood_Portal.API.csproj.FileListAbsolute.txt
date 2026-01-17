@@ -194,4 +194,14 @@ E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Port
 E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.API\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.API\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.API\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.API\obj\Debug\net9.0\Brotherhood_Portal.API.sourcelink.json
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.API\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.API\bin\Debug\net9.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.API\bin\Debug\net9.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.API\bin\Debug\net9.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.API\bin\Debug\net9.0\Microsoft.Extensions.Identity.Core.dll
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.API\bin\Debug\net9.0\Microsoft.Extensions.Identity.Stores.dll
 E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.API\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll

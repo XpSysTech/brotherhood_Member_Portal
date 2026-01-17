@@ -1,11 +1,15 @@
-﻿namespace Brotherhood_Portal.Domain.Entities
-{
-    public class AppUser
-    {
-        public string Id { get; set; } = Guid.NewGuid().ToString();
-        public required string DisplayName { get; set; }
-        public required string Email { get; set; }
+﻿using Microsoft.AspNetCore.Identity;
 
-        /*AppUser Details: Contact Number, Date Of Birth, Location/Address, Occupation/Business*/
+namespace Brotherhood_Portal.Domain.Entities
+{
+    public class AppUser : IdentityUser
+    {
+        public required string? DisplayName { get; set; }
+        public string? ImageUrl { get; set; }
+        public string? RefreshToken { get; set; }
+        public DateTime? RefreshTokenExpiry { get; set; }
+
+        //Navigation Property
+        public Member? Member { get; set; } = null;
     }
 }

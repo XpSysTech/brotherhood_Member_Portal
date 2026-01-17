@@ -3,36 +3,88 @@
   "WorkspaceRootPath": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{60854D11-E5B4-4CDC-94EC-84ADD9BCD3E9}|Brotherhood_Portal.API\\Brotherhood_Portal.API.csproj|e:\\post\\development\\xpsystech_github\\brotherhood_private_portal\\brotherhood_portal.api\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{60854D11-E5B4-4CDC-94EC-84ADD9BCD3E9}|Brotherhood_Portal.API\\Brotherhood_Portal.API.csproj|solutionrelative:brotherhood_portal.api\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{60854D11-E5B4-4CDC-94EC-84ADD9BCD3E9}|Brotherhood_Portal.API\\Brotherhood_Portal.API.csproj|e:\\post\\development\\xpsystech_github\\brotherhood_private_portal\\brotherhood_portal.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{60854D11-E5B4-4CDC-94EC-84ADD9BCD3E9}|Brotherhood_Portal.API\\Brotherhood_Portal.API.csproj|solutionrelative:brotherhood_portal.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{60854D11-E5B4-4CDC-94EC-84ADD9BCD3E9}|Brotherhood_Portal.API\\Brotherhood_Portal.API.csproj|e:\\post\\development\\xpsystech_github\\brotherhood_private_portal\\brotherhood_portal.api\\controllers\\memberscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{60854D11-E5B4-4CDC-94EC-84ADD9BCD3E9}|Brotherhood_Portal.API\\Brotherhood_Portal.API.csproj|solutionrelative:brotherhood_portal.api\\controllers\\memberscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{60854D11-E5B4-4CDC-94EC-84ADD9BCD3E9}|Brotherhood_Portal.API\\Brotherhood_Portal.API.csproj|e:\\post\\development\\xpsystech_github\\brotherhood_private_portal\\brotherhood_portal.api\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{60854D11-E5B4-4CDC-94EC-84ADD9BCD3E9}|Brotherhood_Portal.API\\Brotherhood_Portal.API.csproj|solutionrelative:brotherhood_portal.api\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{60854D11-E5B4-4CDC-94EC-84ADD9BCD3E9}|Brotherhood_Portal.API\\Brotherhood_Portal.API.csproj|e:\\post\\development\\xpsystech_github\\brotherhood_private_portal\\brotherhood_portal.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{60854D11-E5B4-4CDC-94EC-84ADD9BCD3E9}|Brotherhood_Portal.API\\Brotherhood_Portal.API.csproj|solutionrelative:brotherhood_portal.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{60854D11-E5B4-4CDC-94EC-84ADD9BCD3E9}|Brotherhood_Portal.API\\Brotherhood_Portal.API.csproj|e:\\post\\development\\xpsystech_github\\brotherhood_private_portal\\brotherhood_portal.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{60854D11-E5B4-4CDC-94EC-84ADD9BCD3E9}|Brotherhood_Portal.API\\Brotherhood_Portal.API.csproj|solutionrelative:brotherhood_portal.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{60854D11-E5B4-4CDC-94EC-84ADD9BCD3E9}|Brotherhood_Portal.API\\Brotherhood_Portal.API.csproj|e:\\post\\development\\xpsystech_github\\brotherhood_private_portal\\brotherhood_portal.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{60854D11-E5B4-4CDC-94EC-84ADD9BCD3E9}|Brotherhood_Portal.API\\Brotherhood_Portal.API.csproj|solutionrelative:brotherhood_portal.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7A91F3EA-CEFF-439F-802F-2493F885EE84}|Brotherhood_Portal.Application\\Brotherhood_Portal.Application.csproj|e:\\post\\development\\xpsystech_github\\brotherhood_private_portal\\brotherhood_portal.application\\interfaces\\iappuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7A91F3EA-CEFF-439F-802F-2493F885EE84}|Brotherhood_Portal.Application\\Brotherhood_Portal.Application.csproj|solutionrelative:brotherhood_portal.application\\interfaces\\iappuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D7BD4394-6B46-49E7-87E1-F44372434A29}|Brotherhood_Portal.Domain\\Brotherhood_Portal.Domain.csproj|e:\\post\\development\\xpsystech_github\\brotherhood_private_portal\\brotherhood_portal.domain\\entities\\member.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7BD4394-6B46-49E7-87E1-F44372434A29}|Brotherhood_Portal.Domain\\Brotherhood_Portal.Domain.csproj|solutionrelative:brotherhood_portal.domain\\entities\\member.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D7BD4394-6B46-49E7-87E1-F44372434A29}|Brotherhood_Portal.Domain\\Brotherhood_Portal.Domain.csproj|e:\\post\\development\\xpsystech_github\\brotherhood_private_portal\\brotherhood_portal.domain\\entities\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D7BD4394-6B46-49E7-87E1-F44372434A29}|Brotherhood_Portal.Domain\\Brotherhood_Portal.Domain.csproj|solutionrelative:brotherhood_portal.domain\\entities\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{D7BD4394-6B46-49E7-87E1-F44372434A29}|Brotherhood_Portal.Domain\\Brotherhood_Portal.Domain.csproj|e:\\post\\development\\xpsystech_github\\brotherhood_private_portal\\brotherhood_portal.domain\\dtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7BD4394-6B46-49E7-87E1-F44372434A29}|Brotherhood_Portal.Domain\\Brotherhood_Portal.Domain.csproj|solutionrelative:brotherhood_portal.domain\\dtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{60854D11-E5B4-4CDC-94EC-84ADD9BCD3E9}|Brotherhood_Portal.API\\Brotherhood_Portal.API.csproj|e:\\post\\development\\xpsystech_github\\brotherhood_private_portal\\brotherhood_portal.api\\controllers\\memberscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{60854D11-E5B4-4CDC-94EC-84ADD9BCD3E9}|Brotherhood_Portal.API\\Brotherhood_Portal.API.csproj|solutionrelative:brotherhood_portal.api\\controllers\\memberscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48F5835C-F043-42C5-A103-6CCF046E62B9}|Brotherhood_Portal.Infrastructure\\Brotherhood_Portal.Infrastructure.csproj|e:\\post\\development\\xpsystech_github\\brotherhood_private_portal\\brotherhood_portal.infrastructure\\repository\\memberrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48F5835C-F043-42C5-A103-6CCF046E62B9}|Brotherhood_Portal.Infrastructure\\Brotherhood_Portal.Infrastructure.csproj|solutionrelative:brotherhood_portal.infrastructure\\repository\\memberrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A91F3EA-CEFF-439F-802F-2493F885EE84}|Brotherhood_Portal.Application\\Brotherhood_Portal.Application.csproj|e:\\post\\development\\xpsystech_github\\brotherhood_private_portal\\brotherhood_portal.application\\interfaces\\imemberrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A91F3EA-CEFF-439F-802F-2493F885EE84}|Brotherhood_Portal.Application\\Brotherhood_Portal.Application.csproj|solutionrelative:brotherhood_portal.application\\interfaces\\imemberrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48F5835C-F043-42C5-A103-6CCF046E62B9}|Brotherhood_Portal.Infrastructure\\Brotherhood_Portal.Infrastructure.csproj|e:\\post\\development\\xpsystech_github\\brotherhood_private_portal\\brotherhood_portal.infrastructure\\data\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48F5835C-F043-42C5-A103-6CCF046E62B9}|Brotherhood_Portal.Infrastructure\\Brotherhood_Portal.Infrastructure.csproj|solutionrelative:brotherhood_portal.infrastructure\\data\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7BD4394-6B46-49E7-87E1-F44372434A29}|Brotherhood_Portal.Domain\\Brotherhood_Portal.Domain.csproj|e:\\post\\development\\xpsystech_github\\brotherhood_private_portal\\brotherhood_portal.domain\\dtos\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7BD4394-6B46-49E7-87E1-F44372434A29}|Brotherhood_Portal.Domain\\Brotherhood_Portal.Domain.csproj|solutionrelative:brotherhood_portal.domain\\dtos\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A91F3EA-CEFF-439F-802F-2493F885EE84}|Brotherhood_Portal.Application\\Brotherhood_Portal.Application.csproj|e:\\post\\development\\xpsystech_github\\brotherhood_private_portal\\brotherhood_portal.application\\services\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A91F3EA-CEFF-439F-802F-2493F885EE84}|Brotherhood_Portal.Application\\Brotherhood_Portal.Application.csproj|solutionrelative:brotherhood_portal.application\\services\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48F5835C-F043-42C5-A103-6CCF046E62B9}|Brotherhood_Portal.Infrastructure\\Brotherhood_Portal.Infrastructure.csproj|e:\\post\\development\\xpsystech_github\\brotherhood_private_portal\\brotherhood_portal.infrastructure\\brotherhood_portal.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{48F5835C-F043-42C5-A103-6CCF046E62B9}|Brotherhood_Portal.Infrastructure\\Brotherhood_Portal.Infrastructure.csproj|solutionrelative:brotherhood_portal.infrastructure\\brotherhood_portal.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{60854D11-E5B4-4CDC-94EC-84ADD9BCD3E9}|Brotherhood_Portal.API\\Brotherhood_Portal.API.csproj|e:\\post\\development\\xpsystech_github\\brotherhood_private_portal\\brotherhood_portal.api\\brotherhood_portal.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{60854D11-E5B4-4CDC-94EC-84ADD9BCD3E9}|Brotherhood_Portal.API\\Brotherhood_Portal.API.csproj|solutionrelative:brotherhood_portal.api\\brotherhood_portal.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48F5835C-F043-42C5-A103-6CCF046E62B9}|Brotherhood_Portal.Infrastructure\\Brotherhood_Portal.Infrastructure.csproj|e:\\post\\development\\xpsystech_github\\brotherhood_private_portal\\brotherhood_portal.infrastructure\\data\\migrations\\20260115200928_reinitialmig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48F5835C-F043-42C5-A103-6CCF046E62B9}|Brotherhood_Portal.Infrastructure\\Brotherhood_Portal.Infrastructure.csproj|solutionrelative:brotherhood_portal.infrastructure\\data\\migrations\\20260115200928_reinitialmig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7BD4394-6B46-49E7-87E1-F44372434A29}|Brotherhood_Portal.Domain\\Brotherhood_Portal.Domain.csproj|e:\\post\\development\\xpsystech_github\\brotherhood_private_portal\\brotherhood_portal.domain\\entities\\photo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7BD4394-6B46-49E7-87E1-F44372434A29}|Brotherhood_Portal.Domain\\Brotherhood_Portal.Domain.csproj|solutionrelative:brotherhood_portal.domain\\entities\\photo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48F5835C-F043-42C5-A103-6CCF046E62B9}|Brotherhood_Portal.Infrastructure\\Brotherhood_Portal.Infrastructure.csproj|e:\\post\\development\\xpsystech_github\\brotherhood_private_portal\\brotherhood_portal.infrastructure\\data\\seeddata.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{48F5835C-F043-42C5-A103-6CCF046E62B9}|Brotherhood_Portal.Infrastructure\\Brotherhood_Portal.Infrastructure.csproj|solutionrelative:brotherhood_portal.infrastructure\\data\\seeddata.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7BD4394-6B46-49E7-87E1-F44372434A29}|Brotherhood_Portal.Domain\\Brotherhood_Portal.Domain.csproj|e:\\post\\development\\xpsystech_github\\brotherhood_private_portal\\brotherhood_portal.domain\\dtos\\seeduserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7BD4394-6B46-49E7-87E1-F44372434A29}|Brotherhood_Portal.Domain\\Brotherhood_Portal.Domain.csproj|solutionrelative:brotherhood_portal.domain\\dtos\\seeduserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{48F5835C-F043-42C5-A103-6CCF046E62B9}|Brotherhood_Portal.Infrastructure\\Brotherhood_Portal.Infrastructure.csproj|e:\\post\\development\\xpsystech_github\\brotherhood_private_portal\\brotherhood_portal.infrastructure\\repository\\appuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{48F5835C-F043-42C5-A103-6CCF046E62B9}|Brotherhood_Portal.Infrastructure\\Brotherhood_Portal.Infrastructure.csproj|solutionrelative:brotherhood_portal.infrastructure\\repository\\appuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A91F3EA-CEFF-439F-802F-2493F885EE84}|Brotherhood_Portal.Application\\Brotherhood_Portal.Application.csproj|e:\\post\\development\\xpsystech_github\\brotherhood_private_portal\\brotherhood_portal.application\\extensions\\appuserextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A91F3EA-CEFF-439F-802F-2493F885EE84}|Brotherhood_Portal.Application\\Brotherhood_Portal.Application.csproj|solutionrelative:brotherhood_portal.application\\extensions\\appuserextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48F5835C-F043-42C5-A103-6CCF046E62B9}|Brotherhood_Portal.Infrastructure\\Brotherhood_Portal.Infrastructure.csproj|e:\\post\\development\\xpsystech_github\\brotherhood_private_portal\\brotherhood_portal.infrastructure\\data\\migrations\\20260115203438_thirdmigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48F5835C-F043-42C5-A103-6CCF046E62B9}|Brotherhood_Portal.Infrastructure\\Brotherhood_Portal.Infrastructure.csproj|solutionrelative:brotherhood_portal.infrastructure\\data\\migrations\\20260115203438_thirdmigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,7 +94,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -61,108 +113,267 @@
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.API\\Program.cs",
-              "RelativeDocumentMoniker": "Brotherhood_Portal.API\\Program.cs",
-              "ToolTip": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.API\\Program.cs",
-              "RelativeToolTip": "Brotherhood_Portal.API\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-07T07:34:03.794Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "launchSettings.json",
-              "DocumentMoniker": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.API\\Properties\\launchSettings.json",
-              "RelativeDocumentMoniker": "Brotherhood_Portal.API\\Properties\\launchSettings.json",
-              "ToolTip": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.API\\Properties\\launchSettings.json",
-              "RelativeToolTip": "Brotherhood_Portal.API\\Properties\\launchSettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-01-07T07:29:54.644Z",
-              "EditorCaption": ""
+              "DocumentIndex": 7,
+              "Title": "MemberRepository.cs",
+              "DocumentMoniker": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Infrastructure\\Repository\\MemberRepository.cs",
+              "RelativeDocumentMoniker": "Brotherhood_Portal.Infrastructure\\Repository\\MemberRepository.cs",
+              "ToolTip": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Infrastructure\\Repository\\MemberRepository.cs",
+              "RelativeToolTip": "Brotherhood_Portal.Infrastructure\\Repository\\MemberRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAcAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-15T19:32:22.301Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "appsettings.Development.json",
-              "DocumentMoniker": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.API\\appsettings.Development.json",
-              "RelativeDocumentMoniker": "Brotherhood_Portal.API\\appsettings.Development.json",
-              "ToolTip": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.API\\appsettings.Development.json",
-              "RelativeToolTip": "Brotherhood_Portal.API\\appsettings.Development.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-01-07T07:29:44.318Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.API\\appsettings.json",
-              "RelativeDocumentMoniker": "Brotherhood_Portal.API\\appsettings.json",
-              "ToolTip": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.API\\appsettings.json",
-              "RelativeToolTip": "Brotherhood_Portal.API\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-01-07T07:29:42.55Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "AppUser.cs",
-              "DocumentMoniker": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Domain\\Entities\\AppUser.cs",
-              "RelativeDocumentMoniker": "Brotherhood_Portal.Domain\\Entities\\AppUser.cs",
-              "ToolTip": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Domain\\Entities\\AppUser.cs",
-              "RelativeToolTip": "Brotherhood_Portal.Domain\\Entities\\AppUser.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwoAAAABAAAAAAAAAA==",
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.API\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Brotherhood_Portal.API\\Controllers\\AccountController.cs",
+              "ToolTip": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.API\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Brotherhood_Portal.API\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAApwBwAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-07T07:19:08.542Z",
+              "WhenOpened": "2026-01-15T17:53:21.255Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "IAppUserRepository.cs",
-              "DocumentMoniker": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Application\\Interfaces\\IAppUserRepository.cs",
-              "RelativeDocumentMoniker": "Brotherhood_Portal.Application\\Interfaces\\IAppUserRepository.cs",
-              "ToolTip": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Application\\Interfaces\\IAppUserRepository.cs",
-              "RelativeToolTip": "Brotherhood_Portal.Application\\Interfaces\\IAppUserRepository.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAADwvxIAAAAAAAAAAAAAAA==",
+              "Title": "UserDTO.cs",
+              "DocumentMoniker": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Domain\\DTOs\\UserDTO.cs",
+              "RelativeDocumentMoniker": "Brotherhood_Portal.Domain\\DTOs\\UserDTO.cs",
+              "ToolTip": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Domain\\DTOs\\UserDTO.cs",
+              "RelativeToolTip": "Brotherhood_Portal.Domain\\DTOs\\UserDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAIAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-07T07:15:25.46Z",
+              "WhenOpened": "2026-01-15T19:27:47.971Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "AppUserRepository.cs",
-              "DocumentMoniker": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Infrastructure\\Repository\\AppUserRepository.cs",
-              "RelativeDocumentMoniker": "Brotherhood_Portal.Infrastructure\\Repository\\AppUserRepository.cs",
-              "ToolTip": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Infrastructure\\Repository\\AppUserRepository.cs",
-              "RelativeToolTip": "Brotherhood_Portal.Infrastructure\\Repository\\AppUserRepository.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAADwvyUAAAAJAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.API\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "Brotherhood_Portal.API\\Controllers\\AdminController.cs",
+              "ToolTip": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.API\\Controllers\\AdminController.cs*",
+              "RelativeToolTip": "Brotherhood_Portal.API\\Controllers\\AdminController.cs*",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA8AAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-07T07:13:48.926Z",
+              "WhenOpened": "2026-01-15T19:08:21.776Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "MembersController.cs",
               "DocumentMoniker": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.API\\Controllers\\MembersController.cs",
               "RelativeDocumentMoniker": "Brotherhood_Portal.API\\Controllers\\MembersController.cs",
               "ToolTip": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.API\\Controllers\\MembersController.cs",
               "RelativeToolTip": "Brotherhood_Portal.API\\Controllers\\MembersController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAA1AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-07T07:06:02.146Z",
+              "WhenOpened": "2026-01-15T19:32:27.452Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Member.cs",
+              "DocumentMoniker": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Domain\\Entities\\Member.cs",
+              "RelativeDocumentMoniker": "Brotherhood_Portal.Domain\\Entities\\Member.cs",
+              "ToolTip": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Domain\\Entities\\Member.cs",
+              "RelativeToolTip": "Brotherhood_Portal.Domain\\Entities\\Member.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-15T19:28:28.37Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IMemberRepository.cs",
+              "DocumentMoniker": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Application\\Interfaces\\IMemberRepository.cs",
+              "RelativeDocumentMoniker": "Brotherhood_Portal.Application\\Interfaces\\IMemberRepository.cs",
+              "ToolTip": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Application\\Interfaces\\IMemberRepository.cs",
+              "RelativeToolTip": "Brotherhood_Portal.Application\\Interfaces\\IMemberRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAgAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-15T19:32:39.998Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "DBContext.cs",
+              "DocumentMoniker": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Infrastructure\\Data\\DBContext.cs",
+              "RelativeDocumentMoniker": "Brotherhood_Portal.Infrastructure\\Data\\DBContext.cs",
+              "ToolTip": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Infrastructure\\Data\\DBContext.cs",
+              "RelativeToolTip": "Brotherhood_Portal.Infrastructure\\Data\\DBContext.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAtwBYAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-15T19:51:20.658Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "TokenService.cs",
+              "DocumentMoniker": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Application\\Services\\TokenService.cs",
+              "RelativeDocumentMoniker": "Brotherhood_Portal.Application\\Services\\TokenService.cs",
+              "ToolTip": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Application\\Services\\TokenService.cs",
+              "RelativeToolTip": "Brotherhood_Portal.Application\\Services\\TokenService.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAADwvw0AAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T19:48:47.692Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AppUser.cs",
+              "DocumentMoniker": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Domain\\Entities\\AppUser.cs",
+              "RelativeDocumentMoniker": "Brotherhood_Portal.Domain\\Entities\\AppUser.cs",
+              "ToolTip": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Domain\\Entities\\AppUser.cs",
+              "RelativeToolTip": "Brotherhood_Portal.Domain\\Entities\\AppUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAsAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-15T19:35:09.141Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.API\\Program.cs",
+              "RelativeDocumentMoniker": "Brotherhood_Portal.API\\Program.cs",
+              "ToolTip": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.API\\Program.cs",
+              "RelativeToolTip": "Brotherhood_Portal.API\\Program.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAADgAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-15T17:51:24.626Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "RegisterDTO.cs",
+              "DocumentMoniker": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Domain\\DTOs\\RegisterDTO.cs",
+              "RelativeDocumentMoniker": "Brotherhood_Portal.Domain\\DTOs\\RegisterDTO.cs",
+              "ToolTip": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Domain\\DTOs\\RegisterDTO.cs",
+              "RelativeToolTip": "Brotherhood_Portal.Domain\\DTOs\\RegisterDTO.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T19:50:04.897Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "20260115203438_ThirdMigration.cs",
+              "DocumentMoniker": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Infrastructure\\Data\\Migrations\\20260115203438_ThirdMigration.cs",
+              "RelativeDocumentMoniker": "Brotherhood_Portal.Infrastructure\\Data\\Migrations\\20260115203438_ThirdMigration.cs",
+              "ToolTip": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Infrastructure\\Data\\Migrations\\20260115203438_ThirdMigration.cs",
+              "RelativeToolTip": "Brotherhood_Portal.Infrastructure\\Data\\Migrations\\20260115203438_ThirdMigration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-15T20:34:38.434Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "SeedData.json",
+              "DocumentMoniker": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Infrastructure\\Data\\SeedData.json",
+              "RelativeDocumentMoniker": "Brotherhood_Portal.Infrastructure\\Data\\SeedData.json",
+              "ToolTip": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Infrastructure\\Data\\SeedData.json",
+              "RelativeToolTip": "Brotherhood_Portal.Infrastructure\\Data\\SeedData.json",
+              "ViewState": "AgIAAA8AAAAAAAAAAIBJwC8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-01-15T19:57:31.169Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "20260115200928_ReinitialMig.cs",
+              "DocumentMoniker": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Infrastructure\\Data\\Migrations\\20260115200928_ReinitialMig.cs",
+              "RelativeDocumentMoniker": "Brotherhood_Portal.Infrastructure\\Data\\Migrations\\20260115200928_ReinitialMig.cs",
+              "ToolTip": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Infrastructure\\Data\\Migrations\\20260115200928_ReinitialMig.cs",
+              "RelativeToolTip": "Brotherhood_Portal.Infrastructure\\Data\\Migrations\\20260115200928_ReinitialMig.cs",
+              "ViewState": "AgIAAO8BAAAAAAAAAAAwwPYBAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-15T20:09:28.128Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Brotherhood_Portal.API.csproj",
+              "DocumentMoniker": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.API\\Brotherhood_Portal.API.csproj",
+              "RelativeDocumentMoniker": "Brotherhood_Portal.API\\Brotherhood_Portal.API.csproj",
+              "ToolTip": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.API\\Brotherhood_Portal.API.csproj",
+              "RelativeToolTip": "Brotherhood_Portal.API\\Brotherhood_Portal.API.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-01-16T19:40:08.799Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Brotherhood_Portal.Infrastructure.csproj",
+              "DocumentMoniker": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Infrastructure\\Brotherhood_Portal.Infrastructure.csproj",
+              "RelativeDocumentMoniker": "Brotherhood_Portal.Infrastructure\\Brotherhood_Portal.Infrastructure.csproj",
+              "ToolTip": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Infrastructure\\Brotherhood_Portal.Infrastructure.csproj",
+              "RelativeToolTip": "Brotherhood_Portal.Infrastructure\\Brotherhood_Portal.Infrastructure.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvxYAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-01-16T19:42:25.511Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "SeedUserDto.cs",
+              "DocumentMoniker": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Domain\\DTOs\\SeedUserDto.cs",
+              "RelativeDocumentMoniker": "Brotherhood_Portal.Domain\\DTOs\\SeedUserDto.cs",
+              "ToolTip": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Domain\\DTOs\\SeedUserDto.cs",
+              "RelativeToolTip": "Brotherhood_Portal.Domain\\DTOs\\SeedUserDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-15T19:27:28.4Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Photo.cs",
+              "DocumentMoniker": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Domain\\Entities\\Photo.cs",
+              "RelativeDocumentMoniker": "Brotherhood_Portal.Domain\\Entities\\Photo.cs",
+              "ToolTip": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Domain\\Entities\\Photo.cs",
+              "RelativeToolTip": "Brotherhood_Portal.Domain\\Entities\\Photo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvxAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-15T20:25:02.398Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "AppUserRepository.cs",
+              "DocumentMoniker": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Infrastructure\\Repository\\AppUserRepository.cs",
+              "RelativeDocumentMoniker": "Brotherhood_Portal.Infrastructure\\Repository\\AppUserRepository.cs",
+              "ToolTip": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Infrastructure\\Repository\\AppUserRepository.cs",
+              "RelativeToolTip": "Brotherhood_Portal.Infrastructure\\Repository\\AppUserRepository.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-15T19:32:50.429Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "AppUserExtensions.cs",
+              "DocumentMoniker": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Application\\Extensions\\AppUserExtensions.cs",
+              "RelativeDocumentMoniker": "Brotherhood_Portal.Application\\Extensions\\AppUserExtensions.cs",
+              "ToolTip": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.Application\\Extensions\\AppUserExtensions.cs",
+              "RelativeToolTip": "Brotherhood_Portal.Application\\Extensions\\AppUserExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-15T19:39:10.627Z"
             }
           ]
         }
