@@ -1,0 +1,130 @@
+<section class="bg-slate-50 min-h-screen">
+  <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 space-y-10">
+
+    <!-- DASHBOARD HEADER -->
+    <div class="space-y-2">
+      <h1 class="text-3xl font-semibold tracking-tight text-slate-900">
+        Financial Overview
+      </h1>
+      <p class="text-base text-slate-600">
+        Welcome back, <span class="font-medium text-slate-900">{{ currentUser()?.displayName }}</span>
+      </p>
+    </div>
+
+    <!-- GLOBAL FINANCIAL SNAPSHOT -->
+    <section class="space-y-4">
+      <h2 class="text-lg font-semibold text-slate-900">
+        Brotherhood Pool Snapshot
+      </h2>
+
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <!-- Pool Balance -->
+        <div class="rounded-3xl bg-white p-6 ring-1 ring-slate-200">
+          <p class="text-sm text-slate-500">Total Pool Balance</p>
+          <p class="mt-2 text-2xl font-semibold text-slate-900">
+            — —
+          </p>
+          <p class="mt-1 text-xs text-slate-400">
+            Combined member contributions
+          </p>
+        </div>
+
+        <!-- Monthly Contributions -->
+        <div class="rounded-3xl bg-white p-6 ring-1 ring-slate-200">
+          <p class="text-sm text-slate-500">Monthly Contributions</p>
+          <p class="mt-2 text-2xl font-semibold text-slate-900">
+            — —
+          </p>
+          <p class="mt-1 text-xs text-slate-400">
+            Current month total
+          </p>
+        </div>
+
+        <!-- Total Contributions -->
+        <div class="rounded-3xl bg-white p-6 ring-1 ring-slate-200">
+          <p class="text-sm text-slate-500">Total Contributions</p>
+          <p class="mt-2 text-2xl font-semibold text-slate-900">
+            — —
+          </p>
+          <p class="mt-1 text-xs text-slate-400">
+            Since inception
+          </p>
+        </div>
+
+        <!-- Target Progress -->
+        <div class="rounded-3xl bg-white p-6 ring-1 ring-slate-200">
+          <p class="text-sm text-slate-500">Target Goal</p>
+          <p class="mt-2 text-2xl font-semibold text-slate-900">
+            — —
+          </p>
+          <p class="mt-1 text-xs text-slate-400">
+            Remaining to target
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEMBER-SPECIFIC FINANCIALS -->
+    <section class="space-y-4">
+      <h2 class="text-lg font-semibold text-slate-900">
+        Your Position
+      </h2>
+
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- Member Total Contribution -->
+        <div class="rounded-3xl bg-white p-6 ring-1 ring-slate-200">
+          <p class="text-sm text-slate-500">Your Total Contribution</p>
+          <p class="mt-2 text-2xl font-semibold text-slate-900">
+            — —
+          </p>
+          <p class="mt-1 text-xs text-slate-400">
+            All-time contribution
+          </p>
+        </div>
+
+        <!-- MEMBER CURRENT MONTH CONTRIBUTION STATUS - 
+                IF 
+                    NOT PAID WILL BE BLANK 
+                ELSE    
+                    IF PAID WILL SHOW AMOUNT 
+        -->
+        <!-- Member Monthly Contribution -->
+        <div class="rounded-3xl bg-white p-6 ring-1 ring-slate-200">
+          <p class="text-sm text-slate-500">Your Monthly Contribution</p>
+          <p class="mt-2 text-2xl font-semibold text-slate-900">
+            — —
+          </p>
+          <p class="mt-1 text-xs text-slate-400">
+            Current month
+          </p>
+        </div>
+
+        <!-- Member Share -->
+        <div class="rounded-3xl bg-white p-6 ring-1 ring-slate-200">
+          <p class="text-sm text-slate-500">Your Ownership Share</p>
+          <p class="mt-2 text-2xl font-semibold text-slate-900">
+            — %
+          </p>
+          <p class="mt-1 text-xs text-slate-400">
+            Percentage of pool
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FUTURE CHART PLACEHOLDER -->
+    <section class="rounded-3xl bg-white p-8 ring-1 ring-slate-200">
+      <h2 class="text-lg font-semibold text-slate-900">
+        Visual Insights
+      </h2>
+      <p class="mt-2 text-sm text-slate-600 max-w-xl">
+        Charts and graphs showing contribution trends, ownership distribution, and pool growth will appear here.
+      </p>
+
+      <div class="mt-6 flex h-48 items-center justify-center rounded-2xl border border-dashed border-slate-300 text-sm text-slate-400">
+        Charts coming soon
+      </div>
+    </section>
+
+  </div>
+</section>

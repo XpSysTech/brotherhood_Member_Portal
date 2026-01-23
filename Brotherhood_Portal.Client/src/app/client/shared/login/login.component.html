@@ -1,0 +1,47 @@
+<section class="min-h-[calc(100vh-4rem)] bg-slate-50">
+  <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-md">
+      <div class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200 sm:p-8">
+        <div class="mb-6">
+          <h1 class="text-2xl font-bold text-slate-900">Member Login</h1>
+          <p class="mt-1 text-sm text-slate-600">Sign in to access the Brotherhood Portal.</p>
+        </div>
+
+        <!-- LOGIN FORM -->
+        <div class="bg-white p-5 rounded-lg mb-6">
+          <form #loginForm="ngForm" (ngSubmit)="login(loginForm)" class="space-y-4">
+            <div>
+              <label class="mb-1 block text-sm font-medium text-slate-700">Email</label>
+              <input type="email" class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2"
+                placeholder="Email" [(ngModel)]="creds.email" name="email" required />
+            </div>
+
+            <div>
+              <label class="mb-1 block text-sm font-medium text-slate-700">Password</label>
+              <input type="password" class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2"
+                placeholder="Password" [(ngModel)]="creds.password" name="password" required />
+            </div>
+
+            <button type="submit" [disabled]="loading || loginForm.invalid"
+              class="inline-flex w-full items-center justify-center rounded-xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60">
+              {{ loading ? 'Signing in…' : 'Login' }}
+            </button>
+          </form>
+        </div>
+
+        <!-- REGISTER CTA -->
+        <div class="border-t border-slate-200 pt-6 text-center">
+          <p class="mb-3 text-sm text-slate-600">
+            Don’t have an account yet?
+          </p>
+
+          <button routerLink="/register"
+            class="inline-flex w-full items-center justify-center rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">
+            Register as a member
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

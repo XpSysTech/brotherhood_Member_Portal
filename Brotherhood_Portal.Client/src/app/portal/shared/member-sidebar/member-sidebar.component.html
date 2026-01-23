@@ -1,0 +1,128 @@
+<!-- Mobile backdrop -->
+<div *ngIf="open" class="fixed inset-0 z-40 bg-slate-900/40 md:hidden" (click)="closeSidebar()"></div>
+
+<!-- Sidebar container -->
+<aside
+    class="fixed left-0 top-0 z-50 h-full w-72 transform border-r border-slate-200 bg-white transition-transform duration-300 ease-in-out"
+    [class.translate-x-0]="open" [class.-translate-x-full]="!open">
+    <!-- Header: Hidden on md+ screens -->
+    <div class="flex h-16 items-center justify-between border-b border-slate-200 px-4 md:hidden">
+        <div class="flex items-center gap-3">
+            <div class="grid h-10 w-10 place-items-center rounded-xl bg-slate-900 text-white">
+                <svg width="30" height="30" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true">
+                    <path
+                        d="M113.073 58.4297H86.3965L86.2734 133.63L86.7965 133.353L87.4119 132.276L88.1196 130.584L89.1965 127.753L90.6427 124.307L92.2119 120.645L94.3042 116.645L96.6734 113.045L98.6119 109.907L101.381 106.245L103.597 103.23L106.027 100.799L108.397 98.1528L110.858 95.5066L113.073 93.8143V58.4297Z"
+                        fill="#ffff" />
+                    <path
+                        d="M78.5546 80.3711H53.2315L53.0469 172.033L55.17 173.325L57.3853 174.771L59.8469 176.063L63.0161 177.663L66.6469 179.202L70.1238 180.556L73.2007 181.602L76.1238 182.186L78.5546 182.002V80.3711Z"
+                        fill="#ffff" />
+                    <path
+                        d="M200 100C200 155.228 155.228 200 100 200C44.7715 200 0 155.228 0 100C0 44.7715 44.7715 0 100 0C155.228 0 200 44.7715 200 100ZM5.75261 100C5.75261 147.47 40.8478 186.743 86.5073 193.289C88.453 193.568 90.4179 193.787 92.4 193.945C94.907 194.145 97.4416 194.247 100 194.247C152.051 194.247 194.247 152.051 194.247 100C194.247 47.9486 152.051 5.75261 100 5.75261C47.9486 5.75261 5.75261 47.9486 5.75261 100Z"
+                        fill="#ffff" />
+                    <path
+                        d="M86.5073 193.289C88.453 193.568 90.4179 193.787 92.4 193.945V191.938L94.0615 185.815L97.0154 178.646L100.8 173.969L104.523 170.708L110.215 167.938L116.646 164.8L123.815 160.615L134.123 153.538L141.446 147.477L146.831 141.354L151.785 134.4L155.6 127.877L159.2 120.062L161.538 112.862L163.908 104.831L166.708 94.2154L169.077 86.4L170.923 81.2615L172.523 77.8154L173.877 75.0154L176.585 72.9538L177.046 72.0923H175.046L168.215 72.9538L161.908 74.2462L151.169 77.8154L137.354 84.3692L126.154 92.0615L116.431 100.308L108.123 109.785L101.354 119.2L98.4 124.677L95.9385 130.031L93.0769 137.754L90.3385 147.477L89.2308 154.954L88.5846 162L88.1846 172.092L87.5692 179.908L88.1846 179.415L89.2308 176.708L91.9385 167.692L96.5538 157.292L101.815 147.938L106.431 140.8L112.369 132.431L120.954 122.523L128.585 115.046L133.938 109.785L138.985 105.569L145.169 101.077L151.538 96.5538V97.5077L142.062 105.569L133.046 114.308L123.969 124.369L116.431 134.4L109.815 143.508L104.523 152.554L98.6154 162.369L94.6462 170.185L90.3385 179.415L88.1846 185.323L86.9231 190.185L86.5073 193.289Z"
+                        fill="#ffff" />
+                    <path
+                        d="M120.188 36.7695C120.229 53.108 120.286 85.9265 120.188 86.4926L122.803 84.708L125.726 82.5541L129.08 80.1849L133.111 78.0311L136.864 76.0003L140.741 74.1541L143.941 72.5541L146.803 71.6618V36.7695H120.188Z"
+                        fill="#ffff" />
+                    <path
+                        d="M30.463 151.108L26.8322 145.723L24.1245 141.292L22.3091 137.569L22.0938 136.277V111.508L45.3245 111.262V166.431L44.7091 166.154L41.5707 163.416L38.0014 159.939L33.8784 155.631L30.463 151.108Z"
+                        fill="#ffff" />
+                </svg>
+            </div>
+            <div class="leading-tight">
+                <div class="text-sm font-semibold text-slate-900">BOENA</div>
+                <div class="text-xs text-slate-500">Member Area</div>
+            </div>
+        </div>
+
+        <!-- Close button (mobile) -->
+        <button type="button"
+            class="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white p-2 text-slate-700 hover:bg-slate-50"
+            (click)="closeSidebar()" aria-label="Close sidebar">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                    clip-rule="evenodd" />
+            </svg>
+        </button>
+    </div>
+
+    <!-- Nav -->
+    <nav class="px-3 py-4">
+        <p class="px-3 pb-2 text-xs font-semibold uppercase tracking-wide text-slate-400">
+            Dashboard
+        </p>
+
+        <a routerLink="/member/dashboard" routerLinkActive="bg-slate-900 text-white"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+            (click)="closeSidebar()">
+            <!-- icon -->
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    d="M3 13h8V3H3v10zm10 8h8V11h-8v10zM3 21h8v-6H3v6zm10-18h8v6h-8V3z" />
+            </svg>
+            Financial Overview
+        </a>
+
+        <div class="my-3 border-t border-slate-200"></div>
+
+        <p class="px-3 pb-2 text-xs font-semibold uppercase tracking-wide text-slate-400">
+            Community
+        </p>
+
+        <a routerLink="/member/phonebook" routerLinkActive="bg-slate-900 text-white"
+            class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+            (click)="closeSidebar()">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    d="M21 15a4 4 0 01-4 4H7a4 4 0 01-4-4V7a4 4 0 014-4h10a4 4 0 014 4v8z" />
+                <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M7 7h10M7 11h10M7 15h6" />
+            </svg>
+            Phonebook
+        </a>
+
+        <a routerLink="/member/opportunities" routerLinkActive="bg-slate-900 text-white"
+            class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+            (click)="closeSidebar()">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7l3-7z" />
+            </svg>
+            Opportunities
+        </a>
+
+        <a routerLink="/member/ideas" routerLinkActive="bg-slate-900 text-white"
+            class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+            (click)="closeSidebar()">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    d="M12 2a7 7 0 00-4 12v3h8v-3a7 7 0 00-4-12z" />
+                <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 21h6" />
+            </svg>
+            Idea Backlog
+        </a>
+
+        <a routerLink="/member/events" routerLinkActive="bg-slate-900 text-white"
+            class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+            (click)="closeSidebar()">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    d="M8 7V3m8 4V3M4 11h16M6 5h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V7a2 2 0 012-2z" />
+            </svg>
+            Events & Announcements
+        </a>
+
+        <a routerLink="/member/voting" routerLinkActive="bg-slate-900 text-white"
+            class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+            (click)="closeSidebar()">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    d="M9 12l2 2 4-4M4 7h16M4 17h16" />
+            </svg>
+            Votes & Polls
+        </a>
+    </nav>
+</aside>

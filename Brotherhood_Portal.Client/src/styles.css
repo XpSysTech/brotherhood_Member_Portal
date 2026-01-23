@@ -1,8 +1,74 @@
+/* GOOGLE FONTS */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
 /* TAILWIND */
 @import "tailwindcss";
 
 /* THEME VARIABLES */
+@theme {
+  /* Primary, Secondary and Accent Brand Colors */
+  --color-brand-primary: #006a4e;
+  --color-brand-secondary: #dc2626;
+  --color-brand-accent: #22c55e;
+
+  --color-brand-blue: #2563eb;
+  --color-brand-blueDark: #1e40af;
+  --color-brand-red: #dc2626;
+  --color-brand-green: #22c55e;
+  --color-brand-slate: #0f172a;
+  --color-brand-muted: #64748b;
+  --color-brand-border: #e2e8f0;
+
+  /* Shadow */
+  --shadow-soft: 0 8px 24px rgba(15, 23, 42, 0.08);
+
+  /* Fonts */
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans",
+    "Apple Color Emoji", "Segoe UI Emoji";
+}
 
 /* GLOBAL STYLES */
+@layer base {
+  html {
+    @apply bg-white text-brand-slate font-sans;
+  }
+
+  h1 { @apply text-4xl font-medium tracking-tight; }
+  h2 { @apply text-3xl font-medium tracking-tight; }
+  h3 { @apply text-2xl font-medium; }
+  h4 { @apply text-base font-extralight; }
+
+  p { @apply text-sm text-brand-muted; }
+  a { @apply text-brand-primary hover:underline underline-offset-4; }
+}
 
 /* COMPONENT HELPERS */
+@layer components {
+  .card {
+    @apply rounded-3xl bg-white p-6 shadow-soft ring-1 ring-brand-border;
+  }
+
+  .btn-primary {
+    @apply rounded-2xl bg-brand-primary px-5 py-3 text-sm font-medium text-white hover:bg-brand-primary/80;
+  }
+
+  .btn-secondary {
+    @apply rounded-2xl bg-white px-5 py-3 text-sm font-medium text-brand-slate ring-1 ring-brand-border hover:bg-slate-50;
+  }
+
+  .chip {
+    @apply rounded-full bg-slate-50 px-3 py-1 text-sm ring-1 ring-brand-border;
+  }
+
+  .temp-logo {
+    @apply h-11 w-11 rounded-2xl bg-brand-primary ring-1 ring-brand-border hover:bg-brand-primary/80;
+  }
+
+  .temp-certificate {
+    @apply h-30 w-24 rounded-2xl bg-brand-primary ring-1 ring-brand-border hover:bg-brand-primary/80;
+  }
+}
+
+/* GLOBAL STYLES */
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

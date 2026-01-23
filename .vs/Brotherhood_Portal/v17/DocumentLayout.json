@@ -138,8 +138,7 @@
               "RelativeToolTip": "Brotherhood_Portal.API\\Controllers\\AccountController.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAApwBwAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T17:53:21.255Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-15T17:53:21.255Z"
             },
             {
               "$type": "Document",
@@ -151,8 +150,7 @@
               "RelativeToolTip": "Brotherhood_Portal.Domain\\DTOs\\UserDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAIAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T19:27:47.971Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-15T19:27:47.971Z"
             },
             {
               "$type": "Document",
@@ -160,9 +158,9 @@
               "Title": "AdminController.cs",
               "DocumentMoniker": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.API\\Controllers\\AdminController.cs",
               "RelativeDocumentMoniker": "Brotherhood_Portal.API\\Controllers\\AdminController.cs",
-              "ToolTip": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.API\\Controllers\\AdminController.cs*",
-              "RelativeToolTip": "Brotherhood_Portal.API\\Controllers\\AdminController.cs*",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA8AAAAuAAAAAAAAAA==",
+              "ToolTip": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.API\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "Brotherhood_Portal.API\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwCAAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-15T19:08:21.776Z",
               "EditorCaption": ""
@@ -177,8 +175,7 @@
               "RelativeToolTip": "Brotherhood_Portal.API\\Controllers\\MembersController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T19:32:27.452Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-15T19:32:27.452Z"
             },
             {
               "$type": "Document",
@@ -190,8 +187,7 @@
               "RelativeToolTip": "Brotherhood_Portal.Domain\\Entities\\Member.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T19:28:28.37Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-15T19:28:28.37Z"
             },
             {
               "$type": "Document",
@@ -239,8 +235,7 @@
               "RelativeToolTip": "Brotherhood_Portal.Domain\\Entities\\AppUser.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAsAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T19:35:09.141Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-15T19:35:09.141Z"
             },
             {
               "$type": "Document",
@@ -252,8 +247,7 @@
               "RelativeToolTip": "Brotherhood_Portal.API\\Program.cs",
               "ViewState": "AgIAABsAAAAAAAAAAAAAADgAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T17:51:24.626Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-15T17:51:24.626Z"
             },
             {
               "$type": "Document",

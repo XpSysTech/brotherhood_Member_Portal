@@ -1,0 +1,20 @@
+<app-member-header (sidebarToggle)="toggleSidebar()"></app-member-header>
+
+<div class="flex min-h-[calc(100vh-4rem)]">
+  <!-- SIDEBAR -->
+  <app-member-sidebar
+    [open]="sidebarOpen"
+    (close)="closeSidebar()"
+  ></app-member-sidebar>
+
+  <!-- MAIN CONTENT -->
+  <main
+    class="flex-1 transition-all duration-300"
+    [class.ml-72]="sidebarOpen"
+    [class.ml-0]="!sidebarOpen"
+  >
+    <router-outlet></router-outlet>
+  </main>
+</div>
+
+<app-member-footer></app-member-footer>

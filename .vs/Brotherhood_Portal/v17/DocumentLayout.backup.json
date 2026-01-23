@@ -94,7 +94,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -111,6 +111,10 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
               "$type": "Document",
@@ -134,8 +138,7 @@
               "RelativeToolTip": "Brotherhood_Portal.API\\Controllers\\AccountController.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAApwBwAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T17:53:21.255Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-15T17:53:21.255Z"
             },
             {
               "$type": "Document",
@@ -147,8 +150,7 @@
               "RelativeToolTip": "Brotherhood_Portal.Domain\\DTOs\\UserDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAIAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T19:27:47.971Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-15T19:27:47.971Z"
             },
             {
               "$type": "Document",
@@ -158,7 +160,7 @@
               "RelativeDocumentMoniker": "Brotherhood_Portal.API\\Controllers\\AdminController.cs",
               "ToolTip": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.API\\Controllers\\AdminController.cs",
               "RelativeToolTip": "Brotherhood_Portal.API\\Controllers\\AdminController.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAYwE8AAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-15T19:08:21.776Z",
               "EditorCaption": ""
@@ -173,8 +175,7 @@
               "RelativeToolTip": "Brotherhood_Portal.API\\Controllers\\MembersController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T19:32:27.452Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-15T19:32:27.452Z"
             },
             {
               "$type": "Document",
@@ -186,8 +187,7 @@
               "RelativeToolTip": "Brotherhood_Portal.Domain\\Entities\\Member.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T19:28:28.37Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-15T19:28:28.37Z"
             },
             {
               "$type": "Document",
@@ -235,8 +235,7 @@
               "RelativeToolTip": "Brotherhood_Portal.Domain\\Entities\\AppUser.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAsAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T19:35:09.141Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-15T19:35:09.141Z"
             },
             {
               "$type": "Document",
@@ -248,12 +247,7 @@
               "RelativeToolTip": "Brotherhood_Portal.API\\Program.cs",
               "ViewState": "AgIAABsAAAAAAAAAAAAAADgAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T17:51:24.626Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+              "WhenOpened": "2026-01-15T17:51:24.626Z"
             },
             {
               "$type": "Document",

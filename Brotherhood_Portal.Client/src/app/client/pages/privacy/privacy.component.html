@@ -1,0 +1,94 @@
+<!-- privacy.component.html (Privacy Page - HTML + Tailwind) -->
+<section class="bg-white">
+  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-3xl">
+      <!-- Header -->
+      <div class="mb-8">
+        <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700">
+          <span class="h-2 w-2 rounded-full bg-slate-900"></span>
+          Privacy
+        </div>
+
+        <h1 class="mt-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+          Privacy Policy
+        </h1>
+
+        <p class="mt-2 text-sm text-slate-600">
+          This policy explains how BOENA Investment Fund handles information on this website.
+        </p>
+
+        <div class="mt-3 text-xs text-slate-500">
+          Last updated: <span class="font-medium text-slate-700">{{ currentDate }}</span>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="space-y-6">
+        <!-- Summary card -->
+        <div class="rounded-3xl bg-slate-50 p-6 ring-1 ring-slate-200">
+          <p class="text-sm font-semibold text-slate-900">Current status</p>
+          <p class="mt-2 text-sm text-slate-600">
+            At this time, we do <span class="font-semibold text-slate-900">not collect</span>, store, or process personal data from visitors.
+          </p>
+        </div>
+
+        <!-- Sections -->
+        <div class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+          <h2 class="text-lg font-semibold text-slate-900">1. Information we collect</h2>
+          <p class="mt-2 text-sm text-slate-600">
+            We currently do not collect any personal information through this website.
+            This includes names, email addresses, phone numbers, location data, or device identifiers.
+          </p>
+        </div>
+
+        <div class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+          <h2 class="text-lg font-semibold text-slate-900">2. Cookies and analytics</h2>
+          <p class="mt-2 text-sm text-slate-600">
+            We currently do not use cookies for tracking, advertising, or analytics. If this changes in the future,
+            we will update this page before implementing any tracking technologies.
+          </p>
+        </div>
+
+        <div class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+          <h2 class="text-lg font-semibold text-slate-900">3. Third-party services</h2>
+          <p class="mt-2 text-sm text-slate-600">
+            We do not integrate third-party advertising services or tracking pixels at this time.
+            If we add third-party services in the future (e.g., embedded content, analytics, or forms),
+            we will disclose what is used and why.
+          </p>
+        </div>
+
+        <div class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+          <h2 class="text-lg font-semibold text-slate-900">4. Contact form</h2>
+          <p class="mt-2 text-sm text-slate-600">
+            If a contact form is introduced in the future, any information submitted through it will be used only to respond to the inquiry.
+            Until then, there is no form-based data collection on this site.
+          </p>
+        </div>
+
+        <div class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+          <h2 class="text-lg font-semibold text-slate-900">5. Policy updates</h2>
+          <p class="mt-2 text-sm text-slate-600">
+            We may update this policy as the website evolves. If changes are made, the “Last updated” date will be revised,
+            and the content will reflect the new practices.
+          </p>
+        </div>
+
+        <!-- CTA -->
+        <div class="rounded-3xl bg-slate-50 p-6 ring-1 ring-slate-200">
+          <p class="text-sm font-semibold text-slate-900">Questions?</p>
+          <p class="mt-2 text-sm text-slate-600">
+            If you have privacy-related questions, you can reach us via the contact page.
+          </p>
+
+          <a
+            routerLink="/contact"
+            class="mt-4 inline-flex items-center justify-center rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800"
+          >
+            Go to Contact
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

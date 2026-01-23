@@ -1,0 +1,106 @@
+<section class="min-h-[calc(100vh-4rem)] bg-slate-50">
+  <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-md">
+      <div class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200 sm:p-8">
+        
+        <!-- HEADER -->
+        <div class="mb-6">
+          <h1 class="text-2xl font-bold text-slate-900">Member Registration</h1>
+          <p class="mt-1 text-sm text-slate-600">
+            Create an account to access the Brotherhood Portal.
+          </p>
+        </div>
+
+        <!-- REGISTER FORM -->
+        <div class="bg-amber-50 p-5 rounded-lg">
+          <p>This is a Test Form - Will replace soon</p>
+          <form #registerForm="ngForm" (ngSubmit)="register(registerForm)" class="space-y-4">
+
+            <!-- First Name -->
+            <div>
+              <label class="mb-1 block text-sm font-medium text-slate-700">First Name</label>
+              <input
+                type="text"
+                class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2"
+                placeholder="First name"
+                [(ngModel)]="model.firstName"
+                name="firstName"
+                required
+              />
+            </div>
+
+            <!-- Last Name -->
+            <div>
+              <label class="mb-1 block text-sm font-medium text-slate-700">Last Name</label>
+              <input
+                type="text"
+                class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2"
+                placeholder="Last name"
+                [(ngModel)]="model.lastName"
+                name="lastName"
+                required
+              />
+            </div>
+
+            <!-- Email -->
+            <div>
+              <label class="mb-1 block text-sm font-medium text-slate-700">Email</label>
+              <input
+                type="email"
+                class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2"
+                placeholder="Email address"
+                [(ngModel)]="model.email"
+                name="email"
+                required
+              />
+            </div>
+
+            <!-- Password -->
+            <div>
+              <label class="mb-1 block text-sm font-medium text-slate-700">Password</label>
+              <input
+                type="password"
+                class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2"
+                placeholder="Create a password"
+                [(ngModel)]="model.password"
+                name="password"
+                required
+              />
+            </div>
+
+            <!-- Confirm Password -->
+            <div>
+              <label class="mb-1 block text-sm font-medium text-slate-700">Confirm Password</label>
+              <input
+                type="password"
+                class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2"
+                placeholder="Confirm password"
+                [(ngModel)]="model.confirmPassword"
+                name="confirmPassword"
+                required
+              />
+            </div>
+
+            <!-- Submit -->
+            <button
+              type="submit"
+              [disabled]="loading || registerForm.invalid"
+              class="inline-flex w-full items-center justify-center rounded-xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {{ loading ? 'Creating account…' : 'Register' }}
+            </button>
+          </form>
+        </div>
+
+        <!-- FOOTER LINK -->
+        <p class="mt-6 text-center text-sm text-slate-600">
+          Already have an account?
+          <a routerLink="/login" class="font-medium text-slate-900 hover:underline">
+            Sign in
+          </a>
+        </p>
+
+      </div>
+    </div>
+  </div>
+</section>
