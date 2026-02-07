@@ -28,12 +28,19 @@ namespace Brotherhood_Portal.Domain.Entities
         public DateTime Created { get; set; } = DateTime.UtcNow;
         public bool IsActive { get; set; } = true;
 
-        //Navigation Properties
-        public List<Photo> Photos { get; set; } = new List<Photo>();
+        //Financial Info
+        public decimal TotalSavings { get; set; } = 0m; //Cumulative total of all savings deposits made by the member
+        public decimal TotalOpsContribution { get; set; } = 0m; //Cumulative total of all operations contributions made by the member
 
-        [JsonIgnore]
-        [ForeignKey(nameof(Id))]
+        //Navigation Properties
+        //public List<Photo> Photos { get; set; } = new List<Photo>(); //Best for concrete use, not Navigation Properties
         public AppUser User { get; set; } = null!;
+        public ICollection<Photo> Photos { get; set; } = new List<Photo>();
+        public ICollection<Finance> Finances { get; set; } = new List<Finance>();
+
+        //[JsonIgnore]
+        //[ForeignKey(nameof(Id))]
+        //public AppUser User { get; set; } = null!;
 
     }
 }

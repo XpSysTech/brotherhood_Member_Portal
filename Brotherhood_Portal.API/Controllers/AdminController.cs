@@ -8,14 +8,21 @@ namespace Brotherhood_Portal.API.Controllers
 {
     public class AdminController(UserManager<AppUser> userManager) : BaseApiController
     {
-        /*USE THIS TO TEST THEM REMOVE*/
-        [Authorize(Policy = "RequireAdminRole")]
-        [HttpGet("test-admin-role")]
-        public ActionResult<string> TestAdminEndpoint()
-        {
-            return "Only admins can see this";
-        }
+        /*
+            - This controller manages Admin-specific functionalities.
+            - It includes endpoints for retrieving users with their roles, editing user roles,
+              adding roles to users, and accessing photo moderation features.
+            - TODO:
+                - Implement a common for response structure for all endpoints.
+                - Implement logging for all actions performed in this controller.
+         */
 
+        #region Get Users With Roles
+        /*
+            - Summary:
+                - This endpoint allows an admin to retrieve a list of all users along with their assigned roles.
+                - Only users with the "Admin" role can access this endpoint.
+         */
         [Authorize(Policy = "RequireAdminRole")]
         [HttpGet("users-with-roles")]
         public async Task<ActionResult> GetUsersWithRoles()
@@ -42,8 +49,15 @@ namespace Brotherhood_Portal.API.Controllers
                 userList
             });
         }
+        #endregion
 
-
+        #region Edit Roles
+        /*
+            - Summary:
+                - This endpoint allows an admin to edit the roles of a specific user.
+                - It takes the userId as a route parameter and a comma-separated list of roles as a query parameter.
+                - Only users with the "Admin" role can access this endpoint.
+         */
         [Authorize(Policy = "RequireAdminRole")]
         [HttpPost("edit-roles/{userId}")]
         public async Task<ActionResult<IList<string>>> EditRoles(string userId, [FromQuery] string roles)
@@ -75,8 +89,15 @@ namespace Brotherhood_Portal.API.Controllers
             });
 
         }
+        #endregion
 
-
+        #region Add Role To User
+        /*
+            - Summary:
+                - This endpoint allows an admin to add a specific role to a user.
+                - It takes the userId as a route parameter and the role to be added as a query parameter.
+                - Only users with the "Admin" role can access this endpoint.
+         */
         [Authorize(Policy = "RequireAdminRole")]
         [HttpPost("add-role/{userId}")]
         public async Task<ActionResult> AddRoleToUser(string userId, [FromQuery] string role)
@@ -92,13 +113,15 @@ namespace Brotherhood_Portal.API.Controllers
                 roles = await userManager.GetRolesAsync(user)
             });
         }
+        #endregion
 
-
+        #region Get Photos For Moderation
         [Authorize(Policy = "RequirePhotoRole")]
         [HttpGet("photos-to-moderate")]
         public ActionResult<string> GetPhotosForModeration()
         {
             return "Only users with the photo Admin or Moderator roles can see this";
         }
+        #endregion
     }
 }

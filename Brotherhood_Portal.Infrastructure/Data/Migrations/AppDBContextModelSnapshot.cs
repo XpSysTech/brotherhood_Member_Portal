@@ -93,6 +93,61 @@ namespace Brotherhood_Portal.Infrastructure.Data.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("Brotherhood_Portal.Domain.Entities.Finance", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("AppliedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("ApprovalCount")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("ApprovedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ApprovedByUserId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("CreatedByUserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("DepositDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("InvoiceNo")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("MemberId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("OpsContributionAmount")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("SavingsAmount")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MemberId");
+
+                    b.ToTable("Finances");
+                });
+
             modelBuilder.Entity("Brotherhood_Portal.Domain.Entities.Member", b =>
                 {
                     b.Property<string>("Id")
@@ -141,9 +196,31 @@ namespace Brotherhood_Portal.Infrastructure.Data.Migrations
                     b.Property<string>("Occupation")
                         .HasColumnType("TEXT");
 
+                    b.Property<decimal>("TotalOpsContribution")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("TotalSavings")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
 
                     b.ToTable("Members");
+                });
+
+            modelBuilder.Entity("Brotherhood_Portal.Domain.Entities.MemberInvoiceSequence", b =>
+                {
+                    b.Property<string>("MemberId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("CurrentNumber")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("MemberId", "Year");
+
+                    b.ToTable("MemberInvoiceSequences");
                 });
 
             modelBuilder.Entity("Brotherhood_Portal.Domain.Entities.Photo", b =>
@@ -320,6 +397,17 @@ namespace Brotherhood_Portal.Infrastructure.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Brotherhood_Portal.Domain.Entities.Finance", b =>
+                {
+                    b.HasOne("Brotherhood_Portal.Domain.Entities.Member", "Member")
+                        .WithMany("Finances")
+                        .HasForeignKey("MemberId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Member");
+                });
+
             modelBuilder.Entity("Brotherhood_Portal.Domain.Entities.Member", b =>
                 {
                     b.HasOne("Brotherhood_Portal.Domain.Entities.AppUser", "User")
@@ -329,6 +417,17 @@ namespace Brotherhood_Portal.Infrastructure.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Brotherhood_Portal.Domain.Entities.MemberInvoiceSequence", b =>
+                {
+                    b.HasOne("Brotherhood_Portal.Domain.Entities.Member", "Member")
+                        .WithMany()
+                        .HasForeignKey("MemberId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Member");
                 });
 
             modelBuilder.Entity("Brotherhood_Portal.Domain.Entities.Photo", b =>
@@ -400,6 +499,8 @@ namespace Brotherhood_Portal.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("Brotherhood_Portal.Domain.Entities.Member", b =>
                 {
+                    b.Navigation("Finances");
+
                     b.Navigation("Photos");
                 });
 #pragma warning restore 612, 618

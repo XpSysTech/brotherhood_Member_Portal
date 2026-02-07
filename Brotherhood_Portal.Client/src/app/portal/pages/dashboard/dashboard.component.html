@@ -11,102 +11,77 @@
       </p>
     </div>
 
-    <!-- GLOBAL FINANCIAL SNAPSHOT -->
-    <section class="space-y-4">
-      <h2 class="text-lg font-semibold text-slate-900">
-        Brotherhood Pool Snapshot
-      </h2>
-
-      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        <!-- Pool Balance -->
-        <div class="rounded-3xl bg-white p-6 ring-1 ring-slate-200">
-          <p class="text-sm text-slate-500">Total Pool Balance</p>
-          <p class="mt-2 text-2xl font-semibold text-slate-900">
-            — —
-          </p>
-          <p class="mt-1 text-xs text-slate-400">
-            Combined member contributions
-          </p>
-        </div>
-
-        <!-- Monthly Contributions -->
-        <div class="rounded-3xl bg-white p-6 ring-1 ring-slate-200">
-          <p class="text-sm text-slate-500">Monthly Contributions</p>
-          <p class="mt-2 text-2xl font-semibold text-slate-900">
-            — —
-          </p>
-          <p class="mt-1 text-xs text-slate-400">
-            Current month total
-          </p>
-        </div>
-
-        <!-- Total Contributions -->
-        <div class="rounded-3xl bg-white p-6 ring-1 ring-slate-200">
-          <p class="text-sm text-slate-500">Total Contributions</p>
-          <p class="mt-2 text-2xl font-semibold text-slate-900">
-            — —
-          </p>
-          <p class="mt-1 text-xs text-slate-400">
-            Since inception
-          </p>
-        </div>
-
-        <!-- Target Progress -->
-        <div class="rounded-3xl bg-white p-6 ring-1 ring-slate-200">
-          <p class="text-sm text-slate-500">Target Goal</p>
-          <p class="mt-2 text-2xl font-semibold text-slate-900">
-            — —
-          </p>
-          <p class="mt-1 text-xs text-slate-400">
-            Remaining to target
-          </p>
-        </div>
+    <!-- BROTHERHOOD FINANCIAL STATS-->
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="rounded-xl bg-white p-4 ring-1 ring-slate-200">
+        <p class="text-xs text-slate-500">Total Savings Pool</p>
+        <p class="text-2xl font-semibold text-slate-900">
+          {{ fund.totalSavings | currency }}
+        </p>
       </div>
+
+      <div class="rounded-xl bg-white p-4 ring-1 ring-slate-200">
+        <p class="text-xs text-slate-500">This Month</p>
+        <p class="text-2xl font-semibold text-slate-900">
+          {{ fund.currentMonth.totalSavings | currency }}
+        </p>
+      </div>
+
+      <div class="rounded-xl bg-white p-4 ring-1 ring-slate-200">
+        <p class="text-xs text-slate-500">Active Members</p>
+        <p class="text-2xl font-semibold text-slate-900">
+          {{ fund.activeMembers }} / {{ fund.totalMembers }}
+        </p>
+      </div>
+
+      <div class="rounded-xl bg-white p-4 ring-1 ring-slate-200">
+        <p class="text-xs text-slate-500">Fund Goal</p>
+
+        <p class="text-2xl font-semibold text-slate-900">
+          {{ fundGoal | currency }}
+        </p>
+
+        <p class="text-sm text-slate-600 mt-1">
+          {{ remainingToGoal | currency }} remaining
+        </p>
+
+        <!-- Optional progress bar -->
+        <div class="mt-3 h-2 w-full rounded-full bg-slate-200">
+          <div class="h-2 rounded-full bg-emerald-600 transition-all" [style.width.%]="goalProgressPercent">
+          </div>
+        </div>
+
+        <p class="mt-1 text-xs text-slate-500">
+          {{ goalProgressPercent | number:'1.0-0' }}% of goal reached
+        </p>
+      </div>
+
     </section>
 
+
     <!-- MEMBER-SPECIFIC FINANCIALS -->
-    <section class="space-y-4">
-      <h2 class="text-lg font-semibold text-slate-900">
-        Your Position
-      </h2>
+    <section class="rounded-2xl bg-white p-6 ring-1 ring-slate-200 space-y-4">
+      <h2 class="text-lg font-semibold">Your Position</h2>
 
-      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <!-- Member Total Contribution -->
-        <div class="rounded-3xl bg-white p-6 ring-1 ring-slate-200">
-          <p class="text-sm text-slate-500">Your Total Contribution</p>
-          <p class="mt-2 text-2xl font-semibold text-slate-900">
-            — —
-          </p>
-          <p class="mt-1 text-xs text-slate-400">
-            All-time contribution
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div>
+          <p class="text-xs text-slate-500">Your Total Savings</p>
+          <p class="text-2xl font-bold text-slate-900">
+            {{ member.totalSavings | currency }}
           </p>
         </div>
 
-        <!-- MEMBER CURRENT MONTH CONTRIBUTION STATUS - 
-                IF 
-                    NOT PAID WILL BE BLANK 
-                ELSE    
-                    IF PAID WILL SHOW AMOUNT 
-        -->
-        <!-- Member Monthly Contribution -->
-        <div class="rounded-3xl bg-white p-6 ring-1 ring-slate-200">
-          <p class="text-sm text-slate-500">Your Monthly Contribution</p>
-          <p class="mt-2 text-2xl font-semibold text-slate-900">
-            — —
-          </p>
-          <p class="mt-1 text-xs text-slate-400">
-            Current month
+        <div>
+          <p class="text-xs text-slate-500">This Month</p>
+          <p class="text-2xl font-bold text-slate-900">
+            {{ member.monthlySavings | currency }}
           </p>
         </div>
 
-        <!-- Member Share -->
-        <div class="rounded-3xl bg-white p-6 ring-1 ring-slate-200">
-          <p class="text-sm text-slate-500">Your Ownership Share</p>
-          <p class="mt-2 text-2xl font-semibold text-slate-900">
-            — %
-          </p>
-          <p class="mt-1 text-xs text-slate-400">
-            Percentage of pool
+        <div>
+          <p class="text-xs text-slate-500">Your Share</p>
+          <p class="text-2xl font-bold text-slate-900">
+            {{ member.ownershipPercentageOfFund | number:'1.2-2' }}%
           </p>
         </div>
       </div>
@@ -121,10 +96,25 @@
         Charts and graphs showing contribution trends, ownership distribution, and pool growth will appear here.
       </p>
 
-      <div class="mt-6 flex h-48 items-center justify-center rounded-2xl border border-dashed border-slate-300 text-sm text-slate-400">
+      <div
+        class="mt-6 flex h-48 items-center justify-center rounded-2xl border border-dashed border-slate-300 text-sm text-slate-400">
         Charts coming soon
       </div>
     </section>
 
   </div>
 </section>
+
+
+<!-- //Financial Overview
+// Brotherhood Pool
+// - Total Savings Pool
+// - Fund Month Savings Pool
+// - Target Finance pool goal
+// Your Position
+// - Your Total Savings Contibution thus far
+// - Your Savings Contribution for the month
+// - Your Share of the total Pool
+// Visual Insights
+// - Line chart showing you savings over time
+// - Line chart showing brotherhood savings pool monthly contibution overtime -->

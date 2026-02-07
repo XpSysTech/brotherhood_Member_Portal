@@ -7,9 +7,14 @@ namespace Brotherhood_Portal.Infrastructure.Repository
 {
     public class MemberRepository(AppDBContext appDBContext) : IMemberRepository
     {
-        public async Task<Member?> GetMemberByIdAsync(string id)
+        //public async Task<Member?> GetMemberByIdAsync(string id)
+        //{
+        //    return await appDBContext.Members.FindAsync(id);
+        //}
+
+        public async Task<Member?> GetMemberByIdAsync(string userId)
         {
-            return await appDBContext.Members.FindAsync(id);
+            return await appDBContext.Members.FindAsync(userId);
         }
 
         public async Task<IReadOnlyList<Member>> GetMembersAsync()

@@ -1,15 +1,76 @@
 <section class="bg-slate-50 min-h-screen">
-  <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 space-y-10">
+  <div class="mx-auto max-w-5xl px-4 py-10 space-y-6">
 
-    <!-- PAGE HEADER -->
-    <div class="space-y-2">
-      <h1 class="text-3xl font-semibold tracking-tight text-slate-900">
-        Phonebook Page
-      </h1>
-      <p class="text-base text-slate-600">
-        This page will be for members to view and manage contact information within the Brotherhood.
+    <!-- HEADER -->
+    <div>
+      <h1 class="text-3xl font-semibold text-slate-900">Phonebook</h1>
+      <p class="text-slate-600 mt-1">
+        Browse members and connect directly.
       </p>
     </div>
-    
+    <!-- REDO HEADER: To encourage members to collaborate share opportunities with each other. -->
+
+    <!-- LIST -->
+    <div class="divide-y rounded-xl bg-white ring-1 ring-slate-200">
+
+      <div *ngFor="let member of members">
+
+        <!-- ROW -->
+        <button
+          type="button"
+          (click)="toggle(member.id)"
+          class="flex w-full items-center justify-between px-4 py-4 text-left hover:bg-slate-50">
+
+          <div>
+            <p class="font-medium text-slate-900">
+              {{ member.displayName }}
+            </p>
+            <p class="text-sm text-slate-500">
+              <!-- {{ member.occupation || '—' }} -->
+              {{ member.occupation || 'Occupation Not specified' }}
+            </p>
+          </div>
+
+          <span
+            class="text-slate-400 transition-transform"
+            [class.rotate-180]="expandedMemberId === member.id">
+            ▼
+          </span>
+        </button>
+
+        <!-- EXPANDED -->
+        <div
+          *ngIf="expandedMemberId === member.id"
+          class="px-4 pb-4 text-sm text-slate-700 space-y-2">
+
+          <div>
+            <strong>Business:</strong>
+            {{ member.business || 'Not specified' }}
+          </div>
+
+          <div>
+            <strong>Contact:</strong>
+            {{ member.contactNumber }}
+          </div>
+
+          <button
+            (click)="openWhatsApp(member.contactNumber)"
+            class="mt-2 inline-flex items-center gap-2 rounded-lg bg-green-600 px-3 py-1.5 text-white hover:bg-green-700">
+
+            <!-- WhatsApp icon -->
+            <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12 2a10 10 0 00-8.94 14.5L2 22l5.7-1.5A10 10 0 1012 2z"/>
+            </svg>
+
+            Contact on WhatsApp
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
   </div>
 </section>

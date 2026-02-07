@@ -7,7 +7,8 @@ namespace Brotherhood_Portal.Application.Interfaces
         void Update(Member member);
         Task<bool> SaveAllAsync();
         Task<IReadOnlyList<Member>> GetMembersAsync();
-        Task<Member?> GetMemberByIdAsync(string id);
+        //Task<Member?> GetMemberByIdAsync(string id);
+        Task<Member?> GetMemberByIdAsync(string userId);
         Task<IReadOnlyList<Photo>> GetPhotosForMembersAsync(string memberId);
     }
 }

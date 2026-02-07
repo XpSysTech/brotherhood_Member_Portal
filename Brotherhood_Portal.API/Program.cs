@@ -1,8 +1,9 @@
+using Brotherhood_Portal.API.GraphQL.Queries;
+using Brotherhood_Portal.API.GraphQL.Schema;
 using Brotherhood_Portal.Application.Interfaces;
 using Brotherhood_Portal.Application.Services;
 using Brotherhood_Portal.Domain.Entities;
 using Brotherhood_Portal.Infrastructure.Context;
-using Brotherhood_Portal.Infrastructure.Data;
 using Brotherhood_Portal.Infrastructure.Repository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -21,9 +22,21 @@ builder.Services.AddDbContext<AppDBContext>(opt =>
     opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+// Interfaces & Repositories
 builder.Services.AddScoped<IAppUserRepository, AppUserRepository>();
 builder.Services.AddScoped<IMemberRepository, MemberRepository>();
+builder.Services.AddScoped<IInvoiceSequenceRepository, InvoiceSequenceRepository>();
+builder.Services.AddScoped<IFinanceRepository, FinanceRepository>();
+builder.Services.AddScoped<IFinanceQueryRepository, FinanceQueryRepository>();
+
+// Services
+builder.Services.AddScoped<FinanceService>();
+builder.Services.AddScoped<FinanceQueryService>();
+builder.Services.AddScoped<InvoiceNumberService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
+
+// GraphQL Services
+builder.Services.AddGraphQLSchema(); // Add the GraphQL schema
 
 builder.Services.AddIdentityCore<AppUser>(opt => 
 {
@@ -75,24 +88,12 @@ app.UseCors(policy =>
           .AllowAnyHeader()
           .AllowAnyMethod()
     );
+
 app.UseAuthentication(); //Who are you?
 app.UseAuthorization(); //Are you allowed?
 
 app.MapControllers();
 
-//using var scope = app.Services.CreateScope();
-//var services = scope.ServiceProvider;
-//try
-//{
-//    var context = services.GetRequiredService<AppDBContext>();
-//    var userManager = services.GetRequiredService<UserManager<AppUser>>();
-//    await context.Database.MigrateAsync();
-//    await Seed.SeedUsers(userManager);
-//}
-//catch (Exception ex)
-//{
-//    var logger = services.GetRequiredService<ILogger<Program>>();
-//    logger.LogError(ex, "An error occured during migration");
-//}
+app.MapGraphQL("/graphql"); // GraphQL endpoint
 
 app.Run();

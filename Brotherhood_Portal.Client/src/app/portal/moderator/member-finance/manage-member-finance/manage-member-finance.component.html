@@ -1,0 +1,96 @@
+<section class="bg-slate-50 min-h-screen">
+    <div class="mx-auto max-w-7xl px-4 py-10 space-y-8">
+
+        <!-- HEADER -->
+        <div>
+            <h1 class="text-3xl font-semibold text-slate-900">
+                Manage Member Finances
+            </h1>
+            <p class="text-slate-600">
+                Add deposits and view member financial history.
+            </p>
+        </div>
+
+        <!-- SELECT MEMBER -->
+        <!-- MAKE DROP DOWN --> 
+        <div class="rounded-xl bg-white p-4 ring-1 ring-slate-200">
+            <label class="block text-sm font-medium text-slate-700">
+                Member ID (temporary selector)
+            </label>
+            <input [(ngModel)]="selectedMemberId" (change)="loadHistory()"
+                class="mt-1 w-full rounded-lg border border-slate-200 bg-white px-3 py-2" placeholder="Paste member ID" />
+        </div>
+
+        <!-- ADD DEPOSIT -->
+        <div class="rounded-xl bg-white p-6 ring-1 ring-slate-200 space-y-4">
+            <h2 class="text-lg font-semibold">Add Deposit</h2>
+
+            <!-- SAVINGS CONTRIBUTION -->
+            <label class="block text-sm font-medium text-slate-700">
+                Savings Amount
+            </label>
+            <input 
+                type="number" 
+                [(ngModel)]="depositForm.savingsAmount" 
+                placeholder="Savings Amount"
+                required
+                class="input w-full rounded-xl border border-slate-200 bg-white px-3 py-2" />
+
+            <!-- OPS CONTRIBUTION -->
+            <label class="block text-sm font-medium text-slate-700">
+                Ops Contribution
+            </label>
+            <input 
+                type="number" 
+                [(ngModel)]="depositForm.opsContribution" 
+                placeholder="Ops Contribution"
+                required
+                class="input w-full rounded-xl border border-slate-200 bg-white px-3 py-2" />
+            
+            <!-- DESCRIPTION -->
+            <label class="block text-sm font-medium text-slate-700">
+                Description
+            </label>    
+            <textarea [(ngModel)]="depositForm.description" placeholder="Description"
+                class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2"></textarea>
+
+            <!-- SUBMIT BUTTON -->
+            <button (click)="submitDeposit()" [disabled]="submitting"
+                class="rounded-lg bg-slate-900 px-4 py-2 text-white">
+                {{ submitting ? 'Submitting…' : 'Add Deposit' }}
+            </button>
+
+            <p *ngIf="feedback" class="text-sm text-slate-600">
+                {{ feedback }}
+            </p>
+        </div>
+
+        <!-- HISTORY -->
+        <div class="rounded-xl bg-white p-6 ring-1 ring-slate-200">
+            <h2 class="text-lg font-semibold mb-4">Deposit History</h2>
+
+            <div *ngIf="loadingHistory">Loading…</div>
+
+            <div *ngFor="let record of history" class="border-b py-3">
+                <div class="flex justify-between">
+                    <div>
+                        <p class="font-medium">
+                            {{ record.savingsAmount | currency }}
+                        </p>
+                        <p class="text-sm text-slate-500">
+                            {{ record.depositDate | date }}
+                        </p>
+                    </div>
+
+                    <span class="text-xs rounded-full px-2 py-1" [ngClass]="{
+              'bg-yellow-100 text-yellow-800': record.status === 'Pending',
+              'bg-green-100 text-green-800': record.status === 'Approved'
+            }">
+                        {{ record.status }}
+                    </span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

@@ -49,80 +49,151 @@
         </button>
     </div>
 
-    <!-- Nav -->
-    <nav class="px-3 py-4">
-        <p class="px-3 pb-2 text-xs font-semibold uppercase tracking-wide text-slate-400">
-            Dashboard
-        </p>
+    <!-- ============================================
+    MEMBER SECTION - Visible to all logged-in members
+    Shows basic dashboard and community features
+    ============================================ -->
+    <ng-container *ngIf="accountService.isMember()">
+        <nav class="px-3 py-4">
+            <p class="px-3 pb-2 text-xs font-semibold uppercase tracking-wide text-slate-400">
+                Dashboard
+            </p>
 
-        <a routerLink="/member/dashboard" routerLinkActive="bg-slate-900 text-white"
-            [routerLinkActiveOptions]="{ exact: true }"
-            class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
-            (click)="closeSidebar()">
-            <!-- icon -->
-            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    d="M3 13h8V3H3v10zm10 8h8V11h-8v10zM3 21h8v-6H3v6zm10-18h8v6h-8V3z" />
-            </svg>
-            Financial Overview
-        </a>
+            <!-- Financial Overview -->
+            <a routerLink="/member/dashboard" routerLinkActive="bg-slate-900 text-white"
+                [routerLinkActiveOptions]="{ exact: true }"
+                class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+                (click)="closeSidebar()">
+                <!-- icon -->
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        d="M3 13h8V3H3v10zm10 8h8V11h-8v10zM3 21h8v-6H3v6zm10-18h8v6h-8V3z" />
+                </svg>
+                Financial Overview
+            </a>
 
-        <div class="my-3 border-t border-slate-200"></div>
+            <div class="my-3 border-t border-slate-200"></div>
 
-        <p class="px-3 pb-2 text-xs font-semibold uppercase tracking-wide text-slate-400">
-            Community
-        </p>
+            <p class="px-3 pb-2 text-xs font-semibold uppercase tracking-wide text-slate-400">
+                Community
+            </p>
 
-        <a routerLink="/member/phonebook" routerLinkActive="bg-slate-900 text-white"
-            class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
-            (click)="closeSidebar()">
-            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    d="M21 15a4 4 0 01-4 4H7a4 4 0 01-4-4V7a4 4 0 014-4h10a4 4 0 014 4v8z" />
-                <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M7 7h10M7 11h10M7 15h6" />
-            </svg>
-            Phonebook
-        </a>
+            <!-- Phonebook -->
+            <a routerLink="/member/phonebook" routerLinkActive="bg-slate-900 text-white"
+                class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+                (click)="closeSidebar()">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        d="M21 15a4 4 0 01-4 4H7a4 4 0 01-4-4V7a4 4 0 014-4h10a4 4 0 014 4v8z" />
+                    <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M7 7h10M7 11h10M7 15h6" />
+                </svg>
+                Phonebook
+            </a>
 
-        <a routerLink="/member/opportunities" routerLinkActive="bg-slate-900 text-white"
-            class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
-            (click)="closeSidebar()">
-            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7l3-7z" />
-            </svg>
-            Opportunities
-        </a>
+            <!-- Events & Announcements -->
+            <!-- Link set to NULL -> change to /member/events when ready -->
+            <a [routerLink]="null" routerLinkActive="bg-slate-900 text-white"
+                class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-slate-300 hover:bg-slate-50"
+                (click)="notAvailable(); closeSidebar()">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        d="M8 7V3m8 4V3M4 11h16M6 5h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V7a2 2 0 012-2z" />
+                </svg>
+                Events & Announcements
+            </a>
 
-        <a routerLink="/member/ideas" routerLinkActive="bg-slate-900 text-white"
-            class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
-            (click)="closeSidebar()">
-            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    d="M12 2a7 7 0 00-4 12v3h8v-3a7 7 0 00-4-12z" />
-                <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 21h6" />
-            </svg>
-            Idea Backlog
-        </a>
+            <!-- Votes & Polls -->
+            <!-- Link set to NULL -> change to /member/voting when ready -->
+            <a [routerLink]="null" routerLinkActive="bg-slate-900 text-white"
+                class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-slate-300 hover:bg-slate-50"
+                (click)="notAvailable(); closeSidebar()">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        d="M9 12l2 2 4-4M4 7h16M4 17h16" />
+                </svg>
+                Votes & Polls
+            </a>
 
-        <a routerLink="/member/events" routerLinkActive="bg-slate-900 text-white"
-            class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
-            (click)="closeSidebar()">
-            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    d="M8 7V3m8 4V3M4 11h16M6 5h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V7a2 2 0 012-2z" />
-            </svg>
-            Events & Announcements
-        </a>
+            <!-- Constitution -->
+            <a routerLink="/member/constitution" routerLinkActive="bg-slate-900 text-white"
+                class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+                (click)="closeSidebar()">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
+                    <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14 2v6h6" />
+                    <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8 13h8M8 17h8M8 9h4" />
+                </svg>
+                Constitution
+            </a>
+        </nav>
+    </ng-container>
 
-        <a routerLink="/member/voting" routerLinkActive="bg-slate-900 text-white"
-            class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
-            (click)="closeSidebar()">
-            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    d="M9 12l2 2 4-4M4 7h16M4 17h16" />
-            </svg>
-            Votes & Polls
-        </a>
-    </nav>
+    <!-- ============================================
+    MODERATOR SECTION - Visible to moderators and admins
+    Provides moderation and management capabilities
+    ============================================ -->
+    <ng-container *ngIf="accountService.isModerator()">
+        <nav class="px-3 py-4">
+            <div class="my-3 border-t border-slate-200"></div>
+
+            <p class="px-3 pb-2 text-xs font-semibold uppercase tracking-wide text-slate-400">
+                Moderation
+            </p>
+
+            <a routerLink="/member/moderation/finance" routerLinkActive="bg-slate-900 text-white"
+                class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+                (click)="closeSidebar()">
+                Manage Member Finance
+            </a>
+
+            <a routerLink="/member/moderation/approval" routerLinkActive="bg-slate-900 text-white"
+                class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+                (click)="closeSidebar()">
+                Manage Approvals
+            </a>
+
+            <!-- Link set to NULL -> change to /member/moderation/votes when ready -->
+            <a [routerLink]="null" routerLinkActive="bg-slate-900 text-white"
+                class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-slate-300 hover:bg-slate-50 cursor-pointer"
+                (click)="notAvailable(); closeSidebar()">
+                Manage Polls & Votes
+            </a>
+        </nav>
+    </ng-container>
+
+
+    <!-- ============================================
+    ADMIN SECTION - Visible only to administrators
+    Provides system-wide admin and configuration tools
+    ============================================ -->
+    <ng-container *ngIf="accountService.isAdmin()">
+        <nav class="px-3 py-4">
+            <div class="my-3 border-t border-slate-200"></div>
+
+            <p class="px-3 pb-2 text-xs font-semibold uppercase tracking-wide text-slate-400">
+                Administration
+            </p>
+
+            <a routerLink="/member/admin/members" routerLinkActive="bg-slate-900 text-white"
+                class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+                (click)="closeSidebar()">
+                Manage Member Accounts
+            </a>
+
+            <a routerLink="/member/admin/register" routerLinkActive="bg-slate-900 text-white"
+                class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+                (click)="closeSidebar()">
+                Register Member
+            </a>
+
+            <!-- Link set to NULL -> change to /member/admin/settings when ready -->
+            <a routerLink="/member/admin/settings" [routerLink]="null" routerLinkActive="bg-slate-900 text-white"
+                class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-slate-300 hover:bg-slate-50"
+                (click)="notAvailable(); closeSidebar()">
+                System Settings
+            </a>
+        </nav>
+    </ng-container>
+
 </aside>

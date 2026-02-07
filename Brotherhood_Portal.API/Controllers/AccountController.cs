@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace Brotherhood_Portal.API.Controllers
 {
     public class AccountController(UserManager<AppUser> userManager, ITokenService tokenService) : BaseApiController
