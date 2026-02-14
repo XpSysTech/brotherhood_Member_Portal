@@ -7,7 +7,7 @@ export interface AddDepositDto {
 
 export interface FinanceRecord {
   id: number;
-  depositDate: string;
+  depositDate: Date;
   savingsAmount: number;
   opsContributionAmount: number;
   description?: string;

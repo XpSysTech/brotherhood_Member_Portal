@@ -30,7 +30,8 @@ namespace Brotherhood_Portal.Domain.Entities
 
         //Navigation Property
         public Member Member { get; set; } = null!;
-    }
+        public ICollection<FinanceApproval> Approvals { get; set; } = new List<FinanceApproval>();
+}
 
     //Used to track the status of a finance record
     public enum FinanceStatus

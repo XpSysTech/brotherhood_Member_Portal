@@ -1,4 +1,4 @@
-﻿namespace Brotherhood_Portal.Domain.DTOs.Finance
+﻿namespace Brotherhood_Portal.Domain.DTOs.Finance.Query
 {
     /// <summary>
     /// Read-only financial summary for a single member.

@@ -246,3 +246,4 @@ E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Port
 E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.API\bin\Debug\net9.0\Microsoft.Extensions.ObjectPool.dll
 E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.API\bin\Debug\net9.0\System.IO.Hashing.dll
 E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.API\bin\Debug\net9.0\Yarp.ReverseProxy.dll
+E:\POST\DEVELOPMENT\XpSysTech_Github\brotherhood_Private_Portal\Brotherhood_Portal.API\bin\Debug\net9.0\HotChocolate.AspNetCore.Authorization.dll

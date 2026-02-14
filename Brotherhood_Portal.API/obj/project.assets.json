@@ -227,6 +227,25 @@
           "build/HotChocolate.AspNetCore.targets": {}
         }
       },
+      "HotChocolate.AspNetCore.Authorization/15.1.12": {
+        "type": "package",
+        "dependencies": {
+          "HotChocolate": "15.1.12"
+        },
+        "compile": {
+          "lib/net9.0/HotChocolate.AspNetCore.Authorization.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/HotChocolate.AspNetCore.Authorization.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "HotChocolate.Authorization/15.1.12": {
         "type": "package",
         "dependencies": {
@@ -2953,6 +2972,25 @@
         "lib/net8.0/HotChocolate.AspNetCore.xml",
         "lib/net9.0/HotChocolate.AspNetCore.dll",
         "lib/net9.0/HotChocolate.AspNetCore.xml",
+        "strawberryshake-signet.png"
+      ]
+    },
+    "HotChocolate.AspNetCore.Authorization/15.1.12": {
+      "sha512": "4uv7olN3f1j9Z3BGQi/k9Fztic2p8dTSiCp9orIfkCz1u+jgFlBty9NPLZ0aRojqknfLEzpIl6yvh4f9yHqiiw==",
+      "type": "package",
+      "path": "hotchocolate.aspnetcore.authorization/15.1.12",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "greendonut-signet.png",
+        "hotchocolate-signet.png",
+        "hotchocolate.aspnetcore.authorization.15.1.12.nupkg.sha512",
+        "hotchocolate.aspnetcore.authorization.nuspec",
+        "lib/net8.0/HotChocolate.AspNetCore.Authorization.dll",
+        "lib/net8.0/HotChocolate.AspNetCore.Authorization.xml",
+        "lib/net9.0/HotChocolate.AspNetCore.Authorization.dll",
+        "lib/net9.0/HotChocolate.AspNetCore.Authorization.xml",
         "strawberryshake-signet.png"
       ]
     },
@@ -7013,6 +7051,7 @@
       "Brotherhood_Portal.Domain >= 1.0.0",
       "Brotherhood_Portal.Infrastructure >= 1.0.0",
       "HotChocolate.AspNetCore >= 15.1.12",
+      "HotChocolate.AspNetCore.Authorization >= 15.1.12",
       "HotChocolate.Data >= 15.1.12",
       "HotChocolate.Data.EntityFramework >= 15.1.12",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 9.0.11",
@@ -7084,6 +7123,10 @@
         "targetAlias": "net9.0",
         "dependencies": {
           "HotChocolate.AspNetCore": {
+            "target": "Package",
+            "version": "[15.1.12, )"
+          },
+          "HotChocolate.AspNetCore.Authorization": {
             "target": "Package",
             "version": "[15.1.12, )"
           },

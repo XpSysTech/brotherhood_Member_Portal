@@ -1,4 +1,4 @@
-﻿namespace Brotherhood_Portal.Domain.DTOs.Finance
+﻿namespace Brotherhood_Portal.Domain.DTOs.Finance.Query
 {
     /// <summary>
     /// Represents aggregated finance data for a specific month.

@@ -21,3 +21,10 @@ export interface Member {
   isActive?: boolean;
   created?: string;
 }
+
+export interface MemberByName {
+  id: string;
+  displayName: string;
+  firstName?: string;
+  lastName?: string;
+}

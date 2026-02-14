@@ -6,15 +6,36 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Brotherhood_Portal.Infrastructure.Repository
 {
+    /// <summary>
+    /// FINANCE QUERY REPOSITORY
+    /// 
+    /// [1] PURPOSE
+    /// Read-only data access layer for finance-related queries.
+    /// 
+    /// [2] RESPONSIBILITIES
+    /// - Retrieve approved finance records
+    /// - Retrieve member-specific finance data
+    /// - Retrieve pending deposits with approval chains
+    /// - Provide aggregate reporting data
+    /// - Provide counts for dashboard summaries
+    ///
+    /// [3] ARCHITECTURAL ROLE
+    /// - This repository belongs to the QUERY side of the system
+    /// - It must NEVER modify state
+    /// - It must NEVER perform business logic
+    /// - It must NEVER apply deposits or approvals
+    ///
+    /// [4] DESIGN PRINCIPLES
+    /// - Uses AsNoTracking() for performance on read operations
+    /// - Includes navigation properties only when required
+    /// - Keeps EF-specific logic isolated from Application layer
+    ///
+    /// This follows CQRS principles:
+    /// Commands (mutations) are handled elsewhere.
+    /// Queries (reads) are handled here.
+    /// </summary>
     public class FinanceQueryRepository : IFinanceQueryRepository
     {
-        /*
-            - QUERY / READ-ONLY REPOSITORY
-            - Responsibilities:
-                - Data retrieval for finance-related queries
-                - Support for financial summaries and reports
-         */
-
         private readonly AppDBContext _context;
 
         public FinanceQueryRepository(AppDBContext context)
@@ -22,14 +43,16 @@ namespace Brotherhood_Portal.Infrastructure.Repository
             _context = context;
         }
 
-        #region Get Approved Finances
-        /*
-            - Summary:
-                - Retrieves a list of all approved finance records from the database.
-                - Where the finance status is 'Approved'.
-                - Returns:
-                    - A read-only list of Finance entities that have been approved.s
-         */
+        #region Approved Finance Queries
+
+        /// <summary>
+        /// Retrieves all approved finance records.
+        /// 
+        /// Used for:
+        /// - Fund summary calculations
+        /// - Ownership percentage calculations
+        /// - Reporting
+        /// </summary>
         public async Task<IReadOnlyList<Finance>> GetApprovedFinancesAsync()
         {
             return await _context.Finances
@@ -37,18 +60,15 @@ namespace Brotherhood_Portal.Infrastructure.Repository
                 .Where(f => f.Status == FinanceStatus.Approved)
                 .ToListAsync();
         }
-        #endregion
 
-
-        #region Get Approved Finance By Id
-        /*
-            - Summary:
-                - Retrieves a specific approved finance record by its unique identifier.
-                - Parameters:
-                    - id: The unique identifier of the finance record to retrieve.
-                - Returns:
-                    - The Finance entity with the specified ID if it is approved; otherwise, null.
-         */
+        /// <summary>
+        /// Retrieves all approved finance records for a specific member.
+        /// 
+        /// Used for:
+        /// - Member summary calculations
+        /// - Member ownership percentage
+        /// - Monthly member reports
+        /// </summary>
         public async Task<IReadOnlyList<Finance>> GetApprovedFinancesByMemberAsync(string memberId)
         {
             return await _context.Finances
@@ -58,19 +78,14 @@ namespace Brotherhood_Portal.Infrastructure.Repository
                     f.Status == FinanceStatus.Approved)
                 .ToListAsync();
         }
-        #endregion
 
-
-        #region Get Approved Finances by Date
-        /*
-            - Summary:
-                - Retrieves a list of approved finance records for a specific month and year.
-                - Parameters:
-                    - year: The year to filter the finance records.
-                    - month: The month to filter the finance records.
-                - Returns:
-                    - A read-only list of Finance entities that have been approved within the specified month and year.
-         */
+        /// <summary>
+        /// Retrieves approved finances filtered by year and month.
+        /// 
+        /// Used for:
+        /// - Monthly fund reporting
+        /// - Historical dashboard analytics
+        /// </summary>
         public async Task<IReadOnlyList<Finance>> GetApprovedFinancesByMonthAsync(int year, int month)
         {
             return await _context.Finances
@@ -81,43 +96,44 @@ namespace Brotherhood_Portal.Infrastructure.Repository
                     f.DepositDate.Month == month)
                 .ToListAsync();
         }
+
         #endregion
 
 
-        #region Get Active Member Count
-        /*
-            - Summary:
-                - Retrieves the count of active members in the database.
-                - Returns:
-                    - An integer representing the number of active members.
-         */
+        #region Member Counts
+
+        /// <summary>
+        /// Returns number of active members.
+        /// 
+        /// Used in dashboard reporting.
+        /// </summary>
         public Task<int> GetActiveMemberCountAsync()
             => _context.Members.CountAsync(m => m.IsActive);
 
-        #endregion
-
-
-        #region Get Total Member Count
-        /*
-            - Summary:
-                - Retrieves the total count of members in the database.
-                - Returns:
-                    - An integer representing the total number of members.
-         */
+        /// <summary>
+        /// Returns total number of members in the system.
+        /// </summary>
         public Task<int> GetTotalMemberCountAsync()
             => _context.Members.CountAsync();
 
         #endregion
 
-        #region Get Monthly Aggregates
-        /*
-            - Summary:
-                - Retrieves monthly aggregates of approved finances.
-                - Groups finances by year and month, calculating total savings, total operations contributions, and the count of contributing members.
-                - Returns:
-                    - A read-only collection of MonthlyFinanceAggregate objects representing the aggregated data for each month.
-         */
-        public async Task<IReadOnlyCollection<MonthlyFinanceAggregate>> GetMonthlyAggregatesAsync() 
+
+        #region Aggregates
+
+        /// <summary>
+        /// Builds monthly aggregate summaries of approved finances.
+        /// 
+        /// Produces:
+        /// - Total savings per month
+        /// - Total operations contribution per month
+        /// - Distinct contributing member count
+        /// 
+        /// Used for:
+        /// - Fund history charts
+        /// - Dashboard analytics
+        /// </summary>
+        public async Task<IReadOnlyCollection<MonthlyFinanceAggregate>> GetMonthlyAggregatesAsync()
         {
             return await _context.Finances
                 .AsNoTracking()
@@ -129,10 +145,66 @@ namespace Brotherhood_Portal.Infrastructure.Repository
                     Month = g.Key.Month,
                     TotalSavings = g.Sum(f => f.SavingsAmount),
                     TotalOpsContribution = g.Sum(f => f.OpsContributionAmount),
-                    ContributingMemberCount = g.Select(f => f.MemberId).Distinct().Count()
+                    ContributingMemberCount = g
+                        .Select(f => f.MemberId)
+                        .Distinct()
+                        .Count()
                 })
                 .ToListAsync();
         }
+
+        #endregion
+
+
+        #region Detailed Finance Views (Includes Navigation Properties)
+
+        /// <summary>
+        /// Retrieves all finance records for a specific member,
+        /// including:
+        /// - Member information
+        /// - Approval chain
+        /// - Approving users
+        ///
+        /// Used for:
+        /// - Member deposit history screens
+        /// - Admin auditing
+        /// - Detailed financial traceability
+        ///
+        /// IMPORTANT:
+        /// This method intentionally loads navigation properties.
+        /// It is heavier than summary queries.
+        /// </summary>
+        public async Task<List<Finance>> GetFinancesByMemberWithApprovalsAsync(string memberId)
+        {
+            return await _context.Finances
+                .AsNoTracking()
+                .Include(f => f.Member)
+                .Include(f => f.Approvals)
+                    .ThenInclude(a => a.User)
+                .Where(f => f.MemberId == memberId)
+                .ToListAsync();
+        }
+
+        /// <summary>
+        /// Retrieves all pending deposits including approval chains.
+        ///
+        /// Used for:
+        /// - Admin / Moderator approval dashboards
+        /// - Transparency on who approved what
+        ///
+        /// Only deposits with Status == Pending are returned.
+        /// </summary>
+        public async Task<List<Finance>> GetPendingFinancesWithApprovalsAsync()
+        {
+            return await _context.Finances
+                .AsNoTracking()
+                .Include(f => f.Member)
+                .Include(f => f.Approvals)
+                    .ThenInclude(a => a.User)
+                .Where(f => f.Status == FinanceStatus.Pending)
+                .ToListAsync();
+        }
+
         #endregion
     }
 }

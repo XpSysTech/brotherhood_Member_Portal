@@ -9,13 +9,13 @@
     "Parameters": [
       {
         "Name": "loginDTO",
-        "Type": "Brotherhood_Portal.Domain.DTOs.LoginDTO",
+        "Type": "Brotherhood_Portal.Domain.DTOs.Identity.Command.LoginDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "Brotherhood_Portal.Domain.DTOs.UserDTO",
+        "Type": "Brotherhood_Portal.Domain.DTOs.Identity.Query.UserDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -35,13 +35,13 @@
     "Parameters": [
       {
         "Name": "registerDTO",
-        "Type": "Brotherhood_Portal.Domain.DTOs.RegisterDTO",
+        "Type": "Brotherhood_Portal.Domain.DTOs.Identity.Command.RegisterDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "Brotherhood_Portal.Domain.DTOs.UserDTO",
+        "Type": "Brotherhood_Portal.Domain.DTOs.Identity.Query.UserDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -91,17 +91,7 @@
         "IsRequired": false
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IList\u00601[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "Brotherhood_Portal.API.Controllers.AdminController",
@@ -134,7 +124,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Brotherhood_Portal.API.Controllers.FinanceController",
+    "ContainingType": "FinanceController",
     "Method": "AddDeposit",
     "RelativePath": "api/Finance/add-deposit",
     "HttpMethod": "POST",
@@ -143,14 +133,14 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "Brotherhood_Portal.Domain.DTOs.Finance.AddDepositDto",
+        "Type": "Brotherhood_Portal.Domain.DTOs.Finance.Command.AddDepositRequestDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Brotherhood_Portal.API.Controllers.FinanceController",
+    "ContainingType": "FinanceController",
     "Method": "ApproveDeposit",
     "RelativePath": "api/Finance/approve-deposit/{financeId}",
     "HttpMethod": "POST",
@@ -164,6 +154,52 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FinanceController",
+    "Method": "GetMemberDepositHistoryAsync",
+    "RelativePath": "api/Finance/member/{memberId}/deposit-history",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "memberId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[Brotherhood_Portal.Domain.DTOs.Finance.Query.MemberDepositHistoryDto, Brotherhood_Portal.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "FinanceController",
+    "Method": "GetPendingDeposits",
+    "RelativePath": "api/Finance/pending-deposits",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[Brotherhood_Portal.Domain.DTOs.Finance.Query.PendingDepositDto, Brotherhood_Portal.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "Brotherhood_Portal.API.Controllers.MembersController",
@@ -239,6 +275,26 @@
   },
   {
     "ContainingType": "Brotherhood_Portal.API.Controllers.MembersController",
+    "Method": "GetMembersForDropdown",
+    "RelativePath": "api/Members/dropdown",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[Brotherhood_Portal.Domain.DTOs.Member.Query.MemberByNameDTO, Brotherhood_Portal.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Brotherhood_Portal.API.Controllers.MembersController",
     "Method": "GetPhonebookAsync",
     "RelativePath": "api/Members/phonebook",
     "HttpMethod": "GET",
@@ -247,7 +303,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[Brotherhood_Portal.Domain.DTOs.MemberPhonebookDTO, Brotherhood_Portal.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[Brotherhood_Portal.Domain.DTOs.Member.Query.MemberPhonebookDTO, Brotherhood_Portal.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

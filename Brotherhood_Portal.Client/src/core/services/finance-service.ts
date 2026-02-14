@@ -4,16 +4,18 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment.development';
 import { Observable } from 'rxjs';
 import { AddDepositDto, DepositApprovalResponse, FinanceRecord, PendingDeposit } from '../interfaces/FinanceDto';
+import { MemberByName } from '../interfaces/Member';
 
 
 @Injectable({ providedIn: 'root' })
 export class FinanceService {
-  private baseUrl = `${environment.apiBaseUrl}/finance`;
+  private baseUrl = `${environment.apiBaseUrl}`;
+  private baseFinanceUrl = `${environment.apiBaseUrl}/finance`;
 
   constructor(private http: HttpClient) {}
 
   addDeposit(dto: AddDepositDto): Observable<any> {
-    return this.http.post(`${this.baseUrl}/add-deposit`, dto);
+    return this.http.post(`${this.baseFinanceUrl}/add-deposit`, dto);
   }
 
   getMemberHistory(memberId: string): Observable<FinanceRecord[]> {
@@ -24,17 +26,21 @@ export class FinanceService {
 
   approveDeposit(financeId: number) {
     return this.http.post<DepositApprovalResponse>(
-      `${this.baseUrl}/approve-deposit/${financeId}`,
+      `${this.baseFinanceUrl}/approve-deposit/${financeId}`,
       {}
     );
   }
 
   getPendingDeposits() {
     return this.http.get<PendingDeposit[]>(
-      `${this.baseUrl}/pending-deposits`
+      `${this.baseFinanceUrl}/pending-deposits`
     );
   }
 
-
+  getMembersForDropdown() {
+    return this.http.get<MemberByName[]>(
+      `${this.baseUrl}/members/dropdown`
+    );
+  }
   
 }

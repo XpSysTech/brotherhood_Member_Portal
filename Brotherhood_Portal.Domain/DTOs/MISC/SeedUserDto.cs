@@ -1,4 +1,4 @@
-﻿namespace Brotherhood_Portal.Domain.DTOs
+﻿namespace Brotherhood_Portal.Domain.DTOs.MISC
 {
     public class SeedUserDto
     {

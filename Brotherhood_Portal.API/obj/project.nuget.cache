@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "onqNkFtDeO4=",
+  "dgSpecHash": "t9heXfUF7+0=",
   "success": true,
   "projectFilePath": "E:\\POST\\DEVELOPMENT\\XpSysTech_Github\\brotherhood_Private_Portal\\Brotherhood_Portal.API\\Brotherhood_Portal.API.csproj",
   "expectedPackageFiles": [
@@ -16,6 +16,7 @@
     "C:\\Users\\shake\\.nuget\\packages\\hotchocolate\\15.1.12\\hotchocolate.15.1.12.nupkg.sha512",
     "C:\\Users\\shake\\.nuget\\packages\\hotchocolate.abstractions\\15.1.12\\hotchocolate.abstractions.15.1.12.nupkg.sha512",
     "C:\\Users\\shake\\.nuget\\packages\\hotchocolate.aspnetcore\\15.1.12\\hotchocolate.aspnetcore.15.1.12.nupkg.sha512",
+    "C:\\Users\\shake\\.nuget\\packages\\hotchocolate.aspnetcore.authorization\\15.1.12\\hotchocolate.aspnetcore.authorization.15.1.12.nupkg.sha512",
     "C:\\Users\\shake\\.nuget\\packages\\hotchocolate.authorization\\15.1.12\\hotchocolate.authorization.15.1.12.nupkg.sha512",
     "C:\\Users\\shake\\.nuget\\packages\\hotchocolate.costanalysis\\15.1.12\\hotchocolate.costanalysis.15.1.12.nupkg.sha512",
     "C:\\Users\\shake\\.nuget\\packages\\hotchocolate.data\\15.1.12\\hotchocolate.data.15.1.12.nupkg.sha512",

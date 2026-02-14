@@ -16,5 +16,8 @@ namespace Brotherhood_Portal.Application.Interfaces
         Task<int> GetTotalMemberCountAsync();
         Task<int> GetActiveMemberCountAsync();
         Task<IReadOnlyCollection<MonthlyFinanceAggregate>> GetMonthlyAggregatesAsync();
+        Task<List<Finance>> GetPendingFinancesWithApprovalsAsync();
+        Task<List<Finance>> GetFinancesByMemberWithApprovalsAsync(string memberId);
+
     }
 }

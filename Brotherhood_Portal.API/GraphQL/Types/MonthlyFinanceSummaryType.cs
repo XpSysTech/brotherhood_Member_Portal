@@ -1,4 +1,4 @@
-﻿using Brotherhood_Portal.Domain.DTOs.Finance;
+﻿using Brotherhood_Portal.Domain.DTOs.Finance.Query;
 
 namespace Brotherhood_Portal.API.GraphQL.Types
 {

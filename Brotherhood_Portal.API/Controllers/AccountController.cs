@@ -1,6 +1,7 @@
 ﻿using Brotherhood_Portal.Application.Extensions;
 using Brotherhood_Portal.Application.Interfaces;
-using Brotherhood_Portal.Domain.DTOs;
+using Brotherhood_Portal.Domain.DTOs.Identity.Command;
+using Brotherhood_Portal.Domain.DTOs.Identity.Query;
 using Brotherhood_Portal.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -10,7 +11,32 @@ namespace Brotherhood_Portal.API.Controllers
 {
     public class AccountController(UserManager<AppUser> userManager, ITokenService tokenService) : BaseApiController
     {
-        // Register User
+        #region Register
+
+        /// <summary>
+        /// [1] PURPOSE
+        /// Registers a new user account and creates an associated Member profile.
+        ///
+        /// [2] BUSINESS RULES
+        /// - Email must be unique.
+        /// - Password must satisfy Identity password policy.
+        /// - A corresponding Member entity is created automatically.
+        /// - User is assigned the default role: "Member".
+        ///
+        /// [3] RESPONSE
+        /// Returns:
+        /// - User identity information
+        /// - JWT authentication token
+        /// - Basic profile data
+        ///
+        /// On validation failure:
+        /// - Returns detailed validation errors via ModelState.
+        ///
+        /// [4] SECURITY
+        /// - Public endpoint.
+        /// - Password is securely hashed via ASP.NET Identity.
+        /// </summary>
+
         [HttpPost("register")]
         public async Task<ActionResult<UserDTO>> Register(RegisterDTO registerDTO)
         {
@@ -23,10 +49,6 @@ namespace Brotherhood_Portal.API.Controllers
                 {
                     DateOfBirth = registerDTO.DateOfBirth,
                     DisplayName = registerDTO.DisplayName,
-                    //ImageUrl = registerDTO.ImageUrl,
-                    //MemberBiography = registerDTO.MemberBiography,
-                    //Occupation = registerDTO.Occupation,
-                    //Business = registerDTO.Business,
                     ContactNumber = registerDTO.ContactNumber,
                     HomeAddress = registerDTO.HomeAddress,
                     HomeCity = registerDTO.HomeCity
@@ -45,12 +67,42 @@ namespace Brotherhood_Portal.API.Controllers
                 return ValidationProblem();
             }
 
+            // Assign default role
             await userManager.AddToRoleAsync(user, "Member");
 
+            // Return DTO with JWT token
             return await user.ToDto(tokenService);
         }
 
-        // Log User in
+        #endregion
+
+        #region Login
+
+        /// <summary>
+        /// [1] PURPOSE
+        /// Authenticates an existing user and issues a JWT access token.
+        ///
+        /// [2] BUSINESS RULES
+        /// - Email must match an existing user.
+        /// - Password must match stored hashed password.
+        /// - Authentication is validated using ASP.NET Identity.
+        ///
+        /// [3] RESPONSE
+        /// Returns:
+        /// - User identity information
+        /// - JWT authentication token
+        /// - Member profile details
+        ///
+        /// On failure:
+        /// - Returns 401 Unauthorized
+        /// - Does not reveal whether email or password was incorrect
+        ///
+        /// [4] SECURITY
+        /// - Public endpoint.
+        /// - Prevents user enumeration by returning generic error message.
+        /// - Token generation handled by ITokenService.
+        /// </summary> 
+
         [HttpPost("login")]
         public async Task<ActionResult<UserDTO>> Login(LoginDTO loginDTO)
         {
@@ -59,20 +111,16 @@ namespace Brotherhood_Portal.API.Controllers
                 .FirstOrDefaultAsync(u => u.Email == loginDTO.Email);
 
             if (user == null)
-            {
-                //await Task.Delay(2000); // Introduce a delay to mitigate timing attacks
                 return Unauthorized("Invalid email or password");
-            }
 
             var result = await userManager.CheckPasswordAsync(user, loginDTO.Password);
-           
+
             if (!result)
-            {
-                //await Task.Delay(2000); // Introduce a delay to mitigate timing attacks
                 return Unauthorized("Invalid email or password");
-            }
 
             return await user.ToDto(tokenService);
         }
+
+        #endregion
     }
 }

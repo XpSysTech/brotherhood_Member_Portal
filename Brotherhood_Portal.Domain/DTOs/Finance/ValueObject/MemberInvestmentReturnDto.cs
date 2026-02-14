@@ -1,4 +1,4 @@
-﻿namespace Brotherhood_Portal.Domain.DTOs.Finance
+﻿namespace Brotherhood_Portal.Domain.DTOs.Finance.ValueObject
 {
     /// <summary>
     /// Represents a member's share of returns from a single fund investment.

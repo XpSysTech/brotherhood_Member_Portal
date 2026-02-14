@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Brotherhood_Portal.Domain.DTOs.Finance
+namespace Brotherhood_Portal.Domain.DTOs.Finance.ValueObject
 {
     public class FinanceApprovalDto
     {

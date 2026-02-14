@@ -1,4 +1,4 @@
-﻿using Brotherhood_Portal.Domain.DTOs.Finance;
+﻿using Brotherhood_Portal.Domain.DTOs.Finance.Query;
 
 namespace Brotherhood_Portal.API.GraphQL.Types
 {
@@ -9,7 +9,7 @@ namespace Brotherhood_Portal.API.GraphQL.Types
             dto.Name("MemberFinanceSummary");
 
             dto.Field(x => x.MemberId).Type<NonNullType<IdType>>();
-            dto.Field(x => x.DisplayName).Type<StringType>();
+            //dto.Field(x => x.DisplayName).Type<StringType>();
 
             dto.Field(x => x.TotalSavings).Type<NonNullType<DecimalType>>();
             dto.Field(x => x.TotalOpsContribution).Type<NonNullType<DecimalType>>();
@@ -21,9 +21,9 @@ namespace Brotherhood_Portal.API.GraphQL.Types
             dto.Field(x => x.MonthlyOpsContribution).Type<NonNullType<DecimalType>>();
 
             dto.Field(x => x.OwnershipPercentageOfFund).Type<NonNullType<DecimalType>>();
-            dto.Field(x => x.MonthlyOwnershipPercentage).Type<NonNullType<DecimalType>>();
+            //dto.Field(x => x.MonthlyOwnershipPercentage).Type<NonNullType<DecimalType>>();
 
-            dto.Field(x => x.CalculatedAt).Type<NonNullType<DateTimeType>>();
+            //dto.Field(x => x.CalculatedAt).Type<NonNullType<DateTimeType>>();
         }
     }
 }

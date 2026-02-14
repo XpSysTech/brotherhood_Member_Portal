@@ -37,6 +37,7 @@ builder.Services.AddScoped<ITokenService, TokenService>();
 
 // GraphQL Services
 builder.Services.AddGraphQLSchema(); // Add the GraphQL schema
+builder.Services.AddAuthorization();
 
 builder.Services.AddIdentityCore<AppUser>(opt => 
 {

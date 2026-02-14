@@ -1,4 +1,4 @@
-﻿using Brotherhood_Portal.Domain.DTOs;
+﻿using Brotherhood_Portal.Domain.DTOs.MISC;
 using Brotherhood_Portal.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;

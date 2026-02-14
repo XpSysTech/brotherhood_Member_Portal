@@ -1,7 +1,7 @@
 ﻿using Brotherhood_Portal.Domain.Entities;
 using System.ComponentModel.DataAnnotations;
 
-namespace Brotherhood_Portal.Domain.DTOs
+namespace Brotherhood_Portal.Domain.DTOs.Identity.Command
 {
     public class RegisterDTO
     {
