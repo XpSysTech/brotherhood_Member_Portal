@@ -1,4 +1,5 @@
-﻿using Brotherhood_Portal.Domain.Entities;
+﻿using Asp.Versioning;
+using Brotherhood_Portal.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -20,6 +21,8 @@ namespace Brotherhood_Portal.API.Controllers
     /// - Standardized API response envelope.
     /// - Structured audit logging for all administrative actions.
     /// </summary>
+
+    [ApiVersion("1.0")]
     public class AdminController(UserManager<AppUser> userManager) : BaseApiController
     {
 

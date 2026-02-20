@@ -13,22 +13,20 @@
 
         <!-- SELECT MEMBER -->
         <div class="rounded-xl bg-white p-4 ring-1 ring-slate-200">
-        <label class="block text-sm font-medium text-slate-700">
-            Select Member
-        </label>
+            <label class="block text-sm font-medium text-slate-700">
+                Select Member
+            </label>
 
-        <select
-            [(ngModel)]="selectedMemberId"
-            (change)="loadHistory()"
-            class="mt-1 w-full rounded-lg border border-slate-200 bg-white px-3 py-2">
+            <select [(ngModel)]="selectedMemberId" (change)="loadHistory()"
+                class="mt-1 w-full rounded-lg border border-slate-200 bg-white px-3 py-2">
 
-            <option [ngValue]="null">-- Select a member --</option>
+                <option [ngValue]="null">-- Select a member --</option>
 
-            <option *ngFor="let member of members" [value]="member.id">
-            {{ member.displayName }}
-            </option>
+                <option *ngFor="let member of members" [value]="member.id">
+                    {{ member.displayName }}
+                </option>
 
-        </select>
+            </select>
         </div>
 
         <!-- ADD DEPOSIT -->
@@ -39,37 +37,27 @@
             <label class="block text-sm font-medium text-slate-700">
                 Savings Amount
             </label>
-            <input 
-                type="number" 
-                [(ngModel)]="depositForm.savingsAmount" 
-                placeholder="Savings Amount"
-                required
+            <input type="number" [(ngModel)]="depositForm.savingsAmount" placeholder="Savings Amount" required
                 class="input w-full rounded-xl border border-slate-200 bg-white px-3 py-2" />
 
             <!-- OPS CONTRIBUTION -->
             <label class="block text-sm font-medium text-slate-700">
                 Ops Contribution
             </label>
-            <input 
-                type="number" 
-                [(ngModel)]="depositForm.opsContribution" 
-                placeholder="Ops Contribution"
-                required
+            <input type="number" [(ngModel)]="depositForm.opsContribution" placeholder="Ops Contribution" required
                 class="input w-full rounded-xl border border-slate-200 bg-white px-3 py-2" />
-            
+
             <!-- DESCRIPTION -->
             <label class="block text-sm font-medium text-slate-700">
                 Description
-            </label>    
+            </label>
             <textarea [(ngModel)]="depositForm.description" placeholder="Description"
                 class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2"></textarea>
 
             <!-- SUBMIT BUTTON -->
-            <button
-            (click)="submitDeposit()"
-            [disabled]="submitting || !selectedMemberId"
-            class="rounded-lg bg-slate-900 px-4 py-2 text-white disabled:opacity-50 disabled:cursor-not-allowed">
-            {{ submitting ? 'Submitting…' : 'Add Deposit' }}
+            <button (click)="submitDeposit()" [disabled]="submitting || !selectedMemberId"
+                class="rounded-lg bg-slate-900 px-4 py-2 text-white disabled:opacity-50 disabled:cursor-not-allowed">
+                {{ submitting ? 'Submitting…' : 'Add Deposit' }}
             </button>
 
 
@@ -84,26 +72,48 @@
 
             <div *ngIf="loadingHistory">Loading…</div>
 
-            <div *ngFor="let record of history" class="border-b py-3">
-                <div class="flex justify-between">
-                    <div>
-                        <p class="font-medium">
-                            {{ record.savingsAmount | currency }}
+            <div *ngIf="!loadingHistory && history.length === 0" class="text-sm text-slate-500">
+                No deposits found for this member.
+            </div>
+
+            <div *ngFor="let record of history" class="border-b py-4">
+                <div class="flex items-start justify-between gap-4">
+                    <div class="space-y-1">
+                        <p class="font-semibold text-slate-900">
+                            Savings: {{ record.savingsAmount | currency }}
+                            <span class="text-slate-400">•</span>
+                            Ops: {{ record.opsContributionAmount | currency }}
                         </p>
+
                         <p class="text-sm text-slate-500">
-                            {{ record.depositDate | date }}
+                            Invoice: {{ record.invoiceNo }} • Created: {{ record.createdAt | date:'medium' }}
+                            <span *ngIf="record.approvedAt"> • Approved: {{ record.approvedAt | date:'medium' }}</span>
                         </p>
+
+                        <p class="text-sm text-slate-600">
+                            Approvals: {{ record.approvalCount }}
+                        </p>
+
+                        <!-- Approval list -->
+                        <div *ngIf="record.approvals.length" class="mt-2 space-y-1">
+                            <p class="text-xs font-medium text-slate-500">Approval History</p>
+                            <div *ngFor="let a of record.approvals" class="text-xs text-slate-600">
+                                {{ a.displayName }} ({{ a.role }}) — {{ a.approvedAt | date:'short' }}
+                            </div>
+                        </div>
                     </div>
 
                     <span class="text-xs rounded-full px-2 py-1" [ngClass]="{
-              'bg-yellow-100 text-yellow-800': record.status === 'Pending',
-              'bg-green-100 text-green-800': record.status === 'Approved'
-            }">
+                        'bg-yellow-100 text-yellow-800': record.status === 'Pending',
+                        'bg-green-100 text-green-800': record.status === 'Approved',
+                        'bg-red-100 text-red-800': record.status === 'Rejected'
+                    }">
                         {{ record.status }}
                     </span>
                 </div>
             </div>
         </div>
+
 
     </div>
 </section>

@@ -1,26 +1,269 @@
 <section class="bg-slate-50 min-h-screen">
-    <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 space-y-10">
+  <div class="mx-auto max-w-7xl px-4 py-10 space-y-8">
 
-        <!-- PAGE HEADER -->
-        <div class="space-y-2">
-            <h1 class="text-3xl font-semibold tracking-tight text-slate-900">
-                Manage Member Accounts
-            </h1>
-            <p class="text-base text-slate-600">
-                This page will be used to:
-                1. Lock existing members Accounts
-                2. Update information of existing members
-                3. Reset the password of existing members
-                4. view Audit trail of existing members
-            </p>
-            <p class="text-base text-slate-600">
-                Layout concept:
-                - Admin chooses Member
-                - Admin selects what to do with member Accounts
-                    - Lock Account, Update information, Reset password, or View Account Audit Trail
-                    - Each will be saved independently.
-            </p>
+    <!-- HEADER -->
+    <div class="space-y-2">
+      <h1 class="text-3xl font-semibold tracking-tight text-slate-900">
+        Manage Members
+      </h1>
+      <p class="text-base text-slate-600">
+        Administrative controls for managing member accounts.
+      </p>
+    </div>
+
+    <!-- GLOBAL MEMBER SELECTOR -->
+    <div class="rounded-xl bg-white p-6 ring-1 ring-slate-200">
+      <label class="block text-sm font-medium text-slate-700">
+        Select Member
+      </label>
+
+      <select [(ngModel)]="selectedMemberId" class="mt-1 w-full rounded-lg border border-slate-200 bg-white px-3 py-2">
+
+        <option [ngValue]="null">-- Select a member --</option>
+
+        <option *ngFor="let member of members" [value]="member.id">
+          {{ member.displayName }}
+        </option>
+
+      </select>
+
+      <!-- Throws Error: Members not loaded, etc -->
+      <p *ngIf="feedback" class="text-sm text-slate-600">
+        {{ feedback }}
+      </p>
+    </div>
+
+    <!-- ===================================== -->
+    <!-- SECTION 1: LOCK / UNLOCK MEMBER -->
+    <!-- ===================================== -->
+
+    <div class="rounded-xl bg-white p-6 ring-1 ring-slate-200 space-y-6">
+      <h2 class="text-lg font-semibold text-slate-900">
+        Lock / Unlock Member
+      </h2>
+
+      <div class="border-b border-slate-200 pb-4">
+        <span class="text-sm text-slate-500">Selected Member</span>
+        <div class="mt-1 text-base font-semibold text-slate-900">
+          {{ selectedDisplayName }}
+        </div>
+      </div>
+
+      <div class="flex gap-4 pt-2 border-slate-200">
+        <!-- <button [disabled]="!selectedMemberId" -->
+        <button disabled
+          class="rounded-lg bg-blue-900 px-4 py-2 text-white disabled:opacity-50 disabled:cursor-not-allowed">
+          Lock Member
+        </button>
+
+        <button disabled
+          class="rounded-lg bg-slate-900 px-4 py-2 text-white disabled:opacity-50 disabled:cursor-not-allowed">
+          Unlock Member
+        </button>
+      </div>
+    </div>
+
+
+    <!-- ===================================== -->
+    <!-- SECTION 2: RESET PASSWORD -->
+    <!-- ===================================== -->
+
+    <div class="rounded-xl bg-white p-6 ring-1 ring-slate-200 space-y-6">
+      <h2 class="text-lg font-semibold text-slate-900">
+        Reset Member Password
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+        <div class="border-b border-slate-200 pb-4">
+          <span class="text-sm text-slate-500">Selected Member</span>
+          <div class="mt-1 text-base font-semibold text-slate-900">
+            {{ selectedDisplayName }}
+          </div>
         </div>
 
+        <div>
+          <label class="block text-sm font-medium text-slate-700">
+            New Password
+          </label>
+          <input type="password" [(ngModel)]="newPassword"
+            class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2" />
+        </div>
+      </div>
+      <p class="text-xs text-slate-500">
+        ADMIN ACTION: This will immediately reset the member's password to the specified value. The member will be
+        required to use this new password on their next login. Use with caution.
+      </p>
+      <div class="pt-4 border-t border-slate-200 flex justify-end">
+        <button (click)="resetPassword()" [disabled]="loading"
+          class="rounded-lg bg-slate-900 px-4 py-2 text-white hover:bg-slate-700 transition">
+          {{ loading ? 'Processing...' : 'Reset Password' }}
+        </button>
+      </div>
+
+      <p *ngIf="message" class="text-sm text-emerald-600">
+        {{ message }}
+      </p>
     </div>
+
+
+    <!-- ===================================== -->
+    <!-- SECTION 3: UPDATE MEMBER DETAILS -->
+    <!-- ===================================== -->
+
+    <div class="rounded-xl bg-white p-6 ring-1 ring-slate-200 space-y-6">
+      <h2 class="text-lg font-semibold text-slate-900">
+        Update Member Details
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+        <div class="sm:col-span-2 border-b border-slate-200 pb-4">
+          <span class="text-sm text-slate-500">Selected Member</span>
+          <div class="mt-1 text-base font-semibold text-slate-900">
+            {{ selectedDisplayName }}
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-slate-700">
+            Email
+          </label>
+          <input type="email" class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-slate-700">
+            First Name
+          </label>
+          <input type="text" class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-slate-700">
+            Last Name
+          </label>
+          <input type="text" class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-slate-700">
+            Date of Birth
+          </label>
+          <input type="date" class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-slate-700">
+            Contact Number
+          </label>
+          <input type="text" class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-slate-700">
+            Home City
+          </label>
+          <input type="text" class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2" />
+        </div>
+
+        <div class="sm:col-span-2">
+          <label class="block text-sm font-medium text-slate-700">
+            Home Address
+          </label>
+          <textarea rows="3" class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2"></textarea>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-slate-700">
+            Occupation
+          </label>
+          <input type="text" class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-slate-700">
+            Business
+          </label>
+          <input type="text" class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2" />
+        </div>
+
+        <div class="sm:col-span-2">
+          <label class="block text-sm font-medium text-slate-700">
+            Profile Image URL
+          </label>
+          <input type="text" class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2" />
+        </div>
+
+        <div class="sm:col-span-2">
+          <label class="block text-sm font-medium text-slate-700">
+            Member Biography
+          </label>
+          <textarea rows="4" class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2"></textarea>
+        </div>
+
+      </div>
+
+      <p class="text-xs text-slate-500">
+        ADMIN ACTION: To be used if member deliberately provides incorrect information or if you need to correct a data
+        entry error. All changes will be logged in the Member Audit Trail for accountability.
+      </p>
+
+      <div class="pt-4 border-t border-slate-200 flex justify-end">
+        <button class="rounded-lg bg-slate-900 px-4 py-2 text-white hover:bg-slate-700 transition">
+          Update Member
+        </button>
+      </div>
+    </div>
+
+
+    <!-- ===================================== -->
+    <!-- SECTION 4: MEMBER AUDIT TRAIL -->
+    <!-- ===================================== -->
+
+    <div class="rounded-xl bg-white p-6 ring-1 ring-slate-200 space-y-6">
+      <h2 class="text-lg font-semibold text-slate-900">
+        Member Audit Trail
+        <label class="block text-sm font-medium text-slate-700">
+          Member Audits will be tracked via Serilog File Sinks.
+        </label>
+      </h2>
+      <!-- This table will display recent audit entries for the selected member, including actions like password resets, profile updates, and account locks/unlocks. -->
+
+      <!-- <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-slate-200 text-sm">
+          <thead class="bg-slate-100">
+            <tr>
+              <th class="px-4 py-3 text-left font-medium text-slate-700">Date</th>
+              <th class="px-4 py-3 text-left font-medium text-slate-700">Action</th>
+              <th class="px-4 py-3 text-left font-medium text-slate-700">Performed By</th>
+              <th class="px-4 py-3 text-left font-medium text-slate-700">Details</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100 bg-white">
+
+            <tr>
+              <td class="px-4 py-3">2026-02-18</td>
+              <td class="px-4 py-3">Password Reset</td>
+              <td class="px-4 py-3">Admin</td>
+              <td class="px-4 py-3 text-slate-600">
+                Password manually reset by administrator.
+              </td>
+            </tr>
+
+            <tr>
+              <td class="px-4 py-3">2026-02-17</td>
+              <td class="px-4 py-3">Profile Updated</td>
+              <td class="px-4 py-3">Member</td>
+              <td class="px-4 py-3 text-slate-600">
+                Contact number updated.
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div> -->
+    </div>
+
+  </div>
 </section>

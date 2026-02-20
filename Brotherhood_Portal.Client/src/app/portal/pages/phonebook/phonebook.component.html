@@ -5,10 +5,114 @@
     <div>
       <h1 class="text-3xl font-semibold text-slate-900">Phonebook</h1>
       <p class="text-slate-600 mt-1">
-        Browse members and connect directly.
+        Explore member profiles, cooperation frameworks, and verified contact details. Strengthen the network by sharing
+        opportunities, forming partnerships, and building ventures together.
       </p>
     </div>
-    <!-- REDO HEADER: To encourage members to collaborate share opportunities with each other. -->
+
+    <!-- COOPERATION FRAMEWORK -->
+    <div class="rounded-xl bg-white ring-1 ring-slate-200 overflow-hidden">
+
+      <!-- FRAMEWORK HEADER -->
+      <button type="button" (click)="toggleFramework()"
+        class="flex w-full items-center justify-between px-6 py-4 text-left hover:bg-slate-50">
+
+        <div>
+          <h3 class="text-sm font-semibold text-slate-900">
+            Cooperation Framework
+          </h3>
+          <p class="text-xs text-slate-500">
+            Guidelines for responsible collaboration, service standards, and investment protocols within the network.
+          </p>
+        </div>
+
+        <span class="text-slate-400 transition-transform" [class.rotate-180]="frameworkExpanded">
+          ▼
+        </span>
+      </button>
+
+      <!-- FRAMEWORK CONTENT -->
+      <div *ngIf="frameworkExpanded" class="px-6 pb-6 space-y-6 text-sm text-slate-700">
+
+        <!-- PURPOSE -->
+        <div>
+          <h3 class="font-semibold text-slate-900 mb-2">I. Purpose</h3>
+          <ul class="list-disc pl-5 space-y-1 text-slate-600">
+            <li>Strengthen economic circulation within the network.</li>
+            <li>Encourage structured and responsible collaboration.</li>
+            <li>Protect members from abuse and fraud.</li>
+            <li>Create a disciplined internal marketplace.</li>
+            <li>Promote transparency and accountability.</li>
+          </ul>
+        </div>
+
+        <!-- CORE PRINCIPLES -->
+        <div>
+          <h3 class="font-semibold text-slate-900 mb-2">II. Core Principles</h3>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-slate-600">
+            <span>• Voluntary Participation</span>
+            <span>• Transparency</span>
+            <span>• Respect</span>
+            <span>• No Exploitation</span>
+            <span>• Clear Agreements</span>
+            <span>• Accountability</span>
+          </div>
+        </div>
+
+        <!-- PHONEBOOK RULES -->
+        <div>
+          <h3 class="font-semibold text-slate-900 mb-2">III. Phonebook Rules</h3>
+          <ul class="list-disc pl-5 space-y-1 text-slate-600">
+            <li>Directory is strictly private.</li>
+            <li>No exporting or sharing contacts externally.</li>
+            <li>No unsolicited bulk outreach.</li>
+            <li>No spamming or pressure selling.</li>
+          </ul>
+        </div>
+
+        <!-- SERVICE & SALES -->
+        <div>
+          <h3 class="font-semibold text-slate-900 mb-2">IV. Service & Trade Standards</h3>
+          <ul class="list-disc pl-5 space-y-1 text-slate-600">
+            <li>Clear pricing and scope required.</li>
+            <li>No forced discounts.</li>
+            <li>Written agreements encouraged.</li>
+            <li>Contracts should align with Namibian law.</li>
+          </ul>
+        </div>
+
+        <!-- INVESTMENT PROTOCOL -->
+        <div>
+          <h3 class="font-semibold text-slate-900 mb-2">V. Investment Protocol</h3>
+          <ul class="list-disc pl-5 space-y-1 text-slate-600">
+            <li>Written proposal required.</li>
+            <li>Capital use and risks must be disclosed.</li>
+            <li>Formal agreement mandatory.</li>
+            <li>All investments at investor's own risk.</li>
+          </ul>
+        </div>
+
+        <!-- DISPUTE RESOLUTION -->
+        <div>
+          <h3 class="font-semibold text-slate-900 mb-2">VI. Dispute Resolution</h3>
+          <ul class="list-disc pl-5 space-y-1 text-slate-600">
+            <li>Direct discussion first.</li>
+            <li>Mediation if required.</li>
+            <li>Disciplinary review where necessary.</li>
+          </ul>
+        </div>
+
+        <!-- VISION -->
+        <div class="bg-slate-50 p-4 rounded-lg ring-1 ring-slate-200">
+          <h3 class="font-semibold text-slate-900 mb-2">Long-Term Vision</h3>
+          <p class="text-slate-600">
+            A disciplined internal contracting ecosystem, trusted supplier network,
+            structured investment circle, and a mature economic association.
+          </p>
+        </div>
+
+      </div>
+    </div>
 
     <!-- LIST -->
     <div class="divide-y rounded-xl bg-white ring-1 ring-slate-200">
@@ -16,9 +120,7 @@
       <div *ngFor="let member of members">
 
         <!-- ROW -->
-        <button
-          type="button"
-          (click)="toggle(member.id)"
+        <button type="button" (click)="toggle(member.id)"
           class="flex w-full items-center justify-between px-4 py-4 text-left hover:bg-slate-50">
 
           <div>
@@ -31,17 +133,13 @@
             </p>
           </div>
 
-          <span
-            class="text-slate-400 transition-transform"
-            [class.rotate-180]="expandedMemberId === member.id">
+          <span class="text-slate-400 transition-transform" [class.rotate-180]="expandedMemberId === member.id">
             ▼
           </span>
         </button>
 
         <!-- EXPANDED -->
-        <div
-          *ngIf="expandedMemberId === member.id"
-          class="px-4 pb-4 text-sm text-slate-700 space-y-2">
+        <div *ngIf="expandedMemberId === member.id" class="px-4 pb-4 text-sm text-slate-700 space-y-2">
 
           <div>
             <strong>Business:</strong>
@@ -53,14 +151,12 @@
             {{ member.contactNumber }}
           </div>
 
-          <button
-            (click)="openWhatsApp(member.contactNumber)"
+          <button (click)="openWhatsApp(member.contactNumber)"
             class="mt-2 inline-flex items-center gap-2 rounded-lg bg-green-600 px-3 py-1.5 text-white hover:bg-green-700">
 
             <!-- WhatsApp icon -->
             <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-              <path
-                d="M12 2a10 10 0 00-8.94 14.5L2 22l5.7-1.5A10 10 0 1012 2z"/>
+              <path d="M12 2a10 10 0 00-8.94 14.5L2 22l5.7-1.5A10 10 0 1012 2z" />
             </svg>
 
             Contact on WhatsApp

@@ -1,3 +1,5 @@
+using Asp.Versioning;
+using Brotherhood_Portal.API.Extensions;
 using Brotherhood_Portal.API.GraphQL.Queries;
 using Brotherhood_Portal.API.GraphQL.Schema;
 using Brotherhood_Portal.Application.Interfaces;
@@ -7,15 +9,40 @@ using Brotherhood_Portal.Infrastructure.Context;
 using Brotherhood_Portal.Infrastructure.Repository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Serilog;
 using System;
 using System.Text;
 
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .WriteTo.File("logs/log-.txt", rollingInterval: RollingInterval.Day)
+    .CreateLogger();
+
 var builder = WebApplication.CreateBuilder(args);
 
+var allowedOrigins = builder.Configuration
+    .GetSection("Cors:AllowedOrigins")
+    .Get<string[]>();
+
+
 // Add services to the container.
-builder.Services.AddControllers();
+builder.Host.UseSerilog((context, config) =>
+{
+    config.ReadFrom.Configuration(context.Configuration);
+});
+
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.PropertyNamingPolicy =
+            System.Text.Json.JsonNamingPolicy.CamelCase;
+    });
+
 builder.Services.AddOpenApi();
 builder.Services.AddDbContext<AppDBContext>(opt => 
 {
@@ -43,11 +70,35 @@ builder.Services.AddIdentityCore<AppUser>(opt =>
 {
     opt.Password.RequireNonAlphanumeric = false;
     opt.User.RequireUniqueEmail = true;
+    opt.Password.RequireDigit = true;
 })
 .AddRoles<IdentityRole>()
-.AddEntityFrameworkStores<AppDBContext>();
+.AddEntityFrameworkStores<AppDBContext>()
+.AddSignInManager()
+.AddDefaultTokenProviders();
 
-builder.Services.AddCors();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy", policy =>
+    {
+        policy.WithOrigins(allowedOrigins!)
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
+builder.Services.AddHealthChecks()
+    .AddDbContextCheck<AppDBContext>()
+    .AddCheck("self", () => HealthCheckResult.Healthy());
+
+builder.Services.AddApiVersioning(options =>
+{
+    options.DefaultApiVersion = new ApiVersion(1, 0);
+    options.AssumeDefaultVersionWhenUnspecified = true;
+    options.ReportApiVersions = true;
+});
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
     var tokenKey = builder.Configuration["TokenKey"] ?? throw new Exception("Token key not found in configuration - Program.cs");
@@ -68,7 +119,21 @@ builder.Services.AddAuthorizationBuilder()
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddRateLimiter(options =>
+{
+    options.AddFixedWindowLimiter("fixed", opt =>
+    {
+        opt.Window = TimeSpan.FromMinutes(1);
+        opt.PermitLimit = 100;
+        opt.QueueLimit = 0;
+    });
+});
+
+builder.Host.UseSerilog();
+
 var app = builder.Build();
+
+app.MapHealthChecks("/health");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -78,22 +143,16 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-if (!app.Environment.IsDevelopment())
-{
-    app.UseHttpsRedirection();
-}
+app.UseRateLimiter();
 
-// Configure CORS to allow requests from the Angular client
-app.UseCors(policy =>
-    policy.WithOrigins("http://localhost:4200", "https://localhost:4200") // Angular dev server URL
-          .AllowAnyHeader()
-          .AllowAnyMethod()
-    );
+app.UseSecurity(app.Environment);
+
+app.UseCors("CorsPolicy");
 
 app.UseAuthentication(); //Who are you?
 app.UseAuthorization(); //Are you allowed?
 
-app.MapControllers();
+app.MapControllers().RequireRateLimiting("fixed");
 
 app.MapGraphQL("/graphql"); // GraphQL endpoint
 

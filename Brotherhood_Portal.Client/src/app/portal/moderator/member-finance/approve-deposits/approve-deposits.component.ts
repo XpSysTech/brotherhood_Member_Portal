@@ -21,14 +21,27 @@ export class ApproveDepositsComponent implements OnInit {
     this.loadPendingDeposits();
   }
 
-  loadPendingDeposits(): void {
-    this.loading = true;
+  // loadPendingDeposits(): void {
+  //   this.loading = true;
 
-    this.financeService.getPendingDeposits()
-      .subscribe({
-        next: data => this.pendingDeposits = data,
-        complete: () => this.loading = false
-      });
+  //   this.financeService.getPendingDeposits()
+  //     .subscribe({
+  //       next: data => this.pendingDeposits = data,
+  //       complete: () => this.loading = false
+  //     });
+  // }
+
+  loadPendingDeposits(): void {
+  this.loading = true;
+
+  this.financeService.getPendingDeposits()
+    .subscribe({
+      next: data => {
+        console.log('Pending deposits:', data);
+        this.pendingDeposits = data;
+      },
+      complete: () => this.loading = false
+    });
   }
 
   approve(financeId: number): void {

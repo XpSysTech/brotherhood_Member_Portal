@@ -48,7 +48,9 @@ namespace Brotherhood_Portal.Infrastructure.Repository
         /// </summary>
         public async Task<Member?> GetMemberByIdAsync(string userId)
         {
-            return await appDBContext.Members.FindAsync(userId);
+            return await appDBContext.Members
+                .Include(m => m.User)
+                .FirstOrDefaultAsync(m => m.Id == userId);
         }
 
         #endregion

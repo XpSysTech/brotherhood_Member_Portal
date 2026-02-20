@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { tap } from 'rxjs/internal/operators/tap';
-import { JwtPayload, UserDto } from '../interfaces/AccountDto';
+import { JwtPayload, ResetPasswordDto, UpdateProfileDto, UserDto } from '../interfaces/AccountDto';
 import { jwtDecode } from 'jwt-decode';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
@@ -11,19 +12,10 @@ import { jwtDecode } from 'jwt-decode';
 export class AccountService {
   private http = inject(HttpClient);
 
-  baseUrl: string = 'https://localhost:5001/api/';
-
-  // ✅ global auth state - holds the current logged-in user data
+  private baseUrl = `${environment.apiBaseUrl}`;
   currentUser = signal<UserDto | null>(this.loadUser());
-
-  // Computed signal to check if user is logged in (true if currentUser is not null)
   isLoggedIn = computed(() => !!this.currentUser());
-
-  // ============================================
-  // ROLE-BASED ACCESS CONTROL (RBAC)
-  // ============================================
-  // Extracts user roles from the JWT token stored in currentUser
-  // Handles both single role (string) and multiple roles (array) from token
+  
   userRoles = computed(() => {
     const token = this.currentUser()?.token;
     if (!token) return [];
@@ -34,12 +26,8 @@ export class AccountService {
     return Array.isArray(roles) ? roles : roles ? [roles] : [];
   });
 
-  // Computed signal that provides easy access to user roles
   roles = computed(() => this.userRoles());
 
-  // ============================================
-  // ROLE CHECKING METHODS
-  // ============================================
   // Check if user has a specific role
   hasRole(role: string): boolean {
     return this.roles().includes(role);
@@ -104,6 +92,29 @@ export class AccountService {
   register(creds: { displayName: string; email: string; password: string }) {
     return this.http.post<UserDto>(this.baseUrl + 'account/register', creds);
     // Removed tap operator - new users are NOT automatically logged in
+  }
+
+  getProfile() {
+    return this.http.get<UpdateProfileDto>(
+      this.baseUrl + 'members/profile'
+    );
+  }
+
+  updateProfile(profileData: UpdateProfileDto) {
+    return this.http.put<UserDto>(this.baseUrl + 'account/profile', profileData).pipe(
+      tap((updatedUser) => {
+        this.currentUser.set(updatedUser);
+        localStorage.setItem('user', JSON.stringify(updatedUser));
+        localStorage.setItem('token', updatedUser.token);
+      })
+    );
+  }
+
+  resetPassword(data: ResetPasswordDto) {
+    return this.http.post<{ message: string }>(
+      this.baseUrl + 'account/reset-password',
+      data
+    );
   }
 
   // ============================================

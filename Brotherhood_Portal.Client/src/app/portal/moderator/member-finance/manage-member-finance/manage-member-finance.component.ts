@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FinanceService } from '../../../../../core/services/finance-service';
-import { FinanceRecord } from '../../../../../core/interfaces/FinanceDto';
+import { FinanceRecord, MemberDepositHistoryDto } from '../../../../../core/interfaces/FinanceDto';
+
 import { MemberByName } from '../../../../../core/interfaces/Member';
 
 @Component({
@@ -40,21 +41,14 @@ export class ManageMemberFinanceComponent implements OnInit {
   /**
    * Financial history records for selected member.
    */
-  history: FinanceRecord[] = [];
-
-  /**
-   * UI state flags
-   */
+  history: MemberDepositHistoryDto[] = [];
+  
   loadingHistory = false;  // Controls history loading indicator
   submitting = false;      // Prevents double submission
   feedback: string | null = null; // User feedback messages
 
   constructor(private financeService: FinanceService) {}
 
-  /**
-   * Lifecycle hook.
-   * On component load, fetch members for dropdown.
-   */
   ngOnInit(): void {
     console.log('Component loaded');
     this.loadMembers();

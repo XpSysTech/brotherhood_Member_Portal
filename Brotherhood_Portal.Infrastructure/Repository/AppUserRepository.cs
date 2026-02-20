@@ -1,6 +1,7 @@
 ﻿using Brotherhood_Portal.Application.Interfaces;
 using Brotherhood_Portal.Domain.Entities;
 using Brotherhood_Portal.Infrastructure.Context;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Brotherhood_Portal.Infrastructure.Repository
@@ -24,10 +25,11 @@ namespace Brotherhood_Portal.Infrastructure.Repository
     public class AppUserRepository : IAppUserRepository
     {
         private readonly AppDBContext _dbcontext;
-
-        public AppUserRepository(AppDBContext dbContext)
+        private readonly UserManager<AppUser> _userManager;
+        public AppUserRepository(AppDBContext dbContext, UserManager<AppUser> userManager)
         {
             _dbcontext = dbContext;
+            _userManager = userManager;
         }
 
         #region Create User
@@ -84,9 +86,21 @@ namespace Brotherhood_Portal.Infrastructure.Repository
 
         #endregion
 
-        
-        #region Disable User Account
-        
+
+        #region Lock User Account
+        public async Task LockUserAsync(AppUser user)
+        {
+            user.LockoutEnd = DateTimeOffset.MaxValue;
+            await _userManager.UpdateAsync(user);
+        }
+        #endregion
+
+        #region Unlock User Account
+        public async Task UnlockUserAsync(AppUser user)
+        {
+            user.LockoutEnd = null;
+            await _userManager.UpdateAsync(user);
+        }
         #endregion
 
 
@@ -180,6 +194,12 @@ namespace Brotherhood_Portal.Infrastructure.Repository
         #endregion
 
         #region Reset User Password
+        public async Task<IdentityResult> ResetPasswordAsync(AppUser user, string newPassword)
+        {
+            var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+            return await _userManager.ResetPasswordAsync(user, token, newPassword);
+        }
 
         #endregion
     }

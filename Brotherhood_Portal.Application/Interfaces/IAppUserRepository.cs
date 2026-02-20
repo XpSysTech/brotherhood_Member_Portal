@@ -1,4 +1,5 @@
 ﻿using Brotherhood_Portal.Domain.Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace Brotherhood_Portal.Application.Interfaces
 {
@@ -11,5 +12,8 @@ namespace Brotherhood_Portal.Application.Interfaces
         Task<AppUser?> GetUserByIdAsync(string id);
         Task<bool> UpdateUserAsync(AppUser user);
         Task<bool> DeleteUserAsync(string id);
+        Task LockUserAsync(AppUser user);
+        Task UnlockUserAsync(AppUser user);
+        Task<IdentityResult> ResetPasswordAsync(AppUser user, string newPassword);
     }
 }

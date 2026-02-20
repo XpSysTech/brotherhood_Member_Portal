@@ -1,8 +1,29 @@
 [
   {
     "ContainingType": "Brotherhood_Portal.API.Controllers.AccountController",
+    "Method": "LockUser",
+    "RelativePath": "api/v{version}/Account/lock/{userId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "version",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Brotherhood_Portal.API.Controllers.AccountController",
     "Method": "Login",
-    "RelativePath": "api/Account/login",
+    "RelativePath": "api/v{version}/Account/login",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -10,6 +31,42 @@
       {
         "Name": "loginDTO",
         "Type": "Brotherhood_Portal.Domain.DTOs.Identity.Command.LoginDTO",
+        "IsRequired": true
+      },
+      {
+        "Name": "version",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Brotherhood_Portal.Domain.DTOs.Identity.Query.UserDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Brotherhood_Portal.API.Controllers.AccountController",
+    "Method": "UpdateMember",
+    "RelativePath": "api/v{version}/Account/profile",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updateMemberDto",
+        "Type": "Brotherhood_Portal.Domain.DTOs.Identity.Command.UpdateMemberDto",
+        "IsRequired": true
+      },
+      {
+        "Name": "version",
+        "Type": "",
         "IsRequired": true
       }
     ],
@@ -28,7 +85,7 @@
   {
     "ContainingType": "Brotherhood_Portal.API.Controllers.AccountController",
     "Method": "Register",
-    "RelativePath": "api/Account/register",
+    "RelativePath": "api/v{version}/Account/register",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -36,6 +93,11 @@
       {
         "Name": "registerDTO",
         "Type": "Brotherhood_Portal.Domain.DTOs.Identity.Command.RegisterDTO",
+        "IsRequired": true
+      },
+      {
+        "Name": "version",
+        "Type": "",
         "IsRequired": true
       }
     ],
@@ -52,9 +114,51 @@
     ]
   },
   {
+    "ContainingType": "Brotherhood_Portal.API.Controllers.AccountController",
+    "Method": "ResetPassword",
+    "RelativePath": "api/v{version}/Account/reset-password",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Brotherhood_Portal.Domain.DTOs.Identity.Command.ResetPasswordDto",
+        "IsRequired": true
+      },
+      {
+        "Name": "version",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Brotherhood_Portal.API.Controllers.AccountController",
+    "Method": "UnlockUser",
+    "RelativePath": "api/v{version}/Account/unlock/{userId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "version",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Brotherhood_Portal.API.Controllers.AdminController",
     "Method": "AddRoleToUser",
-    "RelativePath": "api/Admin/add-role/{userId}",
+    "RelativePath": "api/v{version}/Admin/add-role/{userId}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -68,6 +172,11 @@
         "Name": "role",
         "Type": "System.String",
         "IsRequired": false
+      },
+      {
+        "Name": "version",
+        "Type": "",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -75,7 +184,7 @@
   {
     "ContainingType": "Brotherhood_Portal.API.Controllers.AdminController",
     "Method": "EditRoles",
-    "RelativePath": "api/Admin/edit-roles/{userId}",
+    "RelativePath": "api/v{version}/Admin/edit-roles/{userId}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -89,6 +198,11 @@
         "Name": "roles",
         "Type": "System.String",
         "IsRequired": false
+      },
+      {
+        "Name": "version",
+        "Type": "",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -96,11 +210,17 @@
   {
     "ContainingType": "Brotherhood_Portal.API.Controllers.AdminController",
     "Method": "GetPhotosForModeration",
-    "RelativePath": "api/Admin/photos-to-moderate",
+    "RelativePath": "api/v{version}/Admin/photos-to-moderate",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "version",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": [
       {
         "Type": "System.String",
@@ -116,17 +236,23 @@
   {
     "ContainingType": "Brotherhood_Portal.API.Controllers.AdminController",
     "Method": "GetUsersWithRoles",
-    "RelativePath": "api/Admin/users-with-roles",
+    "RelativePath": "api/v{version}/Admin/users-with-roles",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "version",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
     "ContainingType": "FinanceController",
     "Method": "AddDeposit",
-    "RelativePath": "api/Finance/add-deposit",
+    "RelativePath": "api/v{version}/Finance/add-deposit",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -135,6 +261,11 @@
         "Name": "dto",
         "Type": "Brotherhood_Portal.Domain.DTOs.Finance.Command.AddDepositRequestDto",
         "IsRequired": true
+      },
+      {
+        "Name": "version",
+        "Type": "",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -142,7 +273,7 @@
   {
     "ContainingType": "FinanceController",
     "Method": "ApproveDeposit",
-    "RelativePath": "api/Finance/approve-deposit/{financeId}",
+    "RelativePath": "api/v{version}/Finance/approve-deposit/{financeId}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -151,6 +282,11 @@
         "Name": "financeId",
         "Type": "System.Int32",
         "IsRequired": true
+      },
+      {
+        "Name": "version",
+        "Type": "",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -158,7 +294,7 @@
   {
     "ContainingType": "FinanceController",
     "Method": "GetMemberDepositHistoryAsync",
-    "RelativePath": "api/Finance/member/{memberId}/deposit-history",
+    "RelativePath": "api/v{version}/Finance/member/{memberId}/deposit-history",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -166,6 +302,11 @@
       {
         "Name": "memberId",
         "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "version",
+        "Type": "",
         "IsRequired": true
       }
     ],
@@ -184,11 +325,17 @@
   {
     "ContainingType": "FinanceController",
     "Method": "GetPendingDeposits",
-    "RelativePath": "api/Finance/pending-deposits",
+    "RelativePath": "api/v{version}/Finance/pending-deposits",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "version",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.List\u00601[[Brotherhood_Portal.Domain.DTOs.Finance.Query.PendingDepositDto, Brotherhood_Portal.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
@@ -204,11 +351,17 @@
   {
     "ContainingType": "Brotherhood_Portal.API.Controllers.MembersController",
     "Method": "GetMembers",
-    "RelativePath": "api/Members",
+    "RelativePath": "api/v{version}/Members",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "version",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.IReadOnlyList\u00601[[Brotherhood_Portal.Domain.Entities.Member, Brotherhood_Portal.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
@@ -224,7 +377,7 @@
   {
     "ContainingType": "Brotherhood_Portal.API.Controllers.MembersController",
     "Method": "GetPhotosForMember",
-    "RelativePath": "api/Members/{id}/photos",
+    "RelativePath": "api/v{version}/Members/{id}/photos",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -232,6 +385,11 @@
       {
         "Name": "id",
         "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "version",
+        "Type": "",
         "IsRequired": true
       }
     ],
@@ -250,7 +408,7 @@
   {
     "ContainingType": "Brotherhood_Portal.API.Controllers.MembersController",
     "Method": "GetMemberById",
-    "RelativePath": "api/Members/{userId}",
+    "RelativePath": "api/v{version}/Members/{userId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -258,6 +416,11 @@
       {
         "Name": "userId",
         "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "version",
+        "Type": "",
         "IsRequired": true
       }
     ],
@@ -276,11 +439,17 @@
   {
     "ContainingType": "Brotherhood_Portal.API.Controllers.MembersController",
     "Method": "GetMembersForDropdown",
-    "RelativePath": "api/Members/dropdown",
+    "RelativePath": "api/v{version}/Members/dropdown",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "version",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.List\u00601[[Brotherhood_Portal.Domain.DTOs.Member.Query.MemberByNameDTO, Brotherhood_Portal.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
@@ -296,14 +465,46 @@
   {
     "ContainingType": "Brotherhood_Portal.API.Controllers.MembersController",
     "Method": "GetPhonebookAsync",
-    "RelativePath": "api/Members/phonebook",
+    "RelativePath": "api/v{version}/Members/phonebook",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "version",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.List\u00601[[Brotherhood_Portal.Domain.DTOs.Member.Query.MemberPhonebookDTO, Brotherhood_Portal.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Brotherhood_Portal.API.Controllers.MembersController",
+    "Method": "GetMemberProfile",
+    "RelativePath": "api/v{version}/Members/profile",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "version",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Brotherhood_Portal.Domain.DTOs.Identity.Command.UpdateMemberDto",
         "MediaTypes": [
           "text/plain",
           "application/json",

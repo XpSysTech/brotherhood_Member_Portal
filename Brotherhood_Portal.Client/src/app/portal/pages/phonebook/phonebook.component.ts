@@ -27,7 +27,7 @@ export class PhonebookComponent implements OnInit {
 
   private loadMembers(): void {
     this.http
-      .get<MemberPhonebook[]>(`${this.baseUrl}/members/phonebook`)
+      .get<MemberPhonebook[]>(`${this.baseUrl}members/phonebook`)
       .subscribe({
         next: members => {
           this.members = members;
@@ -54,5 +54,11 @@ export class PhonebookComponent implements OnInit {
   openWhatsApp(number: string): void {
     const sanitized = number.replace(/\D/g, '');
     window.open(`https://wa.me/${sanitized}`, '_blank');
+  }
+
+  frameworkExpanded = false;
+
+  toggleFramework(): void {
+    this.frameworkExpanded = !this.frameworkExpanded;
   }
 }
