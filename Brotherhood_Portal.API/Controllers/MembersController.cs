@@ -3,7 +3,7 @@ using Brotherhood_Portal.Application.Interfaces;
 using Brotherhood_Portal.Domain.DTOs.Identity.Command;
 using Brotherhood_Portal.Domain.DTOs.Member.Query;
 using Brotherhood_Portal.Domain.Entities;
-using Brotherhood_Portal.Infrastructure.Context;
+using Brotherhood_Portal.Infrastructure.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

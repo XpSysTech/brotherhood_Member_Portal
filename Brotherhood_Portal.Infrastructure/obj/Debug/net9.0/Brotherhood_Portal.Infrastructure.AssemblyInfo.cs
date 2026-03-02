@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Brotherhood_Portal.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1ff982fb9d88de39c074bd967ea4940132a8a4c9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+326d25df9bdf45232381d3a0ff34cc8b6f0d9b45")]
 [assembly: System.Reflection.AssemblyProductAttribute("Brotherhood_Portal.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Brotherhood_Portal.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

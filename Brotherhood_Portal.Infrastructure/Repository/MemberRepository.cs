@@ -1,6 +1,6 @@
 ﻿using Brotherhood_Portal.Application.Interfaces;
 using Brotherhood_Portal.Domain.Entities;
-using Brotherhood_Portal.Infrastructure.Context;
+using Brotherhood_Portal.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace Brotherhood_Portal.Infrastructure.Repository
@@ -37,7 +37,7 @@ namespace Brotherhood_Portal.Infrastructure.Repository
         /// <summary>
         /// [1] PURPOSE
         /// Retrieves a single Member entity by its unique identifier.
-        ///
+        ///using Brotherhood_Portal.Infrastructure.Data;
         /// [2] BEHAVIOR
         /// - Uses EF Core FindAsync for primary key lookup.
         /// - Returns null if not found.

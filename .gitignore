@@ -489,6 +489,8 @@ Brotherhood_Portal.API/appsettings.json
 # Ignore Database File
 Brotherhood_Portal.API/brotherhood_portal.db*
 
+# Ignore logs File
+Brotherhood_Portal.API/logs/
+
 # Ignore Environments folder
 Brotherhood_Portal.Client/src/environments/
-

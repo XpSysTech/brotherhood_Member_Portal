@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit {
   member: MemberFinanceSummary | null = null;
   loading = true;
   error: string | null = null;
-  fundGoal = 500_000;
+  fundGoal = 150_000;
 
   ngOnInit(): void {
     const now = new Date();

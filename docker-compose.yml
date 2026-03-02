@@ -1,0 +1,42 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: boena-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: brotherhood_db
+      POSTGRES_USER: boena_postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: .
+      dockerfile: Brotherhood_Portal.API/Dockerfile
+    container_name: boena-api
+    depends_on:
+      - postgres
+    environment:
+      Jwt__TokenKey: "super_long_secret_key_minimum_64_characters_required_here"
+      Jwt__Issuer: "Brotherhood"
+      Jwt__Audience: "BrotherhoodUsers"
+      Jwt__ExpiryMinutes: 15
+      ConnectionStrings__DefaultConnection: "Host=postgres;Port=5432;Database=brotherhood_db;Username=boena_postgres;Password=postgres"
+    ports:
+      - "5001:8080"
+
+  frontend:
+    build:
+      context: ./Brotherhood_Portal.Client
+      dockerfile: Dockerfile
+    container_name: boena-client
+    depends_on:
+      - api
+    ports:
+      - "80:80"
+
+volumes:
+  postgres_data:

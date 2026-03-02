@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Brotherhood_Portal.Infrastructure.Context
+namespace Brotherhood_Portal.Infrastructure.Data
 {
     public class AppDBContext(DbContextOptions<AppDBContext> options) : IdentityDbContext<AppUser>(options)
     {
@@ -39,6 +39,10 @@ namespace Brotherhood_Portal.Infrastructure.Context
                 .HasForeignKey(f => f.MemberId)
                 .OnDelete(DeleteBehavior.Restrict); // Prevent cascade delete to protect financial records
 
+            // Explicit timezone config
+            modelBuilder.Entity<Photo>()
+                .Property(p => p.UploadedDate)
+                .HasColumnType("timestamp with time zone");
 
             // MemberInvoiceSequence Composite Key 
             modelBuilder.Entity<MemberInvoiceSequence>()

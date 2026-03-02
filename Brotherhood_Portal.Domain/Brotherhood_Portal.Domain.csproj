@@ -7,7 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-	<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.11" />
+    <None Remove="Entities\AppUser.cs~RF1338065.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
+	<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.13" />
   </ItemGroup>
 
   <ItemGroup>

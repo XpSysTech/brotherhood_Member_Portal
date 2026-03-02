@@ -34,6 +34,6 @@ namespace Brotherhood_Portal.Domain.DTOs.Identity.Command
         public required string HomeCity { get; set; }
 
         [Required] 
-        public DateTime DateOfBirth { get; set; }
+        public DateOnly DateOfBirth { get; set; }
     }
 }

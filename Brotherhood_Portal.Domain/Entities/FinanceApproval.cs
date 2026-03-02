@@ -8,21 +8,21 @@ namespace Brotherhood_Portal.Domain.Entities
         [Key]
         public int Id { get; set; }
 
-        // 🔹 Relationship to Finance
+        // Relationship to Finance
         [Required]
         public int FinanceId { get; set; }
 
         [ForeignKey(nameof(FinanceId))]
         public Finance Finance { get; set; } = null!;
 
-        // 🔹 Relationship to User
+        // Relationship to User
         [Required]
         public string UserId { get; set; } = null!;
 
         [ForeignKey(nameof(UserId))]
         public AppUser User { get; set; } = null!;
 
-        // 🔹 Metadata
+        // Metadata
         [Required]
         public string Role { get; set; } = null!;
 

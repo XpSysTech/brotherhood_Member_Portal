@@ -1,7 +1,7 @@
 ﻿using Brotherhood_Portal.Application.Aggregates;
 using Brotherhood_Portal.Application.Interfaces;
 using Brotherhood_Portal.Domain.Entities;
-using Brotherhood_Portal.Infrastructure.Context;
+using Brotherhood_Portal.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace Brotherhood_Portal.Infrastructure.Repository

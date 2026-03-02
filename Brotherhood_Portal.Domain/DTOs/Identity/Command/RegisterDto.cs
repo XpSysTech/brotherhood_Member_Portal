@@ -19,7 +19,7 @@ namespace Brotherhood_Portal.Domain.DTOs.Identity.Command
         [Required] public required string? ContactNumber { get; set; } = string.Empty;
         [Required] public required string? HomeAddress { get; set; } = string.Empty;
         [Required] public required string HomeCity { get; set; } = string.Empty;
-        [Required] public DateTime DateOfBirth { get; set; }
+        [Required] public DateOnly DateOfBirth { get; set; }
 
         //[Required]
         //public Member? Member { get; set; } = null;

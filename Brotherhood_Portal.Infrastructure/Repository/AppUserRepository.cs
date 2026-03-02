@@ -1,6 +1,6 @@
 ﻿using Brotherhood_Portal.Application.Interfaces;
 using Brotherhood_Portal.Domain.Entities;
-using Brotherhood_Portal.Infrastructure.Context;
+using Brotherhood_Portal.Infrastructure.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 

@@ -2,6 +2,7 @@
 using Brotherhood_Portal.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -42,8 +43,10 @@ namespace Brotherhood_Portal.Application.Services
     /// - Never commit TokenKey to source control
     /// - Consider refresh tokens for production systems
     /// </summary>
-    public class TokenService(IConfiguration config, UserManager<AppUser> userManager) : ITokenService
+    public class TokenService(IOptions<JwtSettings> jwtOptions, UserManager<AppUser> userManager) : ITokenService
     {
+        private readonly JwtSettings _jwt = jwtOptions.Value;
+
         /// <summary>
         /// [1] PURPOSE
         /// Creates a signed JWT token for the specified authenticated user.
@@ -70,7 +73,7 @@ namespace Brotherhood_Portal.Application.Services
         public async Task<string> CreateToken(AppUser user)
         {
             // Retrieve token secret from configuration
-            var tokenKey = config["TokenKey"]
+            var tokenKey = _jwt.TokenKey
                 ?? throw new Exception("Cannot get token key");
 
             // Enforce minimum cryptographic strength
@@ -108,10 +111,9 @@ namespace Brotherhood_Portal.Application.Services
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-
-                // Short-lived token for improved security
-                Expires = DateTime.UtcNow.AddMinutes(15),
-
+                Expires = DateTime.UtcNow.AddMinutes(_jwt.ExpiryMinutes),
+                Issuer = _jwt.Issuer,
+                Audience = _jwt.Audience,
                 SigningCredentials = creds
             };
 

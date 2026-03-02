@@ -1,21 +1,18 @@
 using Asp.Versioning;
 using Brotherhood_Portal.API.Extensions;
-using Brotherhood_Portal.API.GraphQL.Queries;
 using Brotherhood_Portal.API.GraphQL.Schema;
 using Brotherhood_Portal.Application.Interfaces;
 using Brotherhood_Portal.Application.Services;
 using Brotherhood_Portal.Domain.Entities;
-using Brotherhood_Portal.Infrastructure.Context;
+using Brotherhood_Portal.Infrastructure.Data;
 using Brotherhood_Portal.Infrastructure.Repository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
-using System;
 using System.Text;
 
 Log.Logger = new LoggerConfiguration()
@@ -28,7 +25,6 @@ var builder = WebApplication.CreateBuilder(args);
 var allowedOrigins = builder.Configuration
     .GetSection("Cors:AllowedOrigins")
     .Get<string[]>();
-
 
 // Add services to the container.
 builder.Host.UseSerilog((context, config) =>
@@ -43,11 +39,15 @@ builder.Services.AddControllers()
             System.Text.Json.JsonNamingPolicy.CamelCase;
     });
 
-builder.Services.AddOpenApi();
-builder.Services.AddDbContext<AppDBContext>(opt => 
-{
-    opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
+//builder.Services.AddOpenApi();
+//builder.Services.AddDbContext<AppDBContext>(opt => 
+//{
+//    opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
+//});
+
+builder.Services.AddDbContext<AppDBContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
 // Interfaces & Repositories
 builder.Services.AddScoped<IAppUserRepository, AppUserRepository>();
@@ -77,7 +77,6 @@ builder.Services.AddIdentityCore<AppUser>(opt =>
 .AddSignInManager()
 .AddDefaultTokenProviders();
 
-
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("CorsPolicy", policy =>
@@ -99,16 +98,34 @@ builder.Services.AddApiVersioning(options =>
     options.ReportApiVersions = true;
 });
 
+builder.Services.Configure<JwtSettings>(
+    builder.Configuration.GetSection("JwtSettings")
+);
+
+var jwtSettings = builder.Configuration
+    .GetSection("Jwt")
+    .Get<JwtSettings>()
+    ?? throw new Exception("JWT configuration missing");
+
+if (string.IsNullOrWhiteSpace(jwtSettings.TokenKey))
+{
+    throw new Exception("JWT TokenKey is missing");
+}
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
-    var tokenKey = builder.Configuration["TokenKey"] ?? throw new Exception("Token key not found in configuration - Program.cs");
-
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenKey)),
-        ValidateIssuer = false,
-        ValidateAudience = false
+        IssuerSigningKey = new SymmetricSecurityKey(
+            Encoding.UTF8.GetBytes(jwtSettings.TokenKey)
+        ),
+
+        ValidateIssuer = true,
+        ValidateAudience = true,
+
+        ValidIssuer = jwtSettings.Issuer,
+        ValidAudience = jwtSettings.Audience
     };
 });
 
@@ -129,16 +146,15 @@ builder.Services.AddRateLimiter(options =>
     });
 });
 
+
 builder.Host.UseSerilog();
 
 var app = builder.Build();
 
 app.MapHealthChecks("/health");
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
     app.UseSwagger();
     app.UseSwaggerUI();
 }
@@ -155,5 +171,32 @@ app.UseAuthorization(); //Are you allowed?
 app.MapControllers().RequireRateLimiting("fixed");
 
 app.MapGraphQL("/graphql"); // GraphQL endpoint
+
+// Apply pending database migrations at startup
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDBContext>();
+
+    try
+    {
+        db.Database.Migrate();
+    }
+    catch (Exception ex)
+    {
+        Log.Fatal(ex, "Database migration failed");
+        throw;
+    }
+}
+
+// Seed initial data (users, roles) at startup
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+    var userManager = services.GetRequiredService<UserManager<AppUser>>();
+    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+
+    await DbInitializer.SeedAsync(userManager, roleManager);
+}
 
 app.Run();
