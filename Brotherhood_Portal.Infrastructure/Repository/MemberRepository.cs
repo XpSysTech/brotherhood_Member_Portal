@@ -1,4 +1,5 @@
 ﻿using Brotherhood_Portal.Application.Interfaces;
+using Brotherhood_Portal.Domain.DTOs.Member.Query;
 using Brotherhood_Portal.Domain.Entities;
 using Brotherhood_Portal.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -46,11 +47,32 @@ namespace Brotherhood_Portal.Infrastructure.Repository
         /// - Does NOT include navigation properties (e.g., Photos).
         /// - For eager loading, a separate query method should be created.
         /// </summary>
-        public async Task<Member?> GetMemberByIdAsync(string userId)
+        /// 
+
+        /// This method is commented out to avoid returning the full Member entity with navigation properties.
+        ///public async Task<Member?> GetMemberByIdAsync(string userId)
+        ///{
+        ///    return await appDBContext.Members
+        ///        .Include(m => m.User)
+        ///        .FirstOrDefaultAsync(m => m.Id == userId);
+        ///}
+
+        /// Lighter-weight method to return only the MemberDto without navigation properties.
+        public async Task<MemberDto?> GetMemberByIdAsync(string userId)
         {
             return await appDBContext.Members
-                .Include(m => m.User)
-                .FirstOrDefaultAsync(m => m.Id == userId);
+                .Where(x => x.Id == userId)
+                .Select(x => new MemberDto
+                {
+                    Id = x.Id,
+                    DisplayName = x.DisplayName!,
+                    DateOfBirth = x.DateOfBirth,
+                    ContactNumber = x.ContactNumber!,
+                    HomeCity = x.HomeCity,
+                    IsActive = x.IsActive
+                })
+                .AsNoTracking()
+                .FirstOrDefaultAsync();
         }
 
         #endregion

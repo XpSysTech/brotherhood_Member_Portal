@@ -106,7 +106,7 @@ namespace Brotherhood_Portal.API.Controllers
         /// </summary>
 
         [HttpGet("{userId}")]
-        public async Task<ActionResult<Member>> GetMemberById(string userId)
+        public async Task<ActionResult<MemberDto>> GetMemberById(string userId)
         {
             var requester = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
@@ -115,9 +115,9 @@ namespace Brotherhood_Portal.API.Controllers
                 requester,
                 userId);
 
-            var member = await memberRepository.GetMemberByIdAsync(userId);
+            var memberDto = await memberRepository.GetMemberByIdAsync(userId);
 
-            if (member == null)
+            if (memberDto == null)
             {
                 logger.LogWarning(
                     "Member {TargetMemberId} not found. Requested by {RequesterId}",
@@ -127,7 +127,7 @@ namespace Brotherhood_Portal.API.Controllers
                 return NotFound("Member not found");
             }
 
-            return Ok(member);
+            return Ok(memberDto);
         }
 
         #endregion
@@ -179,11 +179,11 @@ namespace Brotherhood_Portal.API.Controllers
                 return NotFound("Member not found");
             }
 
-            var dto = new UpdateMemberDto
+            var updateMemberDto = new UpdateMemberDto
             {
                 FirstName = member.FirstName!,
                 LastName = member.LastName!,
-                Email = member.User.Email!,
+                Email = member.User?.Email!,
                 ContactNumber = member.ContactNumber!,
                 HomeAddress = member.HomeAddress!,
                 HomeCity = member.HomeCity!,
@@ -194,7 +194,7 @@ namespace Brotherhood_Portal.API.Controllers
                 ImageUrl = member.ImageUrl
             };
 
-            return Ok(dto);
+            return Ok(updateMemberDto);
         }
 
         #endregion

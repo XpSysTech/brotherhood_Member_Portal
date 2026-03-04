@@ -1,11 +1,12 @@
 using Brotherhood_Portal.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Brotherhood_Portal.API.Controllers
 {
     /// <summary>
-    /// ⚠️ ONE-TIME USE ONLY
+    /// ONE-TIME USE ONLY
     /// Remove or disable this controller after initial admin creation
     /// </summary>
     [ApiController]
@@ -15,15 +16,14 @@ namespace Brotherhood_Portal.API.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IConfiguration _configuration;
-
-        public AdminSetupController(
-            UserManager<AppUser> userManager, 
-            RoleManager<IdentityRole> roleManager,
-            IConfiguration configuration)
+        private readonly ILogger<AdminSetupController> _logger;
+        public AdminSetupController(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager, 
+            IConfiguration configuration, ILogger<AdminSetupController> logger)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _configuration = configuration;
+            _logger = logger;
         }
 
         /// <summary>
@@ -33,18 +33,31 @@ namespace Brotherhood_Portal.API.Controllers
         [HttpPost("initialize")]
         public async Task<IActionResult> Initialize([FromBody] InitialAdminDto dto)
         {
-            // ✅ Reads from configuration (environment variable or user secrets)
+            _logger.LogWarning(
+                "Admin setup attempt for email {Email} from IP {IP}",
+                dto.Email,
+                HttpContext.Connection.RemoteIpAddress?.ToString()
+            );
+
+            // Reads from configuration (environment variable or user secrets)
             var setupKey = _configuration["SetupKey"];
-            
-            if (string.IsNullOrEmpty(setupKey) || setupKey != dto.SetupKey)
+
+            if (string.IsNullOrEmpty(setupKey))
             {
-                return Unauthorized("Invalid setup key");
+                _logger.LogWarning("Admin setup endpoint disabled.");
+                return Forbid("Setup endpoint disabled.");
             }
-            
-            // Check if any users exist
-            if (_userManager.Users.Any())
+
+            if (setupKey != dto.SetupKey)
             {
-                return BadRequest("System already initialized");
+                _logger.LogWarning("Invalid setup key used.");
+                return Unauthorized("Invalid setup key.");
+            }
+
+            if (await _userManager.Users.AnyAsync())
+            {
+                _logger.LogWarning("Admin setup attempted but system already initialized.");
+                return BadRequest("System already initialized.");
             }
 
             // Create roles

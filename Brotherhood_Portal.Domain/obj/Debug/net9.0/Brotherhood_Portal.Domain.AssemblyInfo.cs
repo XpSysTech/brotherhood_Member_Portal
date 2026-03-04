@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Brotherhood_Portal.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+326d25df9bdf45232381d3a0ff34cc8b6f0d9b45")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3ac17feebf59d59a4474e006067c97090a10b0f8")]
 [assembly: System.Reflection.AssemblyProductAttribute("Brotherhood_Portal.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Brotherhood_Portal.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -20,10 +20,11 @@ services:
     depends_on:
       - postgres
     environment:
-      Jwt__TokenKey: "super_long_secret_key_minimum_64_characters_required_here"
+      Jwt__TokenKey: "Qm9lbmFCcm90aGVyaG9vZF9TdXBlcl9TZWN1cmVfSldUX0tleV9Gb3JfUHJvZHVjdGlvbl9Vc2VfT25seV8xMjM0NTY3ODkw"
       Jwt__Issuer: "Brotherhood"
       Jwt__Audience: "BrotherhoodUsers"
-      Jwt__ExpiryMinutes: 15
+      Jwt__ExpiryMinutes: 
+      SetupKey: "MyOneTimeSetupKey123!"
       ConnectionStrings__DefaultConnection: "Host=postgres;Port=5432;Database=brotherhood_db;Username=boena_postgres;Password=postgres"
     ports:
       - "5001:8080"

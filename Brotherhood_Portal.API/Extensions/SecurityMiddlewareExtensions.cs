@@ -2,20 +2,16 @@
 {
     public static class SecurityMiddlewareExtensions
     {
-        public static IApplicationBuilder UseSecurity(
-            this IApplicationBuilder app,
-            IWebHostEnvironment env)
+        public static IApplicationBuilder UseSecurity(this IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (!env.IsDevelopment())
             {
                 app.UseExceptionHandler("/error");
                 app.UseHsts();
+                app.UseHttpsRedirection();
             }
-
-            app.UseHttpsRedirection();
 
             return app;
         }
     }
-
 }
