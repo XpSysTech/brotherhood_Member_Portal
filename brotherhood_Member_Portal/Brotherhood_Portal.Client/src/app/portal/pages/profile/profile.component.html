@@ -1,0 +1,271 @@
+<section class="bg-slate-50 min-h-screen">
+  <div class="mx-auto max-w-7xl px-4 py-10 space-y-8">
+
+    <!-- HEADER -->
+    <div class="space-y-2">
+      <h1 class="text-3xl font-semibold tracking-tight text-slate-900">
+        My Profile
+      </h1>
+      <p class="text-base text-slate-600">
+        View and update your personal information.
+      </p>
+    </div>
+
+    <!-- ========================= -->
+    <!-- SECTION 1: PROFILE DETAILS -->
+    <!-- ========================= -->
+
+    <div class="rounded-xl bg-white p-6 ring-1 ring-slate-200 space-y-6">
+
+      <div class="flex items-center justify-between">
+        <h2 class="text-lg font-semibold">Member Profile Details</h2>
+
+        <button
+          type="button"
+          (click)="toggleEdit()"
+          class="rounded-lg border border-slate-300 px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 transition">
+          {{ isEditing ? 'Cancel Editing' : 'Edit Profile' }}
+        </button>
+      </div>
+
+      <div class="flex items-center gap-6">
+        <img
+          [src]="profile.imageUrl || 'https://via.placeholder.com/120'"
+          class="h-24 w-24 rounded-full object-cover ring-1 ring-slate-200"
+          alt="Profile"
+        />
+
+        <div>
+          <p class="text-lg font-semibold text-slate-900">
+            {{ profile.firstName }} {{ profile.lastName }}
+          </p>
+          <p class="text-sm text-slate-500">
+            Brotherhood Member
+          </p>
+        </div>
+      </div>
+
+      <!-- READ ONLY DETAILS GRID -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm">
+
+        <div>
+          <p class="text-slate-500">Email</p>
+          <p class="font-medium text-slate-900">{{ profile.email }}</p>
+        </div>
+
+        <div>
+          <p class="text-slate-500">Contact Number</p>
+          <p class="font-medium text-slate-900">{{ profile.contactNumber }}</p>
+        </div>
+
+        <div class="sm:col-span-2">
+          <p class="text-slate-500">Home Address</p>
+          <p class="font-medium text-slate-900">{{ profile.homeAddress }}</p>
+        </div>
+
+        <div>
+          <p class="text-slate-500">City</p>
+          <p class="font-medium text-slate-900">{{ profile.homeCity }}</p>
+        </div>
+
+        <div>
+          <p class="text-slate-500">Date of Birth</p>
+          <p class="font-medium text-slate-900">
+            {{ profile.dateOfBirth | date:'yyyy-MM-dd' }}
+          </p>
+        </div>
+
+        <div>
+          <p class="text-slate-500">Occupation</p>
+          <p class="font-medium text-slate-900">{{ profile.occupation || '—' }}</p>
+        </div>
+
+        <div>
+          <p class="text-slate-500">Business</p>
+          <p class="font-medium text-slate-900">{{ profile.business || '—' }}</p>
+        </div>
+
+        <div class="sm:col-span-2">
+          <p class="text-slate-500">Biography</p>
+          <p class="font-medium text-slate-900 whitespace-pre-line">
+            {{ profile.memberBiography || '—' }}
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ========================= -->
+    <!-- SECTION 2: EDIT FORM -->
+    <!-- ========================= -->
+
+    <div *ngIf="isEditing" class="rounded-xl bg-white p-6 ring-1 ring-slate-200 space-y-6">
+
+      <h2 class="text-lg font-semibold">Edit Profile</h2>
+
+      <form class="space-y-6">
+
+        <!-- BASIC DETAILS -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-sm font-medium text-slate-700">
+              First Name *
+            </label>
+            <input
+              type="text"
+              name="firstName"
+              [(ngModel)]="profile.firstName"
+              class="mt-1 w-full rounded-lg border border-slate-200 bg-white px-3 py-2"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-slate-700">
+              Last Name *
+            </label>
+            <input
+              type="text"
+              name="lastName"
+              [(ngModel)]="profile.lastName"
+              class="mt-1 w-full rounded-lg border border-slate-200 bg-white px-3 py-2"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-slate-700">
+              Contact Number *
+            </label>
+            <input
+              type="tel"
+              name="contactNumber"
+              [(ngModel)]="profile.contactNumber"
+              class="mt-1 w-full rounded-lg border border-slate-200 bg-white px-3 py-2"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-slate-700">
+              Home City *
+            </label>
+            <input
+              type="text"
+              name="homeCity"
+              [(ngModel)]="profile.homeCity"
+              class="mt-1 w-full rounded-lg border border-slate-200 bg-white px-3 py-2"
+            />
+          </div>
+        </div>
+
+        <!-- HOME ADDRESS -->
+        <div>
+          <label class="block text-sm font-medium text-slate-700">
+            Home Address *
+          </label>
+          <textarea
+            rows="3"
+            name="homeAddress"
+            [(ngModel)]="profile.homeAddress"
+            class="mt-1 w-full rounded-lg border border-slate-200 bg-white px-3 py-2">
+          </textarea>
+        </div>
+
+        <!-- DOB -->
+        <div>
+          <label class="block text-sm font-medium text-slate-700">
+            Date of Birth *
+          </label>
+          <input
+            type="date"
+            name="dateOfBirth"
+            [(ngModel)]="profile.dateOfBirth"
+            class="mt-1 w-full rounded-lg border border-slate-200 bg-white px-3 py-2"
+          />
+        </div>
+
+        <!-- EMAIL -->
+        <div>
+          <label class="block text-sm font-medium text-slate-700">
+            Email *
+          </label>
+          <input
+            type="email"
+            name="email"
+            [(ngModel)]="profile.email"
+            class="mt-1 w-full rounded-lg border border-slate-200 bg-white px-3 py-2"
+          />
+        </div>
+
+        <!-- BIO -->
+        <div>
+          <label class="block text-sm font-medium text-slate-700">
+            Member Biography
+          </label>
+          <textarea
+            rows="4"
+            name="memberBiography"
+            [(ngModel)]="profile.memberBiography"
+            class="mt-1 w-full rounded-lg border border-slate-200 bg-white px-3 py-2">
+          </textarea>
+        </div>
+
+        <!-- PROFESSIONAL SECTION -->
+        <div class="border-t border-slate-200 pt-6 space-y-4">
+          <h3 class="text-sm font-semibold uppercase tracking-wide text-slate-700">
+            Professional Information
+          </h3>
+
+          <div>
+            <label class="block text-sm font-medium text-slate-700">Occupation</label>
+            <input
+              type="text"
+              name="occupation"
+              [(ngModel)]="profile.occupation"
+              class="mt-1 w-full rounded-lg border border-slate-200 bg-white px-3 py-2"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-slate-700">Business</label>
+            <input
+              type="text"
+              name="business"
+              [(ngModel)]="profile.business"
+              class="mt-1 w-full rounded-lg border border-slate-200 bg-white px-3 py-2"
+            />
+          </div>
+        </div>
+
+        <!-- IMAGE URL (placeholder for now) -->
+        <div class="border-t border-slate-200 pt-6 space-y-2">
+          <label class="block text-sm font-medium text-slate-700">
+            Profile Image URL (temporary)
+          </label>
+          <input
+            type="text"
+            name="imageUrl"
+            [(ngModel)]="profile.imageUrl"
+            placeholder="https://..."
+            class="mt-1 w-full rounded-lg border border-slate-200 bg-white px-3 py-2"
+          />
+          <p class="text-xs text-slate-500">
+            Will be replaced with actual image upload in the future. For now, you can use any valid image URL to update your profile picture.
+          </p>
+        </div>
+
+        <!-- SAVE BUTTON -->
+        <div class="pt-6 border-t border-slate-200 flex justify-end">
+          <button
+            type="button"
+            (click)="saveProfile()"
+            [disabled]="saving"
+            class="rounded-lg bg-slate-900 px-4 py-2 text-white hover:bg-slate-700 transition disabled:opacity-50 disabled:cursor-not-allowed">
+            {{ saving ? 'Saving…' : 'Save Changes' }}
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,46 @@
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
+
+namespace Brotherhood_Portal.Domain.Entities
+{
+    public class Member
+    {
+        /*Member Info*/
+        public string Id { get; set; } = null!;
+        //public string Email { get; set; } = null!;
+        public DateOnly DateOfBirth { get; set; } 
+        public string? DisplayName { get; set; }
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
+        public string? ImageUrl { get; set; }
+        public string? MemberBiography { get; set; }
+        public string? Occupation { get; set; }
+        public string? Business { get; set; }
+
+        /*Address*/
+        public required string? ContactNumber { get; set; }
+        public required string? HomeAddress { get; set; }
+        public required string HomeCity { get; set; }
+
+        /*Member System Info*/
+        public DateTime LastActive { get; set; } = DateTime.UtcNow;
+        public DateTime Created { get; set; } = DateTime.UtcNow;
+        public bool IsActive { get; set; } = true;
+
+        //Financial Info
+        public decimal TotalSavings { get; set; } = 0m; //Cumulative total of all savings deposits made by the member
+        public decimal TotalOpsContribution { get; set; } = 0m; //Cumulative total of all operations contributions made by the member
+
+        //Navigation Properties
+        //public List<Photo> Photos { get; set; } = new List<Photo>(); //Best for concrete use, not Navigation Properties
+        public AppUser User { get; set; } = null!;
+        public ICollection<Photo> Photos { get; set; } = new List<Photo>();
+        public ICollection<Finance> Finances { get; set; } = new List<Finance>();
+
+        //[JsonIgnore]
+        //[ForeignKey(nameof(Id))]
+        //public AppUser User { get; set; } = null!;
+
+    }
+}

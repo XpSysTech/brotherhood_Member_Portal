@@ -1,0 +1,118 @@
+<!-- legal.component.html (Legal Page - HTML + Tailwind) -->
+<section class="bg-white">
+  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-3xl">
+      <!-- Header -->
+      <div class="mb-8">
+        <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700">
+          <span class="h-2 w-2 rounded-full bg-slate-900"></span>
+          Legal
+        </div>
+
+        <h1 class="mt-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+          Legal Notice
+        </h1>
+
+        <p class="mt-2 text-sm text-slate-600">
+          This page provides general website terms and notices for BOENA Investment Fund.
+        </p>
+
+        <div class="mt-3 text-xs text-slate-500">
+          Last updated: <span class="font-medium text-slate-700">{{ currentDate }}</span>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="space-y-6">
+        <!-- Summary -->
+        <div class="rounded-3xl bg-slate-50 p-6 ring-1 ring-slate-200">
+          <p class="text-sm font-semibold text-slate-900">Summary</p>
+          <p class="mt-2 text-sm text-slate-600">
+            This website is provided for general public information. Content may change without notice. By using this website,
+            you agree to the terms below.
+          </p>
+        </div>
+
+        <!-- Sections -->
+        <div class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+          <h2 class="text-lg font-semibold text-slate-900">1. General information</h2>
+          <p class="mt-2 text-sm text-slate-600">
+            BOENA Investment Fund (“BOENA”, “we”, “us”) provides this website for general public-facing information and updates.
+            Information on this site does not constitute professional advice.
+          </p>
+        </div>
+
+        <div class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+          <h2 class="text-lg font-semibold text-slate-900">2. No professional advice</h2>
+          <p class="mt-2 text-sm text-slate-600">
+            Content on this website is provided “as is” for general informational purposes only. It is not legal, financial,
+            investment, tax, or professional advice. You should seek appropriate advice from qualified professionals before acting.
+          </p>
+        </div>
+
+        <div class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+          <h2 class="text-lg font-semibold text-slate-900">3. Accuracy and availability</h2>
+          <p class="mt-2 text-sm text-slate-600">
+            We aim to keep information accurate and up to date, however we do not guarantee completeness, accuracy, or reliability.
+            We may update, remove, or suspend content or access to the site at any time without notice.
+          </p>
+        </div>
+
+        <div class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+          <h2 class="text-lg font-semibold text-slate-900">4. Third-party links</h2>
+          <p class="mt-2 text-sm text-slate-600">
+            This website may reference third-party organizations, partners, or external resources. We are not responsible for the
+            content, privacy practices, or accuracy of external websites. Access to third-party links is at your own risk.
+          </p>
+        </div>
+
+        <div class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+          <h2 class="text-lg font-semibold text-slate-900">5. Intellectual property</h2>
+          <p class="mt-2 text-sm text-slate-600">
+            Unless otherwise stated, all text, layout, graphics, and branding elements on this website are owned by or licensed to BOENA.
+            You may view and print pages for personal, non-commercial use. You may not reproduce, distribute, or modify content without
+            prior written permission.
+          </p>
+        </div>
+
+        <div class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+          <h2 class="text-lg font-semibold text-slate-900">6. Acceptable use</h2>
+          <p class="mt-2 text-sm text-slate-600">
+            You agree not to misuse this website, attempt unauthorized access, disrupt service availability, introduce malicious code,
+            or use the website in a way that violates applicable laws or third-party rights.
+          </p>
+        </div>
+
+        <div class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+          <h2 class="text-lg font-semibold text-slate-900">7. Limitation of liability</h2>
+          <p class="mt-2 text-sm text-slate-600">
+            To the maximum extent permitted by law, BOENA will not be liable for any direct, indirect, incidental, special, or consequential
+            damages arising from or related to your use of (or inability to use) this website, including reliance on any information provided.
+          </p>
+        </div>
+
+        <div class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+          <h2 class="text-lg font-semibold text-slate-900">8. Changes to this notice</h2>
+          <p class="mt-2 text-sm text-slate-600">
+            We may update this legal notice as the website evolves. Changes will be reflected by updating the “Last updated” date.
+          </p>
+        </div>
+
+        <!-- CTA -->
+        <div class="rounded-3xl bg-slate-50 p-6 ring-1 ring-slate-200">
+          <p class="text-sm font-semibold text-slate-900">Questions?</p>
+          <p class="mt-2 text-sm text-slate-600">
+            If you have questions about this legal notice, please contact us.
+          </p>
+
+          <a
+            routerLink="/contact"
+            class="mt-4 inline-flex items-center justify-center rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800"
+          >
+            Go to Contact
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

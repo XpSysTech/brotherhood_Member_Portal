@@ -1,0 +1,6 @@
+@Brotherhood_Portal.API_HostAddress = http://localhost:5289
+
+GET {{Brotherhood_Portal.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

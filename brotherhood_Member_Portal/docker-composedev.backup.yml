@@ -1,0 +1,59 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: boena-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: brotherhood_db
+      POSTGRES_USER: boena_postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - internal
+
+  api:
+    build:
+      context: .
+      dockerfile: Brotherhood_Portal.API/Dockerfile
+    container_name: boena-api
+    depends_on:
+      - postgres
+    env_file:
+      - .env
+    environment:
+      # Jwt__TokenKey: "Qm9lbmFCcm90aGVyaG9vZF9TdXBlcl9TZWN1cmVfSldUX0tleV9Gb3JfUHJvZHVjdGlvbl9Vc2VfT25seV8xMjM0NTY3ODkw"
+      # Jwt__Issuer: "Brotherhood"
+      # Jwt__Audience: "BrotherhoodUsers"
+      # Jwt__ExpiryMinutes: 15
+      # SetupKey: "MyOneTimeSetupKey123!"
+      ASPNETCORE_URLS: "http://+:8080"
+      EnableSwagger: "true"
+      ConnectionStrings__DefaultConnection: "Host=postgres;Port=5432;Database=brotherhood_db;Username=boena_postgres;Password=postgres"
+    ports:
+      - "5001:8080"
+    networks:
+      - internal
+
+  # frontend:
+  #   build:
+  #     context: ./Brotherhood_Portal.Client
+  #     dockerfile: Dockerfile
+  #   container_name: boena-client
+  #   depends_on:
+  #     - api
+  #   networks:
+  #     - web
+
+volumes:
+  postgres_data:
+
+networks:
+  web:
+    driver: bridge
+  internal:
+    driver: bridge

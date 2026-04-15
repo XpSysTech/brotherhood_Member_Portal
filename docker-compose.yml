@@ -1,0 +1,68 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: boena-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - boena-network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: boena-pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@boena.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    networks:
+      - boena-network
+
+  api:
+    build:
+      context: ./brotherhood_Member_Portal
+      dockerfile: Brotherhood_Portal.API/Dockerfile
+    container_name: boena-api
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    networks:
+      - boena-network
+    volumes:
+      - dataprotection_keys:/root/.aspnet/DataProtection-Keys
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_URLS: http://+:8080
+      EnableSwagger: "true"
+      Jwt__TokenKey: ${JWT_TOKEN_KEY}
+      Jwt__Issuer: ${JWT_ISSUER}
+      Jwt__Audience: ${JWT_AUDIENCE}
+      Jwt__ExpiryMinutes: ${JWT_EXPIRY_MINUTES}
+      SetupKey: ${SETUP_KEY}
+      ConnectionStrings__DefaultConnection: "Host=postgres;Port=5432;Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}"
+    ports: 
+      - "5001:8080"
+
+  nginx:
+    image: nginx:alpine
+    container_name: global-nginx
+    restart: unless-stopped
+    depends_on:
+      - api
+    ports:
+      - "80:80"
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d
+    networks:
+      - boena-network
+
+networks:
+  boena-network:
+
+volumes:
+  postgres_data:
+  dataprotection_keys:

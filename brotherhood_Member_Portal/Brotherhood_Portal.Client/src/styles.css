@@ -1,0 +1,41 @@
+/* GOOGLE FONTS */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+/* GLOBAL TAILWIND*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* GLOBAL BASE */
+@layer base {
+  html {
+    @apply bg-white text-slate-900 font-sans;
+  }
+
+  h1 { @apply text-4xl font-medium tracking-tight; }
+  h2 { @apply text-3xl font-medium tracking-tight; }
+  h3 { @apply text-2xl font-medium; }
+  h4 { @apply text-base font-extralight; }
+
+  p { @apply text-sm text-gray-500; }
+  a { @apply text-blue-600 hover:underline underline-offset-4; }
+}
+
+/* COMPONENT HELPERS */
+@layer components {
+  .card {
+    @apply rounded-3xl bg-white p-6 shadow ring-1 ring-gray-200;
+  }
+
+  .btn-primary {
+    @apply rounded-2xl bg-green-600 px-5 py-3 text-sm font-medium text-white hover:bg-green-500;
+  }
+
+  .btn-secondary {
+    @apply rounded-2xl bg-white px-5 py-3 text-sm font-medium text-slate-900 ring-1 ring-gray-200 hover:bg-slate-50;
+  }
+}
+
+/* GLOBAL RESET */
+html, body { height: 100%; }
+body { margin: 0; }
