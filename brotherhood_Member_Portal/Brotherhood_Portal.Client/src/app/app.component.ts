@@ -3,7 +3,7 @@ import { Component, inject, OnInit, signal, Signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 import { AccountService } from '../core/services/account-service';
-import { environment } from '../../environments/environment';
+import { environment } from '../environments/environment';
 import { User } from '../core/types/user';
 
 @Component({
@@ -23,9 +23,21 @@ export class AppComponent implements OnInit {
   protected members = signal<User[]>([]);
 
   // Make an HTTP GET request to the API endpoint on component initialization
+  // async ngOnInit() {
+  //  this.members.set(await this.getMembers());
+  //  this.setCurrentUser();
+  // }
+
   async ngOnInit() {
-    this.members.set(await this.getMembers());
     this.setCurrentUser();
+
+    if (!this.accountService.currentUser()) return;
+
+    try {
+      this.members.set(await this.getMembers());
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   setCurrentUser() {
@@ -39,7 +51,7 @@ export class AppComponent implements OnInit {
   // Getting the members data using a promise - use this when you want to use async/await
   protected async getMembers(){
     try {
-      return await lastValueFrom(this.http.get<User[]>(`${this.baseUrl}/members`));
+      return await lastValueFrom(this.http.get<User[]>(`${this.baseUrl}members`));
     }
     catch (error) {
       console.error('API Error:', error);

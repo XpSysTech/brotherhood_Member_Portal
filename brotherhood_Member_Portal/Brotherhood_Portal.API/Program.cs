@@ -193,7 +193,8 @@ app.UseAuthorization(); //Are you allowed?
 app.MapControllers().RequireRateLimiting("fixed");
 
 // GraphQl
-app.MapGraphQL("/graphql"); // GraphQL endpoint
+// app.MapGraphQL("/graphql"); // GraphQL endpoint
+app.MapGraphQL("/graphql").RequireAuthorization();
 
 // Database Migration
 using (var scope = app.Services.CreateScope())
