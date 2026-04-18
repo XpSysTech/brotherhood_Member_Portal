@@ -1,0 +1,310 @@
+# Brotherhood Portal Database (PostgreSQL)
+
+## Overview
+
+Primary database for the Brotherhood Portal.
+
+Technology:
+
+* PostgreSQL 16
+* Entity Framework Core
+* Docker Volume Persistence
+* pgAdmin (optional)
+
+Used for:
+
+* Users / Identity
+* Members
+* Finance records
+* Photos
+* Invoice sequences
+* Application data
+
+---
+
+# 1. Database Stack
+
+Container Name:
+
+```text
+boena-postgres
+```
+
+Database Name:
+
+```text
+brotherhood_db
+```
+
+Default Port:
+
+```text
+5432
+```
+
+---
+
+# 2. Environment Variables
+
+```env
+POSTGRES_DB=brotherhood_db
+POSTGRES_USER=boena_postgres
+POSTGRES_PASSWORD=CHANGE_ME_STRONG_PASSWORD
+```
+
+---
+
+# 3. Docker Commands
+
+Start:
+
+```bash
+docker start boena-postgres
+```
+
+Stop:
+
+```bash
+docker stop boena-postgres
+```
+
+Logs:
+
+```bash
+docker logs boena-postgres
+```
+
+Shell:
+
+```bash
+docker exec -it boena-postgres bash
+```
+
+---
+
+# 4. Connect with psql
+
+```bash
+docker exec -it boena-postgres psql -U boena_postgres -d brotherhood_db
+```
+
+Useful inside psql:
+
+```sql
+\l      -- list databases
+\dt     -- list tables
+\d tablename
+SELECT * FROM "Members";
+```
+
+Exit:
+
+```sql
+\q
+```
+
+---
+
+# 5. pgAdmin (Optional)
+
+Container may exist:
+
+```text
+boena-pgadmin
+```
+
+Use browser UI to manage database.
+
+Recommended server settings:
+
+* Host: boena-postgres
+* Port: 5432
+* Username: boena_postgres
+* Password: from `.env`
+
+---
+
+# 6. EF Core Migrations
+
+Create migration:
+
+```bash
+dotnet ef migrations add MigrationName --project Brotherhood_Portal.Infrastructure --startup-project Brotherhood_Portal.API
+```
+
+Apply:
+
+```bash
+dotnet ef database update --startup-project Brotherhood_Portal.API
+```
+
+Remove last migration:
+
+```bash
+dotnet ef migrations remove
+```
+
+---
+
+# 7. Auto Migrations
+
+API may run migrations at startup.
+
+Check logs:
+
+```text
+Applying database migrations...
+Database migrations applied successfully.
+```
+
+---
+
+# 8. Backups (Critical)
+
+Create backup:
+
+```bash
+docker exec -t boena-postgres pg_dump -U boena_postgres brotherhood_db > backup.sql
+```
+
+Compressed backup:
+
+```bash
+gzip backup.sql
+```
+
+---
+
+# 9. Restore Backup
+
+```bash
+cat backup.sql | docker exec -i boena-postgres psql -U boena_postgres -d brotherhood_db
+```
+
+If compressed:
+
+```bash
+gunzip -c backup.sql.gz | docker exec -i boena-postgres psql -U boena_postgres -d brotherhood_db
+```
+
+---
+
+# 10. Persistent Storage
+
+Docker volume example:
+
+```yaml
+volumes:
+  postgres_data:
+```
+
+Never rely on container filesystem only.
+
+---
+
+# 11. Health Checks
+
+Quick test:
+
+```bash
+docker exec boena-postgres pg_isready -U boena_postgres
+```
+
+Expected:
+
+```text
+accepting connections
+```
+
+---
+
+# 12. Security Checklist
+
+* [ ] Strong password
+* [ ] Port 5432 not public unless required
+* [ ] Backups scheduled
+* [ ] Separate DB user per environment
+* [ ] Keep PostgreSQL updated
+* [ ] Restrict pgAdmin exposure
+
+---
+
+# 13. Common Queries
+
+Count members:
+
+```sql
+SELECT COUNT(*) FROM "Members";
+```
+
+Latest finance rows:
+
+```sql
+SELECT * FROM "Finances" ORDER BY "CreatedAt" DESC LIMIT 10;
+```
+
+Users:
+
+```sql
+SELECT * FROM "AspNetUsers";
+```
+
+---
+
+# 14. Troubleshooting
+
+## Password Authentication Failed
+
+Check `.env` password and container recreation.
+
+## Connection Refused
+
+Ensure container running:
+
+```bash
+docker ps
+```
+
+## Missing Tables
+
+Run migrations.
+
+## Volume Lost
+
+Confirm named volume exists:
+
+```bash
+docker volume ls
+```
+
+---
+
+# 15. Production Recommendations
+
+* Nightly automated backups
+* Weekly restore test
+* Store backup off-server
+* Monitor disk usage
+* Use private Docker network only
+
+---
+
+# 16. Disaster Recovery
+
+1. Install Docker
+2. Start postgres container
+3. Create database
+4. Restore latest backup
+5. Start API
+6. Verify login and data
+
+---
+
+# 17. Useful Commands
+
+```bash
+docker ps
+docker logs boena-postgres
+docker exec -it boena-postgres psql -U boena_postgres -d brotherhood_db
+docker volume ls
+```
