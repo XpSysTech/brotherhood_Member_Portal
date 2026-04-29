@@ -116,6 +116,7 @@ public class FinanceController : BaseApiController
         {
             FinanceId = financeId,
             MemberId = dto.MemberId,
+            MemberDisplayName = dto.MemberDisplayName,
             Status = role == "Admin" ? "Approved" : "Pending",
             ApprovalCount = role == "Admin" ? 1 : 0,
             RequiresApproval = role != "Admin",
