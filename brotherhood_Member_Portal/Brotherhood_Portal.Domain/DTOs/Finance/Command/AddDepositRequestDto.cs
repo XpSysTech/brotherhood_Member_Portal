@@ -9,7 +9,7 @@
 
         public string MemberId { get; set; } = null
 
-         public string MemberDisplayName { get; set; } = defaul
+        public string MemberDisplayName { get; set; } = default!;
 
         public decimal SavingsAmount { get; set; }
 
