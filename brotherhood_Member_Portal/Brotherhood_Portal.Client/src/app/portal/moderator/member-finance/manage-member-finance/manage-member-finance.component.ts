@@ -96,7 +96,9 @@ export class ManageMemberFinanceComponent implements OnInit {
       return;
     }
 
-    const selectedMember = this.members.find(m => m.id === this.selectedMemberId);
+    const selectedMember = this.members.find(
+      m => m.id === this.selectedMemberId
+    );
 
     if (!selectedMember) {
       this.feedback = 'Selected member could not be found.';
@@ -106,13 +108,15 @@ export class ManageMemberFinanceComponent implements OnInit {
     this.submitting = true;
     this.feedback = null;
 
-    this.financeService.addDeposit({
+    const dto = {
       memberId: selectedMember.id,
-      memberDisplayName: selectedMember.displayName, // 🔥 FIX
+      memberDisplayName: selectedMember.displayName, // ✅ REQUIRED
       savingsAmount: this.depositForm.savingsAmount,
       opsContribution: this.depositForm.opsContribution,
-      description: this.depositForm.description
-    }).subscribe({
+      description: this.depositForm.description ?? ''
+    };
+
+    this.financeService.addDeposit(dto).subscribe({
       next: res => {
         this.feedback = res.message;
         this.resetForm();

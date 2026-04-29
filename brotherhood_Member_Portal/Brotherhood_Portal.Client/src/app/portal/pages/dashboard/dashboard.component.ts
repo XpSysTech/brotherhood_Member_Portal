@@ -40,7 +40,7 @@ export class DashboardComponent implements OnInit {
       .catch(err => {
         this.error = 'Failed to load financial data.';
         this.loading = false;
-        console.error(err);
+        // console.error(err);
       });
 
     this.financeService.getMembersForDropdown()

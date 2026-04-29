@@ -5,6 +5,7 @@ import { lastValueFrom } from 'rxjs';
 import { AccountService } from '../core/services/account-service';
 import { environment } from '../environments/environment';
 import { User } from '../core/types/user';
+import { ToastService } from 'src/core/services/toast-service';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +18,7 @@ export class AppComponent implements OnInit {
   private http = inject(HttpClient);
   protected title = 'Brotherhood_Portal.Client';
   private baseUrl = environment.apiBaseUrl;
+  private toast = inject(ToastService);
   
   // We you want to make something available to the compoenent template, declare it as public or protected
   // protected members: any[] = [];
@@ -33,11 +35,7 @@ export class AppComponent implements OnInit {
 
     if (!this.accountService.currentUser()) return;
 
-    try {
-      this.members.set(await this.getMembers());
-    } catch (error) {
-      console.error(error);
-    }
+    this.members.set(await this.getMembers());
   }
 
   setCurrentUser() {
@@ -49,13 +47,14 @@ export class AppComponent implements OnInit {
   }
 
   // Getting the members data using a promise - use this when you want to use async/await
-  protected async getMembers(){
+  protected async getMembers(): Promise<User[]> {
     try {
-      return await lastValueFrom(this.http.get<User[]>(`${this.baseUrl}members`));
-    }
-    catch (error) {
-      console.error('API Error:', error);
-      throw error;
+      return await lastValueFrom(
+        this.http.get<User[]>(`${this.baseUrl}members`)
+      );
+    } catch {
+      this.toast.error('Unable to load members right now. Please try again later.');
+      return [];
     }
   }
 
