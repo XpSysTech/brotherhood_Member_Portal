@@ -32,6 +32,12 @@ export class FinanceService {
     );
   }
 
+  cancelDeposit(financeId: number) {
+    return this.http.delete<any>(
+      `${this.baseFinanceUrl}/cancel-deposit/${financeId}`
+    );
+  }
+    
   getPendingDeposits() {
     return this.http.get<PendingDeposit[]>(
       `${this.baseFinanceUrl}/pending-deposits`
