@@ -17,12 +17,12 @@
                 Select Member
             </label>
 
-            <select [(ngModel)]="selectedMemberId" (change)="loadHistory()"
+            <select [(ngModel)]="selectedMember" (change)="loadHistory()"
                 class="mt-1 w-full rounded-lg border border-slate-200 bg-white px-3 py-2">
 
                 <option [ngValue]="null">-- Select a member --</option>
 
-                <option *ngFor="let member of members" [value]="member.id">
+                <option *ngFor="let member of members" [ngValue]="member">
                     {{ member.displayName }}
                 </option>
 
@@ -55,7 +55,7 @@
                 class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2"></textarea>
 
             <!-- SUBMIT BUTTON -->
-            <button (click)="submitDeposit()" [disabled]="submitting || !selectedMemberId"
+            <button (click)="submitDeposit()" [disabled]="submitting || !selectedMember"
                 class="rounded-lg bg-slate-900 px-4 py-2 text-white disabled:opacity-50 disabled:cursor-not-allowed">
                 {{ submitting ? 'Submitting…' : 'Add Deposit' }}
             </button>

@@ -25,7 +25,9 @@ export class ManageMemberFinanceComponent implements OnInit {
    * Currently selected member id from dropdown.
    * Used when submitting deposits and loading history.
    */
-  selectedMemberId: string | null = null;
+  // selectedMemberId: string | null = null;
+
+  selectedMember: MemberByName | null = null;
 
   /**
    * Deposit form model.
@@ -92,31 +94,18 @@ export class ManageMemberFinanceComponent implements OnInit {
    * - Prevent duplicate submission while request is in flight
    */
   submitDeposit(): void {
-    if (!this.selectedMemberId || this.submitting) {
-      return;
-    }
-
-    const selectedMember = this.members.find(
-      m => m.id === this.selectedMemberId
-    );
-
-    if (!selectedMember) {
-      this.feedback = 'Selected member could not be found.';
-      return;
-    }
+    if (!this.selectedMember || this.submitting) return;
 
     this.submitting = true;
     this.feedback = null;
 
-    const dto = {
-      memberId: selectedMember.id,
-      memberDisplayName: selectedMember.displayName, // ✅ REQUIRED
+    this.financeService.addDeposit({
+      memberId: this.selectedMember.id,
+      memberDisplayName: this.selectedMember.displayName,
       savingsAmount: this.depositForm.savingsAmount,
       opsContribution: this.depositForm.opsContribution,
-      description: this.depositForm.description ?? ''
-    };
-
-    this.financeService.addDeposit(dto).subscribe({
+      description: this.depositForm.description
+    }).subscribe({
       next: res => {
         this.feedback = res.message;
         this.resetForm();
@@ -124,8 +113,8 @@ export class ManageMemberFinanceComponent implements OnInit {
       },
       error: err => {
         this.feedback =
-          err?.error?.errors?.MemberDisplayName?.[0] ??
-          err?.error?.message ??
+          err.error?.errors?.MemberDisplayName?.[0] ??
+          err.error?.message ??
           'Failed to add deposit.';
       },
       complete: () => {
@@ -140,12 +129,12 @@ export class ManageMemberFinanceComponent implements OnInit {
    * Only executes if a member is selected.
    */
   loadHistory(): void {
-    if (!this.selectedMemberId) return;
+    if (!this.selectedMember) return;
 
     this.loadingHistory = true;
     this.feedback = null;
 
-    this.financeService.getMemberHistory(this.selectedMemberId)
+    this.financeService.getMemberHistory(this.selectedMember.id)
       .subscribe({
         next: data => {
           // console.log('History received:', data);
