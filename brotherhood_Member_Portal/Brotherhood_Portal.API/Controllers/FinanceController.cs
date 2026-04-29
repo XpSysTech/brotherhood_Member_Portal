@@ -351,8 +351,8 @@ public class FinanceController : BaseApiController
 
     #region Cancel Deposit
 
-    [HttpDelete("delete-deposit/{financeId}")]
-    public async Task<IActionResult> DeleteDeposit(int financeId)
+    [HttpDelete("cancel-deposit/{financeId}")]
+    public async Task<IActionResult> CancelDeposit(int financeId)
     {
         var deposit = await _context.Finances.FindAsync(financeId);
     
@@ -362,7 +362,7 @@ public class FinanceController : BaseApiController
         _context.Finances.Remove(deposit);
         await _context.SaveChangesAsync();
     
-        return Ok(new { message = "Deposit deleted successfully" });
+        return Ok(new { message = "Deposit canceled successfully" });
     }
     
     #endregion 
