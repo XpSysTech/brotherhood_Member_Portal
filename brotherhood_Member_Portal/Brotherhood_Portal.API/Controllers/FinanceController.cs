@@ -4,6 +4,7 @@ using Brotherhood_Portal.Application.Enums;
 using Brotherhood_Portal.Application.Services;
 using Brotherhood_Portal.Domain.DTOs.Finance.Command;
 using Brotherhood_Portal.Domain.DTOs.Finance.Query;
+using Brotherhood_Portal.Infrastructure.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -14,13 +15,16 @@ public class FinanceController : BaseApiController
 {
     private readonly FinanceService _financeService;
     private readonly ILogger<FinanceController> _logger;
+    private readonly AppDBContext _context;
 
     public FinanceController(
         FinanceService financeService,
-        ILogger<FinanceController> logger)
+        ILogger<FinanceController> logger,
+        AppDBContext context)
     {
         _financeService = financeService;
         _logger = logger;
+        _context = context;
     }
 
     #region Add Member Deposit
@@ -355,18 +359,10 @@ public class FinanceController : BaseApiController
     [HttpDelete("cancel-deposit/{financeId}")]
     public async Task<IActionResult> CancelDeposit(int financeId)
     {
-        var deposit = await _context.Finances.FindAsync(financeId);
-    
-        if (deposit == null)
-            return NotFound(new { message = "Deposit not found" });
-    
-        deposit.Status = "Cancelled";
-    
-        await _context.SaveChangesAsync();
-    
+        await _financeService.CancelDepositAsync(financeId);
         return Ok(new { message = "Deposit cancelled successfully" });
     }
-    
+        
     #endregion 
 
 }

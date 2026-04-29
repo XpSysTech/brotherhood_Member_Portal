@@ -202,5 +202,41 @@ namespace Brotherhood_Portal.Application.Services
         }
 
         #endregion
+
+        #region Cancel Deposit
+
+        /// <summary>
+        /// [1] PURPOSE
+        /// Cancels a deposit that has not yet been approved or applied.
+        ///
+        /// [2] BUSINESS RULES
+        /// - Deposit must exist.
+        /// - Cannot cancel an already approved or applied deposit.
+        /// - Already cancelled deposits are ignored.
+        ///
+        /// [3] SIDE EFFECTS
+        /// - Sets Finance.Status to Cancelled.
+        ///
+        /// [4] ERROR HANDLING
+        /// - Throws InvalidOperationException if the deposit cannot be cancelled.
+        /// </summary>
+        public async Task CancelDepositAsync(int financeId)
+        {
+            var finance = await _financeRepository.GetByIdAsync(financeId);
+
+            if (finance == null)
+                throw new InvalidOperationException("Deposit not found.");
+
+            if (finance.Status == FinanceStatus.Cancelled)
+                return;
+
+            if (finance.Status == FinanceStatus.Approved || finance.AppliedAt != null)
+                throw new InvalidOperationException("Cannot cancel an approved or applied deposit.");
+
+            finance.Status = FinanceStatus.Cancelled;
+            await _financeRepository.SaveChangesAsync();
+        }
+
+        #endregion
     }
 }

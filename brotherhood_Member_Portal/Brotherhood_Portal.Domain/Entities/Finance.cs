@@ -38,6 +38,7 @@ namespace Brotherhood_Portal.Domain.Entities
     {
         Pending,
         Approved,
-        Rejected
+        Rejected,
+        Cancelled
     }
 }
