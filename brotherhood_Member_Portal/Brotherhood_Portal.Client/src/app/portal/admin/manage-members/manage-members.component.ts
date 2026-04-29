@@ -21,7 +21,7 @@ export class ManageMembersComponent {
   feedback: string | null = null; 
 
   ngOnInit(): void {
-    console.log('Component loaded');
+    // console.log('Component loaded');
     this.loadMembers();
   }
 
@@ -38,7 +38,7 @@ export class ManageMembersComponent {
     this.financeService.getMembersForDropdown()
       .subscribe({
         next: data => {
-          console.log('Members received:', data);
+          // console.log('Members received:', data);
           this.members = [...data].sort((a, b) =>
             (a.displayName ?? '').localeCompare(b.displayName ?? '')
           );

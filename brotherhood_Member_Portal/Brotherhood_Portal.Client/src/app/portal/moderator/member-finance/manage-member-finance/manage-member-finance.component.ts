@@ -50,7 +50,7 @@ export class ManageMemberFinanceComponent implements OnInit {
   constructor(private financeService: FinanceService) {}
 
   ngOnInit(): void {
-    console.log('Component loaded');
+    // console.log('Component loaded');
     this.loadMembers();
   }
 
@@ -72,7 +72,7 @@ export class ManageMemberFinanceComponent implements OnInit {
         //   );
         // },
         next: data => {
-          console.log('Members received:', data);
+          // console.log('Members received:', data);
           this.members = [...data].sort((a, b) =>
             (a.displayName ?? '').localeCompare(b.displayName ?? '')
           );
@@ -96,31 +96,35 @@ export class ManageMemberFinanceComponent implements OnInit {
       return;
     }
 
+    const selectedMember = this.members.find(m => m.id === this.selectedMemberId);
+
+    if (!selectedMember) {
+      this.feedback = 'Selected member could not be found.';
+      return;
+    }
+
     this.submitting = true;
     this.feedback = null;
 
     this.financeService.addDeposit({
-      memberId: this.selectedMemberId,
+      memberId: selectedMember.id,
+      memberDisplayName: selectedMember.displayName, // 🔥 FIX
       savingsAmount: this.depositForm.savingsAmount,
       opsContribution: this.depositForm.opsContribution,
       description: this.depositForm.description
     }).subscribe({
       next: res => {
-        // Show backend message (Admin vs Moderator differs)
         this.feedback = res.message;
-
-        // Clear form inputs after success
         this.resetForm();
-
-        // Refresh history so new deposit appears immediately
         this.loadHistory();
       },
       error: err => {
-        // Display meaningful backend error if available
-        this.feedback = err?.error?.message ?? 'Failed to add deposit.';
+        this.feedback =
+          err?.error?.errors?.MemberDisplayName?.[0] ??
+          err?.error?.message ??
+          'Failed to add deposit.';
       },
       complete: () => {
-        // Reset submitting flag regardless of outcome
         this.submitting = false;
       }
     });
@@ -140,6 +144,7 @@ export class ManageMemberFinanceComponent implements OnInit {
     this.financeService.getMemberHistory(this.selectedMemberId)
       .subscribe({
         next: data => {
+          // console.log('History received:', data);
           this.history = data;
         },
         error: () => {

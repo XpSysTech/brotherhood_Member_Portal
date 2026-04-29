@@ -37,7 +37,7 @@ export class ApproveDepositsComponent implements OnInit {
   this.financeService.getPendingDeposits()
     .subscribe({
       next: data => {
-        console.log('Pending deposits:', data);
+        // console.log('Pending deposits:', data);
         this.pendingDeposits = data;
       },
       complete: () => this.loading = false

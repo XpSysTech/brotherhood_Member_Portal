@@ -18,7 +18,7 @@ describe('ManageMemberFinanceComponent', () => {
 
   const mockHistory: FinanceRecord[] = [
     {
-      id: 1,
+      financeId: 1, // ✅ REQUIRED
       savingsAmount: 1000,
       opsContributionAmount: 100,
       depositDate: new Date(),
