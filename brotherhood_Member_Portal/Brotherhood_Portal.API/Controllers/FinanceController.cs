@@ -42,18 +42,24 @@ public class FinanceController : BaseApiController
     ///     → Deposit is created as Pending.
     ///     → Requires two Moderator approvals OR one Admin approval.
     /// 
-    /// [3] STATE TRANSITION
+    /// [3] DEPOSIT LIMITS
+    /// - NO RESTRICTIONS on number of deposits per member.
+    /// - Multiple deposits can be created for the same member simultaneously.
+    /// - Cancelled deposits do NOT block new deposits.
+    /// - Each deposit is independent with its own approval workflow.
+    /// 
+    /// [4] STATE TRANSITION
     /// Admin:
     ///     None → Approved
     /// Moderator:
     ///     None → Pending
     /// 
-    /// [4] DATA INTEGRITY
+    /// [5] DATA INTEGRITY
     /// - Deposit creation is atomic.
     /// - CreatedByUserId and CreatedByRole are persisted.
     /// - Timestamp is UTC-based.
     /// 
-    /// [5] RESPONSE CONTRACT
+    /// [6] RESPONSE CONTRACT
     /// Returns:
     /// - FinanceId
     /// - MemberId
@@ -63,12 +69,12 @@ public class FinanceController : BaseApiController
     /// - Human-readable status message
     /// - CreatedAt timestamp
     /// 
-    /// [6] SECURITY MODEL
+    /// [7] SECURITY MODEL
     /// - Restricted to Admin and Moderator roles.
     /// - Rejects invalid authentication contexts.
     /// - All attempts logged for traceability.
     /// 
-    /// [7] AUDIT TRAIL
+    /// [8] AUDIT TRAIL
     /// - Logs actor identity
     /// - Logs target member
     /// - Logs created finance record ID
@@ -356,11 +362,71 @@ public class FinanceController : BaseApiController
 
     #region Cancel Deposit
 
+    /// <summary>
+    /// [1] PURPOSE
+    /// Cancels a pending deposit.
+    /// 
+    /// [2] BUSINESS RULES
+    /// - Deposit must exist.
+    /// - Cannot cancel already approved or applied deposits.
+    /// - Already cancelled deposits are safely ignored.
+    /// 
+    /// [3] ERROR HANDLING
+    /// - 404 NotFound if deposit doesn't exist.
+    /// - 409 Conflict if deposit is approved/applied.
+    /// - 200 OK if cancellation succeeds.
+    /// 
+    /// [4] SECURITY
+    /// - Restricted to Admin and Moderator roles.
+    /// - Actor identity logged for audit.
+    /// </summary>
     [HttpDelete("cancel-deposit/{financeId}")]
     public async Task<IActionResult> CancelDeposit(int financeId)
     {
-        await _financeService.CancelDepositAsync(financeId);
-        return Ok(new { message = "Deposit cancelled successfully" });
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+        _logger.LogInformation(
+            "User {UserId} initiating cancellation for Deposit {FinanceId}",
+            userId,
+            financeId);
+
+        try
+        {
+            await _financeService.CancelDepositAsync(financeId);
+
+            _logger.LogInformation(
+                "Deposit {FinanceId} cancelled successfully by {UserId}",
+                financeId,
+                userId);
+
+            return Ok(new { message = "Deposit cancelled successfully" });
+        }
+        catch (InvalidOperationException ex)
+        {
+            _logger.LogWarning(
+                "Cancellation failed for Deposit {FinanceId}: {Error}",
+                financeId,
+                ex.Message);
+
+            // Determine response code based on error message
+            if (ex.Message.Contains("not found"))
+                return NotFound(new { error = ex.Message });
+
+            if (ex.Message.Contains("approved") || ex.Message.Contains("applied"))
+                return Conflict(new { error = ex.Message });
+
+            return BadRequest(new { error = ex.Message });
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(
+                ex,
+                "Unexpected error cancelling Deposit {FinanceId} by {UserId}",
+                financeId,
+                userId);
+
+            return StatusCode(500, new { error = "An unexpected error occurred" });
+        }
     }
         
     #endregion 

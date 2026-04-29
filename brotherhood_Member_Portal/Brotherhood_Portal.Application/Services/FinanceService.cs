@@ -51,6 +51,8 @@ namespace Brotherhood_Portal.Application.Services
         /// - Deposit is created in Pending state.
         /// - ApprovalCount starts at 0.
         /// - Deposit is NOT applied to member balance at creation.
+        /// - NO LIMITS on number of deposits per member (multiple deposits allowed).
+        /// - Cancelled deposits do NOT prevent new deposits from being created.
         ///
         /// [3] RESPONSE
         /// Returns:
@@ -59,6 +61,7 @@ namespace Brotherhood_Portal.Application.Services
         /// [4] DESIGN NOTES
         /// - Finance.Id is guaranteed after SaveChangesAsync.
         /// - Approval and balance application handled separately.
+        /// - Each deposit gets a unique invoice number (sequence increments).
         /// </summary>
         public async Task<int> AddDepositAsync(
             string memberId,
