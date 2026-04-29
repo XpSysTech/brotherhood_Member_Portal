@@ -349,5 +349,23 @@ public class FinanceController : BaseApiController
 
     #endregion
 
+    #region Cancel Deposit
+
+    [HttpDelete("delete-deposit/{financeId}")]
+    public async Task<IActionResult> DeleteDeposit(int financeId)
+    {
+        var deposit = await _context.Finances.FindAsync(financeId);
+    
+        if (deposit == null)
+            return NotFound(new { message = "Deposit not found" });
+    
+        _context.Finances.Remove(deposit);
+        await _context.SaveChangesAsync();
+    
+        return Ok(new { message = "Deposit deleted successfully" });
+    }
+    
+    #endregion 
+
 }
 
