@@ -16,6 +16,8 @@ namespace Brotherhood_Portal.Domain.DTOs.Finance.Query
         public int FinanceId { get; set; }
 
         public string MemberId { get; set; } = null!;
+        
+        public string MemberDisplayName { get; set; } = default!;
 
         public string Status { get; set; } = null!;
         // "Pending" | "Approved"
