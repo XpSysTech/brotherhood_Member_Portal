@@ -59,7 +59,7 @@ export class ApproveDepositsComponent implements OnInit {
       });
   }
 
-  cancelDeposit(financeId: number): void {
+  cancelDepositOld(financeId: number): void {
   if (!confirm('Are you sure you want to cancel this deposit?')) return;
 
   this.feedback = null;
@@ -74,6 +74,12 @@ export class ApproveDepositsComponent implements OnInit {
         this.feedback = err.error?.message ?? 'Cancel failed';
       }
     });
-}
+  }
+
+  cancelDeposit(financeId: number) {
+    return this.http.delete<any>(
+      `${this.baseFinanceUrl}/cancel-deposit/${financeId}`
+    );
+  }
 
 }
