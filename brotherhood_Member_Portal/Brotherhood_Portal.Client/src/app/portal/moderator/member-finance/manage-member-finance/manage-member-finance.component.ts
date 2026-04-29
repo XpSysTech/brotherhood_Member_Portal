@@ -25,9 +25,9 @@ export class ManageMemberFinanceComponent implements OnInit {
    * Currently selected member id from dropdown.
    * Used when submitting deposits and loading history.
    */
-  // selectedMemberId: string | null = null;
+  selectedMemberId: string | null = null;
 
-  selectedMember: MemberByName | null = null;
+  // selectedMember: MemberByName | null = null;
 
   /**
    * Deposit form model.
@@ -94,14 +94,15 @@ export class ManageMemberFinanceComponent implements OnInit {
    * - Prevent duplicate submission while request is in flight
    */
   submitDeposit(): void {
-    if (!this.selectedMember || this.submitting) return;
+    const selectedMember = this.getSelectedMember();
+    if (!selectedMember || this.submitting) return;
 
     this.submitting = true;
     this.feedback = null;
 
     this.financeService.addDeposit({
-      memberId: this.selectedMember.id,
-      memberDisplayName: this.selectedMember.displayName,
+      memberId: selectedMember.id,
+      memberDisplayName: this.getMemberDisplayName(selectedMember),
       savingsAmount: this.depositForm.savingsAmount,
       opsContribution: this.depositForm.opsContribution,
       description: this.depositForm.description
@@ -129,12 +130,12 @@ export class ManageMemberFinanceComponent implements OnInit {
    * Only executes if a member is selected.
    */
   loadHistory(): void {
-    if (!this.selectedMember) return;
+    if (!this.selectedMemberId) return;
 
     this.loadingHistory = true;
     this.feedback = null;
 
-    this.financeService.getMemberHistory(this.selectedMember.id)
+    this.financeService.getMemberHistory(this.selectedMemberId)
       .subscribe({
         next: data => {
           // console.log('History received:', data);
@@ -159,5 +160,16 @@ export class ManageMemberFinanceComponent implements OnInit {
       opsContribution: 0,
       description: ''
     };
+  }
+
+
+  private getSelectedMember(): MemberByName | null {
+    if (!this.selectedMemberId) return null;
+    return this.members.find(member => member.id === this.selectedMemberId) ?? null;
+  }
+
+  private getMemberDisplayName(member: MemberByName): string {
+    if (member.displayName?.trim()) return member.displayName.trim();
+    return `${member.firstName ?? ''} ${member.lastName ?? ''}`.trim();
   }
 }

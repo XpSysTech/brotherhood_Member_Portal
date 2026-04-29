@@ -17,12 +17,12 @@
                 Select Member
             </label>
 
-            <select [(ngModel)]="selectedMember" (change)="loadHistory()"
+            <select [(ngModel)]="selectedMemberId" (change)="loadHistory()"
                 class="mt-1 w-full rounded-lg border border-slate-200 bg-white px-3 py-2">
 
                 <option [ngValue]="null">-- Select a member --</option>
 
-                <option *ngFor="let member of members" [ngValue]="member">
+                <option *ngFor="let member of members" [value]="member.id">
                     {{ member.displayName }}
                 </option>
 
