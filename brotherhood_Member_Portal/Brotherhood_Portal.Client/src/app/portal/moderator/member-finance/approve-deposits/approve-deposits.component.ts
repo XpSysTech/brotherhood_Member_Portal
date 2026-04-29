@@ -59,4 +59,21 @@ export class ApproveDepositsComponent implements OnInit {
       });
   }
 
+  cancelDeposit(financeId: number): void {
+  if (!confirm('Are you sure you want to cancel this deposit?')) return;
+
+  this.feedback = null;
+
+  this.financeService.cancelDeposit(financeId)
+    .subscribe({
+      next: res => {
+        this.feedback = res.message;
+        this.loadPendingDeposits();
+      },
+      error: err => {
+        this.feedback = err.error?.message ?? 'Cancel failed';
+      }
+    });
+}
+
 }
