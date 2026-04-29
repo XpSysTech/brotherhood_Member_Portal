@@ -7,7 +7,7 @@
             This represents an incoming API request (Command DTO).
         */
 
-        public string MemberId { get; set; } = null
+        public string MemberId { get; set; } = null!;
 
         public string MemberDisplayName { get; set; } = default!;
 
