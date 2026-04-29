@@ -100,9 +100,12 @@ export class ManageMemberFinanceComponent implements OnInit {
     this.submitting = true;
     this.feedback = null;
 
+    const memberDisplayName = this.getMemberDisplayName(selectedMember);
+
     this.financeService.addDeposit({
       memberId: selectedMember.id,
-      memberDisplayName: this.getMemberDisplayName(selectedMember),
+      memberDisplayName,
+      MemberDisplayName: memberDisplayName,
       savingsAmount: this.depositForm.savingsAmount,
       opsContribution: this.depositForm.opsContribution,
       description: this.depositForm.description
