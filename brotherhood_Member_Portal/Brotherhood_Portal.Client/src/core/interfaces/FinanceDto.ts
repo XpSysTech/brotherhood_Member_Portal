@@ -1,6 +1,7 @@
 export interface AddDepositDto {
   memberId: string;
   memberDisplayName: string;
+  MemberDisplayName?: string;
   savingsAmount: number;
   opsContribution: number;
   description?: string;
