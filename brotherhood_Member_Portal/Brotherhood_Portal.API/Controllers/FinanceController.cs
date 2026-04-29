@@ -359,7 +359,7 @@ public class FinanceController : BaseApiController
         if (deposit == null)
             return NotFound(new { message = "Deposit not found" });
     
-        deposit.Status = DepositStatus.Cancelled;
+        deposit.Status = "Cancelled";
     
         await _context.SaveChangesAsync();
     
