@@ -1,104 +1,94 @@
 <section class="bg-slate-50 min-h-screen">
-    <div class="mx-auto max-w-7xl px-4 py-10 space-y-8">
+  <div class="mx-auto max-w-7xl px-4 py-10 space-y-8">
 
-        <!-- HEADER -->
-        <div>
-            <h1 class="text-3xl font-semibold text-slate-900">
-                Approve Deposits
-            </h1>
-            <p class="text-slate-600">
-                Review and approve pending member deposits.
+    <!-- HEADER -->
+    <div>
+      <h1 class="text-3xl font-semibold text-slate-900">
+        Approve Deposits
+      </h1>
+      <p class="text-slate-600">
+        Review, approve, or cancel pending member deposits.
+      </p>
+    </div>
+
+    <!-- FEEDBACK -->
+    <div *ngIf="feedback" class="rounded-lg bg-slate-100 px-4 py-2 text-sm text-slate-700">
+      {{ feedback }}
+    </div>
+
+    <!-- LIST -->
+    <div class="rounded-xl bg-white ring-1 ring-slate-200 divide-y">
+
+      <!-- LOADING -->
+      <div *ngIf="loading" class="p-6 text-center text-slate-500">
+        Loading pending deposits…
+      </div>
+
+      <!-- DEPOSIT ITEMS -->
+      <div *ngFor="let deposit of pendingDeposits" class="p-4 space-y-3">
+
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+
+          <!-- DETAILS -->
+          <div>
+            <p class="font-semibold text-slate-900">
+              {{ deposit.memberName }}
             </p>
+
+            <p class="text-sm text-slate-500">
+              {{ deposit.savingsAmount | currency }} savings •
+              {{ deposit.opsContributionAmount | currency }} ops
+            </p>
+
+            <p class="text-xs text-slate-400 mt-1">
+              Approvals: {{ deposit.approvalCount }} / {{ deposit.requiredApprovals || 2 }}
+            </p>
+          </div>
+
+          <!-- ACTIONS -->
+          <div class="flex gap-2">
+            <button
+              type="button"
+              (click)="approve(deposit.financeId)"
+              class="rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800">
+              Approve
+            </button>
+
+            <button
+              type="button"
+              (click)="cancelDeposit(deposit.financeId)"
+              class="rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-500">
+              Cancel
+            </button>
+          </div>
         </div>
 
-        <!-- FEEDBACK -->
-        <div *ngIf="feedback" class="rounded-lg bg-slate-100 px-4 py-2 text-sm">
-            {{ feedback }}
+        <!-- APPROVAL HISTORY -->
+        <div
+          *ngIf="deposit.approvals && deposit.approvals.length > 0"
+          class="rounded-lg bg-slate-50 p-3 text-sm">
+
+          <p class="text-xs font-semibold text-slate-600 mb-1">
+            Approval History
+          </p>
+
+          <ul class="space-y-1">
+            <li *ngFor="let approval of deposit.approvals">
+              ✔️ {{ approval.displayName }}
+              ({{ approval.role }})
+              • {{ approval.approvedAt | date:'short' }}
+            </li>
+          </ul>
         </div>
 
-        <!-- LIST -->
-        <div class="rounded-xl bg-white ring-1 ring-slate-200 divide-y">
+      </div>
 
-            <div *ngIf="loading" class="p-6 text-center text-slate-500">
-                Loading pending deposits…
-            </div>
-
-            <div *ngFor="let deposit of pendingDeposits" class="p-4 flex items-center justify-between">
-
-                <div>
-                    <p class="font-medium text-slate-900">
-                        {{ deposit.memberName }}
-                    </p>
-
-                    <p class="text-sm text-slate-500">
-                        {{ deposit.savingsAmount | currency }} savings •
-                        {{ deposit.opsContributionAmount | currency }} ops
-                    </p>
-
-                    <p class="text-xs text-slate-400 mt-1">
-                        Approvals: {{ deposit.approvalCount }} / 2
-                    </p>
-                </div>
-
-                <button (click)="approve(deposit.financeId)"
-                    class="rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800">
-                    Approve
-                </button>
-
-                <button (click)="cancelDeposit(deposit.financeId)"
-                    class="rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-500">
-                    Cancel
-                </button>
-
-            </div>
-
-            <div *ngIf="!loading && pendingDeposits.length === 0" class="p-6 text-center text-slate-500">
-                No pending deposits.
-            </div>
-
-        </div>
-
-        <div *ngFor="let deposit of pendingDeposits" class="p-4 space-y-3">
-
-            <div class="flex items-center justify-between">
-                <div>
-                    <p class="font-medium text-slate-900">
-                        {{ deposit.memberName }}
-                    </p>
-
-                    <p class="text-sm text-slate-500">
-                        {{ deposit.savingsAmount | currency }} savings •
-                        {{ deposit.opsContributionAmount | currency }} ops
-                    </p>
-
-                    <p class="text-xs text-slate-400">
-                        Approvals: {{ deposit.approvalCount }} / {{ deposit.requiredApprovals }}
-                    </p>
-                </div>
-
-                <button (click)="approve(deposit.financeId)"
-                    class="rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800">
-                    Approve
-                </button>
-            </div>
-
-            <!-- APPROVAL HISTORY -->
-            <div *ngIf="deposit.approvals.length > 0" class="rounded-lg bg-slate-50 p-3 text-sm">
-
-                <p class="text-xs font-semibold text-slate-600 mb-1">
-                    Approval History
-                </p>
-
-                <ul class="space-y-1">
-                    <li *ngFor="let approval of deposit.approvals">
-                        ✔️ {{ approval.displayName }}
-                        ({{ approval.role }})
-                        • {{ approval.approvedAt | date:'short' }}
-                    </li>
-                </ul>
-
-            </div>
-        </div>
+      <!-- EMPTY STATE -->
+      <div *ngIf="!loading && pendingDeposits.length === 0" class="p-6 text-center text-slate-500">
+        No pending deposits.
+      </div>
 
     </div>
+
+  </div>
 </section>
