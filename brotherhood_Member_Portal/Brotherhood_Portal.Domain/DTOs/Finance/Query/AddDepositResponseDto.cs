@@ -20,7 +20,7 @@ namespace Brotherhood_Portal.Domain.DTOs.Finance.Query
         public string MemberDisplayName { get; set; } = default!;
 
         public string Status { get; set; } = null!;
-        // "Pending" | "Approved"
+        // "Pending" | "Approved" | "Cancelled"
 
         public int ApprovalCount { get; set; }
 
