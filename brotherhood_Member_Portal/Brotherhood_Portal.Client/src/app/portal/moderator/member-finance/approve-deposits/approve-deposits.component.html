@@ -45,6 +45,11 @@
                     Approve
                 </button>
 
+                <button (click)="cancelDeposit(deposit.financeId)"
+                    class="rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-500">
+                    Cancel
+                </button>
+
             </div>
 
             <div *ngIf="!loading && pendingDeposits.length === 0" class="p-6 text-center text-slate-500">
